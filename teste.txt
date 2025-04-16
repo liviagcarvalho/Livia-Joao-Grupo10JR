@@ -1,2 +1,5 @@
-blablalsa
-dasdasdas
+git checkout -b [nome branch]
+git checkout main 
+git checkout [nome branch]
+git pull
+git pull origin joao
