@@ -1,13 +1,12 @@
 //importando os componentes para eu poder usar
 import React from 'react';
-import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
-import ProductHighlights from '../components/ProductHighlights';
-import LaunchBanner from '../components/LaunchBanner';
-import ValueProps from '../components/ValueProps';
-import WorkSolutions from '../components/WorkSolutions';
-import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer.tsx';
+//import ProductHighlights from '../components/ProductHighlights';
+// import LaunchBanner from '../components/LaunchBanner';
+// import ValueProps from '../components/ValueProps';
+// import WorkSolutions from '../components/WorkSolutions';
+// import ContactForm from '../components/ContactForm';
+// import Footer from '../components/Footer';
 
 //funcao que retorna a tela home, a qual estou denominando aqui
 //dentrp da função return estiou montando com blocos a página home
@@ -15,16 +14,16 @@ import Footer from '../components/Footer.tsx';
 const Home = () => {
   return (
     <>
-      <Header />
       <HeroSection />
-      <ProductHighlights />
+      {/* <ProductHighlights />
       <LaunchBanner />
       <ValueProps />
       <WorkSolutions />
       <ContactForm />
-      <Footer />
+      <Footer /> */}
     </>
   );
 };
 
 export default Home;
+

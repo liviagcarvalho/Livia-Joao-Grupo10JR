@@ -1,17 +1,15 @@
 import React from 'react';
-import Header from './components/Header';
-import HeroSection from "./components/HeroSection";
-import ProductB2B from './pages/ProductB2B';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Footer from './components/Footer';
+import Header from './components/Header';
+import HomeB2B from './pages/HomeB2B';
+import ProductB2B from './pages/ProductB2B';
 
 function App() {
   return (
     <Router>
       <Header />
-      <HeroSection />
-      <Footer />
       <Routes>
+        <Route path="/" element={<HomeB2B />} />
         <Route path="/produtos" element={<ProductB2B />} />
         <Route path="/produtos/:categoria" element={<ProductB2B />} />
       </Routes>
@@ -20,5 +18,3 @@ function App() {
 }
 
 export default App;
-
-
