@@ -3,3 +3,7 @@ git checkout main
 git checkout [nome branch]
 git pull
 git pull origin joao
+git commit -m "mensagem"
+
+git add arquivo
+git add .
