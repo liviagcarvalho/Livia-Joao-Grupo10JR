@@ -49,7 +49,7 @@ const Header = () => {
       <div className="bg-white w-full shadow-sm border-b">
         <div className="max-w-[1282px] mx-auto flex justify-between items-center px-6 py-3">
           {/* Menu links */}
-          <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F] mr-20">
+          <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F] mr-45">
             <a href="#" className="hover:text-[#aa8453]">EXPLORAR</a>
             <a href="#" className="hover:text-[#aa8453]">MÓVEIS</a>
             <a href="#" className="hover:text-[#aa8453]">ELETRÔNICOS</a>
