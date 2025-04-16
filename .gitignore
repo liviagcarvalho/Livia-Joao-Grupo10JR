@@ -1,0 +1,12 @@
+# Ignorar dependências
+node_modules/
+.env
+dist/
+build/
+.vscode/
+.next/
+.DS_Store
+
+# Cache
+*.log
+.cache/
