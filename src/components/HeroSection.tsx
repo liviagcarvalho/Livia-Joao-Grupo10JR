@@ -1,6 +1,6 @@
 //banner 
 import React from "react";
-import cooworkingHomePage from "../assets/cooworkingHomePage.png";
+import cooworkingHomePage from "../assets/HomePage/cooworkingHomePage.png";
 
 const HeroSection = () => {
   return (
@@ -12,8 +12,11 @@ const HeroSection = () => {
         className="w-full h-full object-cover"
       />
 
-      {/* Camada de conteúdo */}
-      <div className="absolute left-[80px] top-[147px] w-[556px] text-[#1D311F]">
+      {/* Arco esverdeado suave no lado esquerdo */}
+      <div className="absolute top-0 left-0 w-[700px] h-full bg-[#1D311F]/30 rounded-r-[300px] blur-md z-10" />
+
+      {/* Camada de conteúdo por cima do arco */}
+      <div className="absolute left-[80px] top-[147px] w-[556px] text-[#1D311F] z-20">
         <h1 className="font-[Spectral] font-bold text-[40px] leading-tight mb-4">
           Transforme Seu Espaço, <br /> Inspire Produtividade
         </h1>
