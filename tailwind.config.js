@@ -10,6 +10,6 @@ export default {
         Spectral: ['Spectral', 'serif'],
       },
     },
-  }
+  },
   plugins: [],
 }
