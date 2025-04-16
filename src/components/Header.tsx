@@ -59,7 +59,7 @@ const Header = () => {
 
           {/* Botão grandão */}
           <button
-            className="bg-[#1D311F] text-white text-[16px] font-bold rounded-full px-10 py-2 tracking-wide"
+            className="bg-[#1D311F] text-white text-[16px] font-bold rounded-full px-10 py-2 tracking-wide ml-auto"
             style={{ borderRadius: '30px', width: '300px', height: '48px' }}>
             FAÇA SEU ORÇAMENTO
           </button>
