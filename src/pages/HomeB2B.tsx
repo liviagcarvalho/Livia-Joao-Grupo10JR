@@ -7,7 +7,7 @@ import LaunchBanner from '../components/LaunchBanner';
 import ValueProps from '../components/ValueProps';
 import WorkSolutions from '../components/WorkSolutions';
 import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer.tsx';
 
 //funcao que retorna a tela home, a qual estou denominando aqui
 //dentrp da função return estiou montando com blocos a página home
