@@ -47,7 +47,7 @@ const Header = () => {
 
       {/* MENU BRANCO */}
       <div className="bg-white w-full shadow-sm border-b">
-        <div className="max-w-[1282px] mx-auto flex justify-between items-center px-0 py-3">
+        <div className="w-full flex justify-between items-center px-8 py-3">
           {/* Menu links */}
           <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F]">
             <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">EXPLORAR</a>
@@ -59,7 +59,7 @@ const Header = () => {
 
           {/* Botão grandão */}
           <button
-            className="bg-[#1D311F] text-white text-[16px] font-bold rounded-full px-10 py-2 tracking-wide ml-auto"
+            className="bg-[#1D311F] text-white text-[16px] font-bold rounded-full px-10 py-2 tracking-wide "
             style={{ borderRadius: '30px', width: '300px', height: '48px' }}>
             FAÇA SEU ORÇAMENTO
           </button>
