@@ -7,3 +7,4 @@ git commit -m "mensagem"
 
 git add arquivo
 git add .
+teste
