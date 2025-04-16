@@ -47,19 +47,19 @@ const Header = () => {
 
       {/* MENU BRANCO */}
       <div className="bg-white w-full shadow-sm border-b">
-        <div className="max-w-[1282px] mx-auto flex justify-between items-center px-6 py-3">
+        <div className="max-w-[1440px] mx-auto flex items-center px-2 py-3">
           {/* Menu links */}
-          <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F]">
-            <a href="#" className="hover:text-[#aa8453]">EXPLORAR</a>
-            <a href="#" className="hover:text-[#aa8453]">MÓVEIS</a>
-            <a href="#" className="hover:text-[#aa8453]">ELETRÔNICOS</a>
-            <a href="#" className="hover:text-[#aa8453]">MATERIAIS</a>
-            <a href="#" className="hover:text-[#aa8453]">AMBIENTAÇÃO & CONFORTO</a>
+          <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F] flex-grow">
+            <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">EXPLORAR</a>
+            <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">MÓVEIS</a>
+            <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">ELETRÔNICOS</a>
+            <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">MATERIAIS</a>
+            <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">AMBIENTAÇÃO & CONFORTO</a>
           </nav>
 
           {/* Botão grandão */}
           <button
-            className="bg-[#1D311F] text-white text-[16px] font-bold rounded-full px-10 py-2 tracking-wide"
+            className="bg-[#1D311F] text-white text-[16px] font-bold rounded-full px-10 py-2 tracking-wide ml-auto"
             style={{ borderRadius: '30px', width: '300px', height: '48px' }}>
             FAÇA SEU ORÇAMENTO
           </button>
