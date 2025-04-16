@@ -47,7 +47,7 @@ const Header = () => {
 
       {/* MENU BRANCO */}
       <div className="bg-white w-full shadow-sm border-b">
-        <div className="max-w-[1282px] mx-auto flex justify-between items-center px-6 py-3">
+        <div className="max-w-[1282px] mx-auto flex justify-between items-center px-2 py-3">
           {/* Menu links */}
           <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F] mr-auto">
             <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">EXPLORAR</a>
