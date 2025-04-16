@@ -47,9 +47,9 @@ const Header = () => {
 
       {/* MENU BRANCO */}
       <div className="bg-white w-full shadow-sm border-b">
-        <div className="max-w-[1282px] mx-auto flex items-center px-0 py-3">
+        <div className="max-w-[1282px] mx-auto flex items-center justify-between px-6 py-3">
           {/* Menu links */}
-          <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F] flex-grow">
+          <nav className="flex gap-10 text-[20px] font-bold text-[#1D311F] flex-grow pl-2">
             <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">EXPLORAR</a>
             <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">MÓVEIS</a>
             <a href="#" className="hover:text-[#aa8453] whitespace-nowrap">ELETRÔNICOS</a>
