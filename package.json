@@ -1,6 +1,7 @@
 {
   "name": "react-vite-ts-tailwind",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
