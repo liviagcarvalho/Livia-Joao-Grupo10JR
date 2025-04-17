@@ -15,7 +15,7 @@ const items = [
       "Oferecemos garantia real de 2 anos em nossos produtos. Mais segurança e tranquilidade para você confiar na sua escolha.",
   },
   {
-    title: "Entrega",
+    title: "Entrega Eficiente",
     icon: "carbon:delivery",
     description:
       "Nosso compromisso vai além da venda. Garantimos agilidade e cuidado na entrega, respeitando prazos e qualidade no transporte.",
@@ -27,7 +27,7 @@ const items = [
       "Desenvolvemos produtos com responsabilidade ambiental, priorizando materiais conscientes e processos sustentáveis.",
   },
   {
-    title: "Atendimento",
+    title: "Atendimento Personalizado",
     icon: "ri:customer-service-2-fill",
     description:
       "Acompanhamos você em cada etapa, com um atendimento próximo, rápido e voltado para entender suas reais necessidades.",
