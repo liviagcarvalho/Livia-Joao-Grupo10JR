@@ -1,6 +1,6 @@
 //banner
 import React from "react";
-import cooworkingHomePage from "../assets/HomePage/cooworkingHomePage.png";
+import cooworkingHomePage from "../assets/HomePage/PrincipalHomeB2B.png";
 
 const HeroSection = () => {
   return (
