@@ -4,6 +4,7 @@ git checkout [nome branch]
 git pull
 git pull origin joao
 git commit -m "mensagem"
+git push
 
 git add arquivo
 git add .
@@ -20,3 +21,10 @@ AZUL ESCURO: #003366
 VERDE: #228B22
 AMARELO: #FFD700
 ROSA CLARO: #FFC0CB
+
+
+Botao para "Para clientes/empresa"
+Wpp
+footer - formulario de contato - HP trocar central de ajuda por botao de precisa de ajuda (que direciona a Ajuda)
+LUPA GRANDE NO CENTRO NA PÁGINA DE PRODUTOS 
+botao para sempore voltar pra home 
