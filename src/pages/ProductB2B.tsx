@@ -31,11 +31,11 @@ const allProducts = [
     name: 'Locker G',
     price: 'R$350,00',
     images: {
-      '#FFD700': '/src/assets/Produtos/LockerG/Locker G amarelo.png',
       '#003366': '/src/assets/Produtos/LockerG/Locker G azul.png',
+      '#FFD700': '/src/assets/Produtos/LockerG/Locker G amarelo.png',
       '#228B22': '/src/assets/Produtos/LockerG/Locker G verde.png',
     },
-    colors: ['#FFD700', '#003366', '#228B22'],
+    colors: ['#003366', '#FFD700', '#228B22'],
     categoria: 'moveis',
     tags: ['lancamentos', 'ver-tudo']
   },
@@ -60,6 +60,63 @@ const allProducts = [
     categoria: 'materiais',
     tags: ['mais-vendidos', 'ver-tudo']
   },
+  {
+    name: 'Apoio de Itens',
+    price: 'R$120,00',
+    images: {
+      '#ffffff': '/src/assets/Produtos/Apoio de Itens/Apoio de itens branco.png',
+      '#000000': '/src/assets/Produtos/Apoio de Itens/Apoio de itens preto.png'
+    },
+    colors: ['#ffffff', "#000000"],
+    categoria: 'materiais',
+    tags: ['ver-tudo']
+  },
+  {
+    name: 'Locker M',
+    price: 'R$230,00',
+    images: {
+      '#ffffff': '/src/assets/Produtos/Locker M/Locker M Branco.png',
+      '#228B22': '/src/assets/Produtos/Locker M/Locker M Verde.png'
+    },
+    colors: ['#ffffff', "#228B22"],
+    categoria: 'moveis',
+    tags: ['ver-tudo']
+  },
+  {
+    name: 'Mesa de Seis Pessoas',
+    price: 'R$500,00',
+    images: {
+      '#ffffff': '/src/assets/Produtos/Mesa Seis Pessoas/Mesa seis Pessoas Branca.png',
+      '#DEB887': '/src/assets/Produtos/Mesa Seis Pessoas/Mesa seis Pessoas Madeira Clara.png',
+      '#5C4033': '/src/assets/Produtos/Mesa Seis Pessoas/Mesa seis Pessoas Madeira Escura.png'
+    },
+    colors: ['#ffffff', "#DEB887", '#5C4033'],
+    categoria: 'moveis',
+    tags: ['ver-tudo', 'lancamentos']
+  },
+  {
+    name: 'Tapetes',
+    price: 'R$180,00',
+    images: {
+      '#003366': '/src/assets/Produtos/Tapetes/Tapete Azul.png',
+      '#FFC0CB': '/src/assets/Produtos/Tapetes/Tapete Rosa.png',
+      '#228B22': '/src/assets/Produtos/Tapetes/Tapete Verde.png'
+    },
+    colors: ['#003366', "#FFC0CB", '#228B22'],
+    categoria: 'ambientacao',
+    tags: ['ver-tudo']
+  },
+  {
+    name: 'Pins Para Quadro',
+    price: 'R$29,99',
+    images: {
+      '#D3D3D3': '/src/assets/Produtos/Pins/Pins para quadro.png'
+    },
+    colors: ['#D3D3D3'],
+    categoria: 'materiais',
+    tags: ['ver-tudo']
+  },
+  
 ];
 
 export default function ProductB2B() {

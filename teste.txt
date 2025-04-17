@@ -7,3 +7,16 @@ git commit -m "mensagem"
 
 git add arquivo
 git add .
+
+
+
+CORES:
+
+BRANCO: #ffffff
+PRETO: #000000
+MARROM: #5C4033
+BEGE: #DEB887
+AZUL ESCURO: #003366
+VERDE: #228B22
+AMARELO: #FFD700
+ROSA CLARO: #FFC0CB
