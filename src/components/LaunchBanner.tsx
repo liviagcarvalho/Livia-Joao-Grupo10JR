@@ -3,7 +3,7 @@ import apoiamonitor from "../assets/HomePage/apoiamonitor.png";
 
 const LaunchBanner = () => {
   return (
-    <section className="w-full bg-white flex flex-col items-center py-20 px-4">
+    <section className="w-full flex flex-col items-center py-20 px-4">
       {/* Título */}
       <h2 className="font-[Spectral] font-semibold text-[40px] text-[#1D311F] text-center mb-2">
         CONFIRA NOSSO ÚLTIMO LANÇAMENTO
