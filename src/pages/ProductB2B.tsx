@@ -1,23 +1,64 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductCard } from '../components/ProductCard';
+import Footer from '../components/Footer';
+
 
 const allProducts = [
   {
-    image: '/src/assets/HomePage/EscritorioPrivadoHomePage.png',
     name: 'Cadeira Conforto Pro',
     price: 'R$187,90',
-    colors: ['#000000', '#f5f5f5', '#8B8177'],
+    images: {
+      '#ffffff': '/src/assets/Produtos/Cadeira Conforto/Cadeira Conforto Branca.png',
+      '#5C4033': '/src/assets/Produtos/Cadeira Conforto/Cadeira Conforto Marrom.png',
+      '#000000': '/src/assets/Produtos/Cadeira Conforto/Cadeira Conforto Preta.png',
+    },
+    colors: ['#ffffff', '#5C4033', '#000000'],
     categoria: 'moveis',
-    tags: ['lancamentos', 'ver-tudo'],
+    tags: ['mais-vendidos', 'ver-tudo']
   },
   {
-    image: '/src/assets/HomePage/cooworkingHomePage.png',
-    name: 'Fone de Ouvido XYZ',
-    price: 'R$99,90',
-    colors: ['#000000', '#e5e5e5'],
-    categoria: 'eletronicos',
-    tags: ['mais-vendidos', 'ver-tudo'],
+    name: 'Cadeira Joelhos',
+    price: 'R$190,00',
+    images: {
+      '#000000': '/src/assets/Produtos/Cadeira Joelhos/Cadeira Joelhos Preta.png'
+    },
+    colors: ['#000000'],
+    categoria: 'moveis',
+    tags: ['mais-vendidos', 'ver-tudo']
+  },
+  {
+    name: 'Locker G',
+    price: 'R$350,00',
+    images: {
+      '#FFD700': '/src/assets/Produtos/LockerG/Locker G amarelo.png',
+      '#003366': '/src/assets/Produtos/LockerG/Locker G azul.png',
+      '#228B22': '/src/assets/Produtos/LockerG/Locker G verde.png',
+    },
+    colors: ['#FFD700', '#003366', '#228B22'],
+    categoria: 'moveis',
+    tags: ['lancamentos', 'ver-tudo']
+  },
+  {
+    name: 'Mesa L',
+    price: 'R$420,00',
+    images: {
+      '#ffffff': '/src/assets/Produtos/Mesa L/Mesa L Branca.png',
+      '#5C4033': '/src/assets/Produtos/Mesa L/Mesa L Marrom.png',
+    },
+    colors: ['#ffffff', '#5C4033'],
+    categoria: 'moveis',
+    tags: ['mais-vendidos', 'ver-tudo']
+  },
+  {
+    name: 'Suporte de Monitor',
+    price: 'R$89,90',
+    images: {
+      '#D3D3D3': '/src/assets/Produtos/suporte/suportedemonitor.png'
+    },
+    colors: ['#D3D3D3'],
+    categoria: 'materiais',
+    tags: ['mais-vendidos', 'ver-tudo']
   },
 ];
 
@@ -68,11 +109,10 @@ export default function ProductB2B() {
     materiais: 'Materiais',
     ambientacao: 'Ambientação & Conforto',
   };
-  
+
   const titulo = categoria
     ? categoriaFormatada[categoria.toLowerCase()] || categoria
     : 'Todos os Produtos';
-  
 
   const limparFiltros = () => {
     setCategoriaFiltro(null);
@@ -81,14 +121,10 @@ export default function ProductB2B() {
 
   return (
     <div className="w-full">
-      {/* Barra de filtros */}
       <div className="w-full bg-[#DDE3DC] border-t border-b py-4">
-        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4">
-          {/* Esquerda: filtros */}
-          <div className="flex items-center gap-6">
+        <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-4 gap-4">
+          <div className="flex items-center gap-6 flex-wrap">
             <h2 className="text-[18px] font-semibold whitespace-nowrap">FILTROS</h2>
-
-            {/* Dropdown: Categoria */}
             <div className="relative">
               <button
                 onClick={() => {
@@ -102,38 +138,12 @@ export default function ProductB2B() {
               </button>
               {showCategoria && (
                 <div className="absolute left-0 mt-2 w-44 bg-white border rounded shadow-lg z-10">
-                  <button
-                    className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]"
-                    onClick={() => {
-                      setCategoriaFiltro('lancamentos');
-                      setShowCategoria(false);
-                    }}
-                  >
-                    Lançamentos
-                  </button>
-                  <button
-                    className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]"
-                    onClick={() => {
-                      setCategoriaFiltro('mais-vendidos');
-                      setShowCategoria(false);
-                    }}
-                  >
-                    Mais Vendidos
-                  </button>
-                  <button
-                    className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]"
-                    onClick={() => {
-                      setCategoriaFiltro(null);
-                      setShowCategoria(false);
-                    }}
-                  >
-                    Ver Tudo
-                  </button>
+                  <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setCategoriaFiltro('lancamentos'); setShowCategoria(false); }}>Lançamentos</button>
+                  <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setCategoriaFiltro('mais-vendidos'); setShowCategoria(false); }}>Mais Vendidos</button>
+                  <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setCategoriaFiltro(null); setShowCategoria(false); }}>Ver Tudo</button>
                 </div>
               )}
             </div>
-
-            {/* Dropdown: Cor */}
             <div className="relative">
               <button
                 onClick={() => {
@@ -161,8 +171,6 @@ export default function ProductB2B() {
                 </div>
               )}
             </div>
-
-            {/* Botão Limpar Filtros */}
             {(categoriaFiltro || corFiltro) && (
               <button
                 onClick={limparFiltros}
@@ -173,7 +181,6 @@ export default function ProductB2B() {
             )}
           </div>
 
-          {/* Direita: Ordenado por */}
           <div className="relative">
             <button
               onClick={() => {
@@ -187,50 +194,26 @@ export default function ProductB2B() {
             </button>
             {isOpen && (
               <div className="absolute right-0 mt-2 w-44 bg-white border rounded shadow-lg z-10">
-                <button
-                  className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]"
-                  onClick={() => {
-                    setSortOption('menor');
-                    setIsOpen(false);
-                  }}
-                >
-                  Menor Preço
-                </button>
-                <button
-                  className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]"
-                  onClick={() => {
-                    setSortOption('maior');
-                    setIsOpen(false);
-                  }}
-                >
-                  Maior Preço
-                </button>
-                <button
-                  className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]"
-                  onClick={() => {
-                    setSortOption('az');
-                    setIsOpen(false);
-                  }}
-                >
-                  A–Z
-                </button>
+                <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setSortOption('menor'); setIsOpen(false); }}>Menor Preço</button>
+                <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setSortOption('maior'); setIsOpen(false); }}>Maior Preço</button>
+                <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setSortOption('az'); setIsOpen(false); }}>A–Z</button>
               </div>
             )}
           </div>
         </div>
       </div>
 
-      {/* Produtos */}
       <div className="bg-[#F5F8F5] py-8">
         <div className="max-w-screen-xl mx-auto px-4">
           <h2 className="text-xl font-bold mb-6">{titulo}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {produtosOrdenados.map((product, index) => (
               <ProductCard key={index} {...product} />
             ))}
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
