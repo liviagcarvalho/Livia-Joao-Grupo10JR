@@ -21,6 +21,9 @@ AZUL ESCURO: #003366
 VERDE: #228B22
 AMARELO: #FFD700
 ROSA CLARO: #FFC0CB
+CINZA: #9E9E9E
+VERMELHO: #C62828
+AZUL CLARO: #64B5F6
 
 
 Botao para "Para clientes/empresa"
@@ -29,3 +32,10 @@ footer - formulario de contato - HP trocar central de ajuda por botao de precisa
 LUPA GRANDE NO CENTRO NA PÁGINA DE PRODUTOS 
 
 botao para sempore voltar pra home - problema, nao sei onde colocar - livia
+
+
+
+Ambientação e conforto: Decoraçao, luminárias e persianas
+Materiais: Tudo
+
+transformar preco de unidade para preço a cada 30un 
