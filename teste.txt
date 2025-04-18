@@ -27,4 +27,5 @@ Botao para "Para clientes/empresa"
 Wpp
 footer - formulario de contato - HP trocar central de ajuda por botao de precisa de ajuda (que direciona a Ajuda)
 LUPA GRANDE NO CENTRO NA PÁGINA DE PRODUTOS 
-botao para sempore voltar pra home 
+
+botao para sempore voltar pra home - problema, nao sei onde colocar - livia
