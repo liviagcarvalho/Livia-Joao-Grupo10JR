@@ -37,20 +37,23 @@ export const ProductCard = ({
         <p className="text-center text-[16px] font-bold mb-2">{price}</p>
       </div>
 
-      {/* Bolinhas de cor */}
-      <div className="flex justify-center gap-3 mb-4">
-        {colors.map((cor) => (
-          <button
-            key={cor}
-            onClick={() => setSelectedColor(cor)}
-            className={`w-5 h-5 rounded-full border ${cor === '#ffffff' ? 'border-gray-300' : ''}`}
-            style={{
-              backgroundColor: cor,
-              outline: selectedColor === cor ? '2px solid #1D311F' : 'none',
-            }}
-          />
-        ))}
-      </div>
+      {/* Bolinhas de cor – só aparecem se houver mais de uma cor */}
+      {colors.length > 1 && (
+        <div className="flex justify-center gap-3 mb-4">
+          {colors.map((cor) => (
+            <button
+              key={cor}
+              onClick={() => setSelectedColor(cor)}
+              className={`w-5 h-5 rounded-full border ${cor === '#ffffff' ? 'border-gray-300' : ''}`}
+              style={{
+                backgroundColor: cor,
+                outline: selectedColor === cor ? '2px solid #1D311F' : 'none',
+              }}
+            />
+          ))}
+        </div>
+      )}
+
 
       {/* Botão */}
       <button className="bg-[#1D311F] hover:bg-[#16341C] transition text-white w-full py-2 rounded-md text-sm font-semibold">

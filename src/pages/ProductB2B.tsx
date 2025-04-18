@@ -1,108 +1,218 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { ProductCard } from '../components/ProductCard';
 import Footer from '../components/Footer';
+import allProducts from '../components/allProducts'
+import { FiSearch } from 'react-icons/fi';
 
+const Container = styled.div`
+  width: 100%;
+`;
 
-const allProducts = [
-  {
-    name: 'Cadeira Conforto Pro',
-    price: 'R$187,90',
-    images: {
-      '#ffffff': '/src/assets/Produtos/Cadeira Conforto/Cadeira Conforto Branca.png',
-      '#5C4033': '/src/assets/Produtos/Cadeira Conforto/Cadeira Conforto Marrom.png',
-      '#000000': '/src/assets/Produtos/Cadeira Conforto/Cadeira Conforto Preta.png',
-    },
-    colors: ['#ffffff', '#5C4033', '#000000'],
-    categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
-  },
-  {
-    name: 'Cadeira Joelhos',
-    price: 'R$190,00',
-    images: {
-      '#000000': '/src/assets/Produtos/Cadeira Joelhos/Cadeira Joelhos Preta.png'
-    },
-    colors: ['#000000'],
-    categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
-  },
-  {
-    name: 'Locker G',
-    price: 'R$350,00',
-    images: {
-      '#FFD700': '/src/assets/Produtos/LockerG/Locker G amarelo.png',
-      '#003366': '/src/assets/Produtos/LockerG/Locker G azul.png',
-      '#228B22': '/src/assets/Produtos/LockerG/Locker G verde.png',
-    },
-    colors: ['#FFD700', '#003366', '#228B22'],
-    categoria: 'moveis',
-    tags: ['lancamentos', 'ver-tudo']
-  },
-  {
-    name: 'Mesa L',
-    price: 'R$420,00',
-    images: {
-      '#ffffff': '/src/assets/Produtos/Mesa L/Mesa L Branca.png',
-      '#5C4033': '/src/assets/Produtos/Mesa L/Mesa L Marrom.png',
-    },
-    colors: ['#ffffff', '#5C4033'],
-    categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
-  },
-  {
-    name: 'Suporte de Monitor',
-    price: 'R$89,90',
-    images: {
-      '#D3D3D3': '/src/assets/Produtos/suporte/suportedemonitor.png'
-    },
-    colors: ['#D3D3D3'],
-    categoria: 'materiais',
-    tags: ['mais-vendidos', 'ver-tudo']
-  },
-];
+// Wrapper para centralizar e posicionar a barra de busca
+const SearchWrapper = styled.div`
+  width: 100%;
+  background-color: #F5F8F5;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+`;
 
+// Container da busca (ícone + input)
+const SearchBox = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  gap: 0.75rem;
+`;
+
+// Campo de input da busca
+const SearchInput = styled.input`
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  background: transparent;
+`;
+
+// Ícone da lupa
+const SearchIcon = styled(FiSearch)`
+  font-size: 1.2rem;
+  color: #999;
+`;
+
+//Barra horizontal verde onde ficam os filtros e ordenado por 
+const FiltroBar = styled.div` 
+  width: 100%;
+  background-color: #DDE3DC;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+`;
+
+//Organizador dos filtros - flex box para filtros e botoes 
+const FiltroWrapper = styled.div`
+  max-width: 1280px; 
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 1rem;
+`;
+
+//Estilização de botões (ex: botão "Categoria", "Cor", "Ordenar por") - cor verde escura de fundo, com letras brancas
+const Botao = styled.button`
+  background-color: #1D311F;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 5px;
+`;
+
+//Caixinha que aparece embaixo dos botões quando você clica neles 
+const Dropdown = styled.div`
+  position: absolute;
+  margin-top: 0.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 10;
+
+  // Estilo aplicado apenas se for um dropdown de texto
+  &.dropdown-list {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px; // define uma largura mínima
+    padding: 0.5rem 0;
+
+    // aplica estilo diretamente nos <button> dentro do Dropdown de texto
+    button {
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      width: 100%;
+      font-size: 0.875rem;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+`;
+
+// posição dos botões do filtro
+const FiltroBox = styled.div`
+  position: relative;
+`;
+
+//Cores do filtro de cor 
+const CorButton = styled.button<{ cor: string }>`
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: ${(props) => (props.cor === '#ffffff' ? '1px solid #ccc' : 'none')};
+  background-color: ${(props) => props.cor};
+`;
+
+//Area da página onde ficam os produtos 
+const Main = styled.div`
+  background-color: #F5F8F5;
+  padding: 2rem 0;
+`;
+
+//centraliza e limita a largura do conteúdo dentro do `Main`
+const ContentWrapper = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+`;
+
+// Título da página de produtos
+const Title = styled.h2`
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+`;
+
+//Grade responsiva para exibir os produtos - Cada `ProductCard` ocupa no mínimo 250px e o gap define o espaçamento
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+`;
+
+// Função principal do componente da página de produtos
 export default function ProductB2B() {
+  // Pega a categoria do Header - parametros (ex: "moveis", "materiais", etc.)
   const { categoria } = useParams();
-  const [sortOption, setSortOption] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const [showCategoria, setShowCategoria] = useState(false);
-  const [showCor, setShowCor] = useState(false);
-  const [categoriaFiltro, setCategoriaFiltro] = useState<string | null>(null);
-  const [corFiltro, setCorFiltro] = useState<string | null>(null);
 
+  // Estados usados para filtros e ordenações
+  const [sortOption, setSortOption] = useState(''); // como ordenar os produtos
+  const [isOpen, setIsOpen] = useState(false); // dropdown de ordenação 
+  const [showCategoria, setShowCategoria] = useState(false); // dropdown de categoria 
+  const [showCor, setShowCor] = useState(false); // dropdown de cor 
+  const [categoriaFiltro, setCategoriaFiltro] = useState<string | null>(null); // filtro por tag
+  const [corFiltro, setCorFiltro] = useState<string | null>(null); // filtro por cor
+  const [mostrarTodos, setMostrarTodos] = useState(false); // controla se deve mostrar tudo ou só os primeiros
+  const [busca, setBusca] = useState(''); // termo da barra de busca
+
+
+  // Filtra produtos com base na categoria 
   let produtosFiltrados = categoria
-    ? allProducts.filter((p) => p.categoria === categoria.toLowerCase())
-    : allProducts;
+  ? allProducts.filter((p) => p.categoria === categoria.toLowerCase())
+  : allProducts;
 
+  // Aplica busca textual (por nome)
+  if (busca.trim() !== '') {
+    const termo = busca.toLowerCase();
+    produtosFiltrados = produtosFiltrados.filter((p) =>
+      p.name.toLowerCase().includes(termo)
+    );
+  }
+
+
+  // Aplica filtro adicional por "tags" (como 'lancamentos', 'mais-vendidos') - se o filtro for ver tudo, então não aplica filtro
   if (categoriaFiltro && categoriaFiltro !== 'ver-tudo') {
     produtosFiltrados = produtosFiltrados.filter((p) =>
       p.tags.includes(categoriaFiltro)
     );
   }
 
+  // Aplica filtro por cor
   if (corFiltro) {
     produtosFiltrados = produtosFiltrados.filter((p) =>
       p.colors.includes(corFiltro)
     );
   }
 
+  // Ordena os produtos conforme o filtro selecionado
   const produtosOrdenados = [...produtosFiltrados].sort((a, b) => {
+    // Converte o preço de string (ex: "R$199,00") para número (199.00)
     const getPriceValue = (price: string) =>
       parseFloat(price.replace('R$', '').replace(',', '.'));
 
     switch (sortOption) {
       case 'menor':
-        return getPriceValue(a.price) - getPriceValue(b.price);
+        return getPriceValue(a.price) - getPriceValue(b.price); // menor preço primeiro
       case 'maior':
-        return getPriceValue(b.price) - getPriceValue(a.price);
+        return getPriceValue(b.price) - getPriceValue(a.price); // maior preço primeiro
       case 'az':
-        return a.name.localeCompare(b.name);
+        return a.name.localeCompare(b.name); // ordem alfabética
       default:
         return 0;
     }
   });
 
+  // Tradução dos nomes das categorias para exibição
   const categoriaFormatada: Record<string, string> = {
     moveis: 'Móveis',
     eletronicos: 'Eletrônicos',
@@ -110,110 +220,217 @@ export default function ProductB2B() {
     ambientacao: 'Ambientação & Conforto',
   };
 
+  // Define o título que será exibido na página
   const titulo = categoria
     ? categoriaFormatada[categoria.toLowerCase()] || categoria
     : 'Todos os Produtos';
 
+  // Função para limpar todos os filtros
   const limparFiltros = () => {
     setCategoriaFiltro(null);
     setCorFiltro(null);
   };
 
+  // Traduz as cores HEX para nomes amigáveis
+const nomesCores: Record<string, string> = {
+  "#ffffff": "Branco",
+  "#000000": "Preto",
+  "#5C4033": "Marrom",
+  "#DEB887": "Bege",
+  "#003366": "Azul Escuro",
+  "#228B22": "Verde",
+  "#FFD700": "Amarelo",
+  "#FFC0CB": "Rosa Claro",
+};
+
+// Traduz as tags de categoria
+const nomesCategorias: Record<string, string> = {
+  "lancamentos": "Lançamentos",
+  "mais-vendidos": "Mais Vendidos",
+  "ver-tudo": "Ver Tudo"
+};
+
+// Botão que aparece após duas linhas de produtos para expandir e ver mais
+const VerMaisButton = styled.button`
+  background-color: #1D311F;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+`;
+
+// Centralizaçao o botão "Ver Mais" - Wrapper - nome que se da quando é um componente que engloba outros elementos 
+const VerMaisWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+`;
+
+
+  // JSX retornado pelo componente
   return (
-    <div className="w-full">
-      <div className="w-full bg-[#DDE3DC] border-t border-b py-4">
-        <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-4 gap-4">
+    <Container>
+      {/* Barra de busca centralizada */}
+      <SearchWrapper>
+        <SearchBox>
+          <SearchIcon>🔍</SearchIcon>
+          <SearchInput 
+            type="text"
+            placeholder="Buscar produtos..."
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+          />
+        </SearchBox>
+      </SearchWrapper>
+
+      {/* Barra superior com os filtros */}
+      <FiltroBar>
+        <FiltroWrapper>
           <div className="flex items-center gap-6 flex-wrap">
             <h2 className="text-[18px] font-semibold whitespace-nowrap">FILTROS</h2>
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  setShowCategoria(!showCategoria);
-                  setShowCor(false);
-                }}
-                className="bg-[#1D311F] text-white px-4 py-1 rounded"
-              >
-                Categoria
-              </button>
-              {showCategoria && (
-                <div className="absolute left-0 mt-2 w-44 bg-white border rounded shadow-lg z-10">
-                  <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setCategoriaFiltro('lancamentos'); setShowCategoria(false); }}>Lançamentos</button>
-                  <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setCategoriaFiltro('mais-vendidos'); setShowCategoria(false); }}>Mais Vendidos</button>
-                  <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setCategoriaFiltro(null); setShowCategoria(false); }}>Ver Tudo</button>
-                </div>
+
+            {/* Filtro por Categoria */}
+            <FiltroBox>
+              {categoriaFiltro ? (
+                <Botao
+                  onClick={() => setCategoriaFiltro(null)} // clicando remove o filtro
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  {nomesCategorias[categoriaFiltro] || categoriaFiltro} ×
+                </Botao>
+              ) : (
+                <Botao
+                  onClick={() => {
+                    setIsOpen(false); // fecha menu de ordenação
+                    setShowCategoria(!showCategoria); // abre/fecha menu de categoria
+                    setShowCor(false); // fecha menu de cor
+                  }}
+                >
+                  Categoria
+                </Botao>
               )}
-            </div>
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  setShowCategoria(false);
-                  setShowCor(!showCor);
-                }}
-                className="bg-[#1D311F] text-white px-4 py-1 rounded"
-              >
-                Cor
-              </button>
+
+              {showCategoria && (
+                <Dropdown className="dropdown-list">
+                  <button onClick={() => { setCategoriaFiltro('lancamentos'); setShowCategoria(false); }}>Lançamentos</button>
+                  <button onClick={() => { setCategoriaFiltro('mais-vendidos'); setShowCategoria(false); }}>Mais Vendidos</button>
+                  <button onClick={() => { setCategoriaFiltro(null); setShowCategoria(false); }}>Ver Tudo</button>
+                </Dropdown>
+              )}
+            </FiltroBox>
+
+
+            {/* Filtro por Cor */}
+            <FiltroBox>
+              {corFiltro ? (
+                <Botao
+                  onClick={() => setCorFiltro(null)} // clicando remove o filtro de cor
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  {nomesCores[corFiltro]} ×
+                </Botao>
+              ) : (
+                <Botao
+                  onClick={() => {
+                    setIsOpen(false); // fecha menu de ordenação
+                    setShowCategoria(false); // fecha menu de categoria
+                    setShowCor(!showCor); // abre/fecha menu de cor
+                  }}
+                >
+                  Cor
+                </Botao>
+              )}
+
               {showCor && (
-                <div className="absolute left-0 mt-2 bg-white border rounded shadow-lg p-3 flex gap-3 z-10">
-                  {['#000000', '#ffffff', '#8B8177'].map((cor) => (
-                    <button
+                <Dropdown
+                  style={{
+                    padding: '0.75rem',
+                    display: 'flex',
+                    gap: '0.75rem',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                    minWidth: '160px'
+                  }}
+                >
+                  {[
+                    "#ffffff", "#000000", "#5C4033", "#DEB887",
+                    "#003366", "#228B22", "#FFD700", "#FFC0CB"
+                  ].map((cor) => (
+                    <CorButton
                       key={cor}
+                      cor={cor}
                       onClick={() => {
                         setCorFiltro(cor === corFiltro ? null : cor);
                         setShowCor(false);
                       }}
-                      className={`w-5 h-5 rounded-full border ${cor === '#ffffff' ? 'border-gray-300' : ''}`}
-                      style={{ backgroundColor: cor }}
                     />
                   ))}
-                </div>
+                </Dropdown>
               )}
-            </div>
+            </FiltroBox>
+
+            {/* Botão para limpar filtros, só aparece se algum filtro estiver ativo */}
             {(categoriaFiltro || corFiltro) && (
               <button
                 onClick={limparFiltros}
-                className="text-sm text-[#1D311F] underline hover:text-[#4d5c45]"
+                style={{ color: '#1D311F', fontSize: '0.875rem', textDecoration: 'underline' }}
               >
                 Limpar filtros
               </button>
             )}
           </div>
 
-          <div className="relative">
+          {/* Dropdown de ordenação */}
+          <FiltroBox>
             <button
               onClick={() => {
-                setIsOpen(!isOpen);
-                setShowCategoria(false);
+                setIsOpen(!isOpen); // abre/fecha menu de ordenação
+                setShowCategoria(false); // fecha outros menus
                 setShowCor(false);
               }}
-              className="text-sm font-semibold bg-[#DDE3DC] text-[#1D311F] px-4 py-1 rounded flex items-center gap-2"
+              style={{ fontSize: '0.875rem', fontWeight: 600, backgroundColor: '#DDE3DC', color: '#1D311F', padding: '0.25rem 1rem', borderRadius: '5px' }}
             >
-              Ordenado por <span className="text-[12px]">▼</span>
+              Ordenado por <span style={{ fontSize: '0.75rem' }}>▼</span>
             </button>
             {isOpen && (
-              <div className="absolute right-0 mt-2 w-44 bg-white border rounded shadow-lg z-10">
-                <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setSortOption('menor'); setIsOpen(false); }}>Menor Preço</button>
-                <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setSortOption('maior'); setIsOpen(false); }}>Maior Preço</button>
-                <button className="w-full text-left px-4 py-2 hover:bg-[#F5F8F5]" onClick={() => { setSortOption('az'); setIsOpen(false); }}>A–Z</button>
-              </div>
+              <Dropdown className="dropdown-list"> {/* adicionada a classe */}
+                <button onClick={() => { setSortOption('menor'); setIsOpen(false); }}>Menor Preço</button>
+                <button onClick={() => { setSortOption('maior'); setIsOpen(false); }}>Maior Preço</button>
+                <button onClick={() => { setSortOption('az'); setIsOpen(false); }}>A–Z</button>
+              </Dropdown>
             )}
-          </div>
-        </div>
-      </div>
+          </FiltroBox>
+        </FiltroWrapper>
+      </FiltroBar>
 
-      <div className="bg-[#F5F8F5] py-8">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="text-xl font-bold mb-6">{titulo}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {produtosOrdenados.map((product, index) => (
+      {/* Área principal com os produtos */}
+      <Main>
+        <ContentWrapper>
+          {/* Título da seção */}
+          <Title>{titulo}</Title>
+
+          {/* Grid com os cards dos produtos */}
+          <Grid>
+            {(mostrarTodos ? produtosOrdenados : produtosOrdenados.slice(0, 8)).map((product, index) => (
               <ProductCard key={index} {...product} />
             ))}
-          </div>
-        </div>
-      </div>
+          </Grid>
+
+          {/* Botão para ver mais produtos, aparece só se houver mais de 8 e não estiver mostrando todos ainda */}
+          {!mostrarTodos && produtosOrdenados.length > 8 && (
+            <VerMaisWrapper>
+              <VerMaisButton onClick={() => setMostrarTodos(true)}>
+                VER MAIS
+              </VerMaisButton>
+            </VerMaisWrapper>
+          )}
+        </ContentWrapper>
+      </Main>
+
+      {/* Rodapé da página */}
       <Footer />
-    </div>
+    </Container>
   );
 }
