@@ -29,6 +29,9 @@ const Footer = () => {
           <p className="font-[Inter] font-medium text-[20px] sm:text-[22px] lg:text-[24px]">
             +55 (11) 8265-3746
           </p>
+          <p className="font-[Inter] font-medium text-[20px] sm:text-[22px] lg:text-[24px]">
+            Nossa Loja Física: Rua dos Pinheiros, n48 - São Paulo, SP
+          </p>
         </div>
 
         {/* Ícones à direita */}
