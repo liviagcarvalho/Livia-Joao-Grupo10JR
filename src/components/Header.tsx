@@ -240,7 +240,7 @@ const Header = () => {
             <TopLink to="/sobre">
               Sobre nós <FiChevronDown size={14} />
             </TopLink>
-            <TopLink to="/ajuda">
+            <TopLink to="/ajuda-b2b">
               Ajuda <FiChevronDown size={14} />
             </TopLink>
           </ButtonGroup>
