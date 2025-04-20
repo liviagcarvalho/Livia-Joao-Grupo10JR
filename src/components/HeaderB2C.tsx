@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
 import Orcamento from '../pages/OrcamentoB2B'; // aqui está o seu modal de orçamento
 import { useLocation, useNavigate } from "react-router-dom";
+import { User, Heart, ShoppingCart } from 'lucide-react';
+
 
 
 
@@ -19,6 +21,7 @@ const TopBar = styled.div`
   color: #1D311F;
   width: 100%;
   padding: 0.5rem 1.5rem 0.25rem 1.5rem;
+  position: relative;
 `;
 
 const TopContent = styled.div`
@@ -150,9 +153,9 @@ const Nav = styled.nav`
 `;
 
 const QuoteButton = styled.button`
-  background-color: #1D311F;
-  color: white;
-  font-size: 16px;
+  background-color: transparent;
+  color: red;
+  font-size: 24px;
   font-weight: bold;
   padding: 0.5rem 2.5rem;
   border-radius: 30px;
@@ -166,6 +169,21 @@ const QuoteButton = styled.button`
   }
 `;
 
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+const B2CIcons = styled.div`
+  position: absolute;
+  bottom: 4px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
+  color: #1D311F;
+`;
 // ===== COMPONENTE PRINCIPAL =====
 const Header = () => {
   const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
@@ -202,6 +220,17 @@ const Header = () => {
 
           <Spacer />
         </SwitchContainer>
+        <B2CIcons>
+        <IconButton aria-label="Conta">
+            <User size={24} strokeWidth={3} />
+        </IconButton>
+        <IconButton aria-label="Favoritos">
+            <Heart size={24} strokeWidth={3} />
+        </IconButton>
+        <IconButton aria-label="Carrinho">
+            <ShoppingCart size={24} strokeWidth={3} />
+        </IconButton>
+        </B2CIcons>
       </TopBar>
 
       {/* MENU BRANCO */}
@@ -215,7 +244,7 @@ const Header = () => {
             <Link to="/produtos/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
           </Nav>
           <QuoteButton onClick={() => setOrcamentoOpen(true)}>
-            FAÇA SEU ORÇAMENTO
+            SALE
           </QuoteButton>
         </MenuContent>
       </MenuWrapper>

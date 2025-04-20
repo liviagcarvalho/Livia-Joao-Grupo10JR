@@ -6,7 +6,7 @@ import HeroSection from '../components/HeroSectionB2C';
 import ValueProps from '../components/ValuePropsB2C';
 import WorkSolutions from '../components/WorkSolutionsB2C';
 import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer';
+import Footer from '../components/FooterB2C';
 import LaunchBanner from '../components/LaunchBannerB2C';
 import GradientBackground from '../components/DegradefundoB2C';
 import ProductCarousel from '../components/ProductCarouselB2C';
