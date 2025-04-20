@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 
 //PERGUNTAS FREQUÊNTES
 //limitador de largura 
@@ -139,6 +140,71 @@ const TextArea = styled.textarea`
   resize: none;
 `;
 
+//CONTATO COM A EMPRESA
+const ContactBox = styled.div`
+  background-color: #DCDACE;
+  padding: 1rem ;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'sans-serif';
+  max-width: 1000px;
+  margin: 3rem auto 0 auto;
+`;
+
+const TitleContact = styled.h2`
+  font-size: 1.8rem;
+  color: #1D311F;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 2rem;
+`;
+
+const Label = styled.p`
+  font-size: 1rem;
+  color: #1D311F;
+  margin-bottom: 0.5rem;
+`;
+
+//local do botao do email e do telefone
+const ButtonGroup = styled.div` 
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* espaçamento entre os botões */
+  flex-wrap: wrap; /* quebra para próxima linha se não couber */
+  margin-top: 1rem;
+`;
+
+//legenda em cima do botao do telefone e email
+const ContatoItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+//botao email é igual ao botao do telefone
+const EmailButton = styled.button`
+  background-color: #1D311F;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'sans-serif';
+  transition: background 0.3s ease;
+  width: 300px;         /* todos terão a mesma largura */
+  text-align: center;
+`;
+
+const PhoneButton = styled(EmailButton)``; // usa os mesmos estilos do EmailButton
+
+
 interface FAQItemProps {
   question: string;
   answer: string;
@@ -229,7 +295,26 @@ const AjudaB2B = () => {
           </FormWrapper>
 
         </Wrapper>
+
+        <ContactBox>
+          <TitleContact>Entre em contato conosco</TitleContact>
+          <Subtitle>
+            Obtenha todas as suas respostas aqui e aprenda mais sobre nossas coleções, serviços e equipe!
+          </Subtitle>
+          <ButtonGroup>
+            <ContatoItem>
+              <Label>Email para contato</Label>
+              <EmailButton>R.AmaralOffice@gmail.com</EmailButton>
+            </ContatoItem>
+            <ContatoItem>
+              <Label>Telefone para contato</Label>
+              <PhoneButton>+55 (11) 8265-3746</PhoneButton>
+            </ContatoItem>
+          </ButtonGroup>
+
+      </ContactBox>
       </Container>
+      <Footer />
     </>
   );
 };
