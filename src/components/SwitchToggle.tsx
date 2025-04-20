@@ -2,35 +2,36 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ToggleButton = styled.button`
-  width: 50px;
-  height: 24px;
-  background-color: #ccc;
-  border: none;
-  border-radius: 12px;
-  position: relative;
-  cursor: pointer;
-  &:focus { outline: none; }
+width: 50px;
+height: 24px;
+background-color: #ccc;
+border: none;
+border-radius: 12px;
+position: relative;
+cursor: pointer;
+&:focus { outline: none; }
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: left 0.2s ease;
-  }
+&::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: calc(100% - 22px); // Começa à direita (B2C visualmente)
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: left 0.2s ease;
+}
 
-  &.b2c {
-    background-color: #1d311f;
-  }
+&.b2c {
+  background-color: #1d311f;
+}
 
-  &.b2c::after {
-    left: calc(100% - 22px);
-  }
+&.b2c::after {
+  left: 2px; // Vai pra esquerda (modo B2B visualmente)
+}
 `;
+
 
 const SwitchToggle = () => {
   const location = useLocation();
