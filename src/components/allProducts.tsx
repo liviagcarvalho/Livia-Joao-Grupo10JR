@@ -231,7 +231,7 @@ const allProducts = [
       name: 'Head Fone Bluetooth Preto',
       price: 'R$150,00',
       images: {
-        '#000000': '/src/assets/Produtos/Cabos:Fones/HeadFone.png'
+        '#000000': '/src/assets/Produtos/Cabos-Fones/HeadFone.png'
       },
       colors: ['#000000'],
       categoria: 'eletronicos',
@@ -285,7 +285,7 @@ const allProducts = [
       name: 'Cabo HDMI',
       price: 'R$40,00',
       images: {
-        '#000000': '/src/assets/Produtos/Cabos:Fones/CaboHDMI.png'
+        '#000000': '/src/assets/Produtos/Cabos-Fones/CaboHDMI.png'
       },
       colors: ['#000000'],
       categoria: 'eletronicos',
@@ -295,7 +295,7 @@ const allProducts = [
       name: 'Fone Bluetooth Portátil',
       price: 'R$113,00',
       images: {
-        '#000000': '/src/assets/Produtos/Cabos:Fones/FoneBP.png'
+        '#000000': '/src/assets/Produtos/Cabos-Fones/FoneBP.png'
       },
       colors: ['#000000'],
       categoria: 'eletronicos',
@@ -316,7 +316,7 @@ const allProducts = [
       name: 'Cabo Adaptador usbc para hdmi',
       price: 'R$113,00',
       images: {
-        '#ffffff': '/src/assets/Produtos/Cabos:Fones/cabo-adaptador-usb-tipo-c-para-hdmi.png'
+        '#ffffff': '/src/assets/Produtos/Cabos-Fones/cabo-adaptador-usb-tipo-c-para-hdmi.png'
       },
       colors: ['#ffffff'],
       categoria: 'eletronicos',
@@ -326,7 +326,7 @@ const allProducts = [
       name: 'Fone Com Fio',
       price: 'R$55,00',
       images: {
-        '#ffffff': '/src/assets/Produtos/Cabos:Fones/FoneCfio.png'
+        '#ffffff': '/src/assets/Produtos/Cabos-Fones/FoneCfio.png'
       },
       colors: ['#fffffff'],
       categoria: 'eletronicos',
@@ -336,7 +336,7 @@ const allProducts = [
       name: 'Fone Bluetooth Portátil',
       price: 'R$113,00',
       images: {
-        '#000000': '/src/assets/Produtos/Cabos:Fones/FoneBP.png'
+        '#000000': '/src/assets/Produtos/Cabos-Fones/FoneBP.png'
       },
       colors: ['#000000'],
       categoria: 'eletronicos',
