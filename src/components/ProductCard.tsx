@@ -1,13 +1,93 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
-interface ProductCardProps {
+ export interface ProductCardProps {
   name: string;
   price: string;
-  images?: Record<string, string>; // imagens por cor
+  images?: Record<string, string | undefined>; // imagens por cor
   image?: string; // fallback
   colors: string[];
 }
 
+// Styled Components
+const Card = styled.div`
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 300px;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+`;
+
+const ProductImage = styled.img`
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid #1d311f;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+`;
+
+const ProductName = styled.h3`
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+`;
+
+const ProductPrice = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+`;
+
+const ColorPicker = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+`;
+
+const ColorDot = styled.button<{ color: string; selected: boolean }>`
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: ${({ color }) => (color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
+  background-color: ${({ color }) => color};
+  outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')};
+  cursor: pointer;
+`;
+
+const MoreButton = styled.button`
+  background-color: #1d311f;
+  color: white;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #16341c;
+  }
+`;
+
+// Componente
 export const ProductCard = ({
   name,
   price,
@@ -23,42 +103,29 @@ export const ProductCard = ({
       : image ?? Object.values(images ?? {})[0];
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-[300px] sm:max-w-full mx-auto min-h-[460px] flex flex-col justify-between">
-      {/* Imagem */}
-      <img
-        src={displayImage}
-        alt={name}
-        className="w-full h-[220px] object-cover border border-[#1D311F] mb-4 rounded"
-      />
+    <Card>
+      <ProductImage src={displayImage} alt={name} />
 
-      {/* Título e preço */}
-      <div className="flex flex-col items-center gap-1">
-        <h3 className="text-[15px] text-center font-medium">{name}</h3>
-        <p className="text-center text-[16px] font-bold mb-2">{price}</p>
-      </div>
+      <Info>
+        <ProductName>{name}</ProductName>
+        <ProductPrice>{price}</ProductPrice>
+      </Info>
 
-      {/* Bolinhas de cor – só aparecem se houver mais de uma cor */}
       {colors.length > 1 && (
-        <div className="flex justify-center gap-3 mb-4">
+        <ColorPicker>
           {colors.map((cor) => (
-            <button
+            <ColorDot
               key={cor}
+              color={cor}
+              selected={selectedColor === cor}
               onClick={() => setSelectedColor(cor)}
-              className={`w-5 h-5 rounded-full border ${cor === '#ffffff' ? 'border-gray-300' : ''}`}
-              style={{
-                backgroundColor: cor,
-                outline: selectedColor === cor ? '2px solid #1D311F' : 'none',
-              }}
             />
           ))}
-        </div>
+        </ColorPicker>
       )}
 
-
-      {/* Botão */}
-      <button className="bg-[#1D311F] hover:bg-[#16341C] transition text-white w-full py-2 rounded-md text-sm font-semibold">
-        SAIBA MAIS
-      </button>
-    </div>
+      <MoreButton>SAIBA MAIS</MoreButton>
+    </Card>
   );
 };
+
