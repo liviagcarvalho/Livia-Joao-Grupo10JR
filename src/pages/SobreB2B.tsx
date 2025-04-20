@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 import imagemTopo from '../assets/sobrenós/1.png';
 import imagemMissao from '../assets/sobrenós/2.png';
+import imagemExperiencia from '../assets/sobrenós/3.png';
+
 
 //Hero Section - Imagem grande com título em cima
 const HeroSection = styled.section`
@@ -44,7 +47,7 @@ const HeroSubtitle = styled.p`
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   font-family: 'sans-serif';
 `;
 
@@ -57,14 +60,14 @@ const Title = styled.h1`
   font-weight: bold;
   color: #1D311F;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 const Subtitle = styled.h2`
   font-size: 2rem;
   font-weight: bold;
   color: #1D311F;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
 `;
 
@@ -96,6 +99,81 @@ const Image = styled.img`
   border-radius: 12px;
   object-fit: cover;
   align-self: flex-start;
+  margin-top: 1.5rem;
+`;
+
+//Experiencia
+const SectionWrapper = styled.section`
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+const TextBlock = styled.div`
+  flex: 1;
+  min-width: 280px;
+`;
+
+const Paragraph = styled.p`
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+  text-align: justify;
+`;
+
+//info deles
+const NewsletterSection = styled.section`
+  background-color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+`;
+
+const NewsletterTitle = styled.h2`
+  font-size: 2rem;
+  color: #1D311F;
+  font-weight: bold;
+  margin-bottom: 2rem;
+`;
+
+const NewsletterSubtitle = styled.p`
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 2rem;
+`;
+
+const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+const Input = styled.input`
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #1D311F;
+  border-radius: 4px;
+  min-width: 200px;
+`;
+
+const Button = styled.button`
+  padding: 0.8rem 1.5rem;
+  background-color: #1D311F;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const SobreB2B = () => {
@@ -131,7 +209,32 @@ const SobreB2B = () => {
           </TextWrapper>
           <Image src={imagemMissao} alt="Ambiente de trabalho moderno e confortável" />
         </MissionSection>
+        <SectionWrapper>
+        <TextBlock>
+          <Title>Enfatizando a experiência do cliente</Title>
+          <Paragraph>
+            O lançamento do nosso e-commerce representa mais do que uma mudança de canal:
+            é a expansão de um propósito. Queremos estar mais próximos de você, oferecendo
+            uma experiência de compra fluida, moderna e personalizada. Através da tecnologia,
+            conseguimos entender melhor suas necessidades e evoluir com você — sempre com o
+            mesmo compromisso que nos trouxe até aqui.
+          </Paragraph>
+        </TextBlock>
+      </SectionWrapper>
+
+      <NewsletterSection>
+        <NewsletterTitle>Vamos transformar seu espaço juntos?</NewsletterTitle>
+        <NewsletterSubtitle>
+          Receba dicas, lançamentos e ofertas pensadas para o seu ambiente de trabalho.
+        </NewsletterSubtitle>
+        <Form>
+          <Input type="text" placeholder="Nome" />
+          <Input type="email" placeholder="Email" />
+          <Button type="submit">INSCREVA-SE</Button>
+        </Form>
+      </NewsletterSection>
       </Container>
+      <Footer />
     </>
   );
 };

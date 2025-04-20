@@ -187,7 +187,7 @@ const ContatoItem = styled.div`
 `;
 
 //botao email é igual ao botao do telefone
-const EmailButton = styled.button`
+const EmailButton = styled.div`
   background-color: #1D311F;
   color: white;
   font-size: 1.1rem;
@@ -195,7 +195,6 @@ const EmailButton = styled.button`
   padding: 1rem 2rem;
   border: none;
   border-radius: 50px;
-  cursor: pointer;
   font-family: 'sans-serif';
   transition: background 0.3s ease;
   width: 300px;         /* todos terão a mesma largura */
