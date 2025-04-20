@@ -68,12 +68,15 @@
 // };
 
 // export default Header;
-
+import SwitchToggle from "../components/SwitchToggle"
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
 import Orcamento from '../pages/OrcamentoB2B'; // aqui está o seu modal de orçamento
+import { useLocation, useNavigate } from "react-router-dom";
+
+
 
 // ====== ESTILOS COM STYLED-COMPONENTS ======
 const HeaderWrapper = styled.header`
@@ -260,9 +263,8 @@ const Header = () => {
         <SwitchContainer>
           <Switch>
             <span>Loja</span>
-            <Toggle>
+            <SwitchToggle />
               <div />
-            </Toggle>
             <span>Pedido Corporativo</span>
           </Switch>
 
