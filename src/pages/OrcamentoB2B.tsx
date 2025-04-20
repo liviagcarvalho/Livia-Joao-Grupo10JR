@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Overlay = styled.div`
@@ -108,26 +108,98 @@ const LojaLink = styled.p`
   }
 `;
 
-interface ModalProps {
-  closeModal: () => void;
+const ErrorText = styled.p`
+  color: red;
+  font-size: 13px;
+  margin-top: -0.8rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+`;
+
+//Define o tipo esperado das props do componente Orcamento.
+//Espera receber uma função chamada closeOrcamento, que não recebe nenhum argumento e também não retorna nada (tipo void).
+//Essa função será usada para fechar o modal de orçamento.
+interface OrcamentoProps {
+  closeOrcamento: () => void;
 }
 
-const Orcamento: React.FC<ModalProps> = ({ closeModal }) => {
+//const Orcamento: React.FC<OrcamentoProps>
+//Define um componente funcional do React chamado Orcamento, e tipa ele usando React.FC (Functional Component), dizendo que ele recebe as props definidas em OrcamentoProps.
+//({ closeOrcamento }) => {
+//Aqui é feita a desestruturação das props, pegando diretamente a função closeOrcamento que foi passada para o componente.
+const Orcamento: React.FC<OrcamentoProps> = ({ closeOrcamento }) => {
+  // Estados dos campos do formulário
+  const [nome, setNome] = useState('');
+  const [empresa, setEmpresa] = useState('');
+  const [cnpj, setCnpj] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [produtos, setProdutos] = useState('');
+  const [erro, setErro] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Verifica se algum campo está vazio
+    if (!nome || !empresa || !cnpj || !telefone || !email || !produtos) {
+      setErro(true);
+      return;
+    }
+
+    // Se todos os campos estiverem preenchidos
+    setErro(false);
+    alert('Orçamento enviado com sucesso!');
+    closeOrcamento();
+
+    // Limpa os campos (opcional)
+    setNome('');
+    setEmpresa('');
+    setCnpj('');
+    setTelefone('');
+    setEmail('');
+    setProdutos('');
+  };
+
   return (
     <Overlay>
       <ModalContent>
-        <CloseButton onClick={closeModal}>&times;</CloseButton>
-        <Form>
-          <Input placeholder="Nome e Sobrenome" />
+        <CloseButton onClick={closeOrcamento}>&times;</CloseButton>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            placeholder="Nome e Sobrenome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
           <InputRow>
-            <Input placeholder="Empresa" />
-            <Input placeholder="CNPJ" />
+            <Input
+              placeholder="Empresa"
+              value={empresa}
+              onChange={(e) => setEmpresa(e.target.value)}
+            />
+            <Input
+              placeholder="CNPJ"
+              value={cnpj}
+              onChange={(e) => setCnpj(e.target.value)}
+            />
           </InputRow>
           <InputRow>
-            <Input placeholder="Telefone para contato" />
-            <Input placeholder="Email" />
+            <Input
+              placeholder="Telefone para contato"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+            />
+            <Input
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </InputRow>
-          <TextArea placeholder="Digite os produtos que deseja com suas respectivas quantidades" />
+          <TextArea
+            placeholder="Digite os produtos que deseja com suas respectivas quantidades"
+            value={produtos}
+            onChange={(e) => setProdutos(e.target.value)}
+          />
+          {erro && <ErrorText>Por favor, preencha todos os campos antes de enviar.</ErrorText>}
           <SubmitButton type="submit">SOLICITAR ORÇAMENTO</SubmitButton>
         </Form>
         <LojaLink>

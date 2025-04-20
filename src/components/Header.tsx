@@ -235,7 +235,7 @@ const QuoteButton = styled.button`
 
 // ===== COMPONENTE PRINCIPAL =====
 const Header = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
 
   return (
     <HeaderWrapper>
@@ -282,14 +282,14 @@ const Header = () => {
             <Link to="/produtos/materiais">MATERIAIS</Link>
             <Link to="/produtos/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
           </Nav>
-          <QuoteButton onClick={() => setModalOpen(true)}>
+          <QuoteButton onClick={() => setOrcamentoOpen(true)}>
             FAÇA SEU ORÇAMENTO
           </QuoteButton>
         </MenuContent>
       </MenuWrapper>
 
       {/* MODAL DE ORÇAMENTO */}
-      {isModalOpen && <Orcamento closeModal={() => setModalOpen(false)} />}
+      {isOrcamentoOpen && <Orcamento closeOrcamento={() => setOrcamentoOpen(false)} />}
     </HeaderWrapper>
   );
 };
