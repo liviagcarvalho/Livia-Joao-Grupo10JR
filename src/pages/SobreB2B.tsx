@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import imagemTopo from '../assets/sobrenós/1.png';
 import imagemMissao from '../assets/sobrenós/2.png';
 import imagemExperiencia from '../assets/sobrenós/3.png';
-
+import Header from '../components/Header'
 
 //Hero Section - Imagem grande com título em cima
 const HeroSection = styled.section`
@@ -179,6 +179,7 @@ const Button = styled.button`
 const SobreB2B = () => {
   return (
     <>
+    <Header />
       <HeroSection>
         <HeroText>
           <HeroTitle>Eficiência, Conforto e Estilo Para o Seu Ambiente de Trabalho</HeroTitle>
