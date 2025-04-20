@@ -58,7 +58,7 @@ const allProducts = [
       price: 'R$350,00',
       images: {
         '#003366': '/src/assets/Produtos/Lockers/Locker G azul.png',
-        '#FFD700': '/src/assets/Produtos/Lockers/Locker G amarelo.png',
+        '#FFD700': 'e/src/assets/Produtos/Lockers/Locker G amarelo.png',
         '#228B22': '/src/assets/Produtos/Lockers/Locker G verde.png',
       },
       colors: ['#003366', '#FFD700', '#228B22'],
