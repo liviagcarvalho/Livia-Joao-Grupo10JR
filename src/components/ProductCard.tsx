@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useCart } from '../components/CartContext';
 
 export interface ProductCardProps {
   name: string;
@@ -7,7 +8,8 @@ export interface ProductCardProps {
   images?: Record<string, string | undefined>; // imagens por cor
   image?: string; // fallback
   colors: string[];
-  modo?: 'b2b' | 'b2c'; // 👈 NOVO
+  modo?: 'b2b' | 'b2c';
+  abrirCarrinho?:  () => void;
 }
 
 // Styled Components
@@ -96,8 +98,11 @@ export const ProductCard = ({
   images,
   image,
   colors,
-  modo = 'b2b', 
+  modo = 'b2b',
+  abrirCarrinho,
 }: ProductCardProps) => {
+  const { addItem } = useCart();
+
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const displayImage =
@@ -126,10 +131,22 @@ export const ProductCard = ({
           ))}
         </ColorPicker>
       )}
-
-      <MoreButton modo={modo}>
-        {modo === 'b2c' ? 'ADICIONAR AO CARRINHO' : 'SAIBA MAIS'}
-      </MoreButton>
+      <MoreButton
+        modo={modo}
+        onClick={() => {
+          if (modo === 'b2c') {
+            addItem({
+              name,
+              price,
+              image: displayImage || '', // pega a imagem da cor selecionada
+              quantity: 1,
+            });
+              abrirCarrinho?.(); // abre o carrinho se a função for passada
+            }
+        }}
+>
+  {modo === 'b2c' ? 'ADICIONAR AO CARRINHO' : 'SAIBA MAIS'}
+</MoreButton>
     </Card>
   );
 };

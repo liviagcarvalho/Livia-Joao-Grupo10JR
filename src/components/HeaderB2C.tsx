@@ -185,8 +185,8 @@ const B2CIcons = styled.div`
   color: #1D311F;
 `;
 // ===== COMPONENTE PRINCIPAL =====
-const Header = () => {
-  const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
+const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
+    const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
 
   return (
     <HeaderWrapper>
@@ -227,7 +227,7 @@ const Header = () => {
         <IconButton aria-label="Favoritos">
             <Heart size={24} strokeWidth={3} />
         </IconButton>
-        <IconButton aria-label="Carrinho">
+        <IconButton aria-label="Carrinho" onClick={abrirCarrinho}>
             <ShoppingCart size={24} strokeWidth={3} />
         </IconButton>
         </B2CIcons>

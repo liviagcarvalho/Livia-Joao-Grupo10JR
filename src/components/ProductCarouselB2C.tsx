@@ -91,7 +91,8 @@ const Arrow = styled.button<{ left?: boolean }>`
   }
 `;
 
-const ProductCarousel = () => {
+// ✅ ADICIONADO: recebe abrirCarrinho como prop
+const ProductCarousel = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
@@ -127,7 +128,11 @@ const ProductCarousel = () => {
       <Carousel ref={carouselRef}>
         {allProducts.map((product: ProductCardProps, index: number) => (
           <CarouselItem key={index}>
-            <ProductCard {...product} modo="b2c" />
+            <ProductCard
+              {...product}
+              modo="b2c"
+              abrirCarrinho={abrirCarrinho} // ✅ AQUI PASSA A FUNÇÃO
+            />
           </CarouselItem>
         ))}
       </Carousel>
