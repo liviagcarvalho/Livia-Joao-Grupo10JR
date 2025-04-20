@@ -69,10 +69,11 @@
 
 // export default Header;
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
+import Orcamento from '../pages/OrcamentoB2B'; // aqui está o seu modal de orçamento
 
 // ====== ESTILOS COM STYLED-COMPONENTS ======
 const HeaderWrapper = styled.header`
@@ -93,7 +94,6 @@ const TopContent = styled.div`
   align-items: flex-start;
 `;
 
-// Grupo dos botões com ícones de flecha
 const ButtonGroup = styled.div`
   display: flex;
   gap: 1.5rem;
@@ -226,16 +226,22 @@ const QuoteButton = styled.button`
   height: 48px;
   width: 300px;
   transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2b452d;
+  }
 `;
 
 // ===== COMPONENTE PRINCIPAL =====
 const Header = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <HeaderWrapper>
       {/* TOPO VERDE ESCURO */}
       <TopBar>
         <TopContent>
-          {/* Links com ícone de flecha para baixo */}
           <ButtonGroup>
             <TopLink to="/sobre">
               Sobre nós <FiChevronDown size={14} />
@@ -245,7 +251,6 @@ const Header = () => {
             </TopLink>
           </ButtonGroup>
 
-          {/* Idioma à direita */}
           <Language>
             <span>Idioma</span>
             <Flag src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil" />
@@ -277,9 +282,14 @@ const Header = () => {
             <Link to="/produtos/materiais">MATERIAIS</Link>
             <Link to="/produtos/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
           </Nav>
-          <QuoteButton>FAÇA SEU ORÇAMENTO</QuoteButton>
+          <QuoteButton onClick={() => setModalOpen(true)}>
+            FAÇA SEU ORÇAMENTO
+          </QuoteButton>
         </MenuContent>
       </MenuWrapper>
+
+      {/* MODAL DE ORÇAMENTO */}
+      {isModalOpen && <Orcamento closeModal={() => setModalOpen(false)} />}
     </HeaderWrapper>
   );
 };
