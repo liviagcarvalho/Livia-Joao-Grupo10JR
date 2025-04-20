@@ -1,55 +1,119 @@
 import React from "react";
+import styled from "styled-components";
 import imgIndividual from "../assets/HomePage/cooworkingHomePage.png";
 import imgGrupo from "../assets/HomePage/EscritorioPrivadoHomePage.png";
 
+// Wrapper da seção
+const Section = styled.section`
+  width: 100%;
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+// Título principal
+const Title = styled.h2`
+  color: #1d311f;
+  font-family: "Spectral", serif;
+  font-weight: 600;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 4rem;
+`;
+
+// Grid dos blocos
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1240px;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+// Bloco individual (imagem + textos + botão)
+const Block = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    align-items: flex-start;
+  }
+`;
+
+const Image = styled.img`
+  width: 602.84px;
+  height: 391px;
+  object-fit: cover;
+  border-radius: 8px;
+`;
+
+const SubTitle = styled.h3`
+  color: #1d311f;
+  font-family: "Spectral", serif;
+  font-weight: 600;
+  font-size: 40px;
+  margin-top: 1.5rem;
+`;
+
+const Description = styled.p`
+  color: #1d311f;
+  font-family: "Spectral", serif;
+  font-weight: 500;
+  font-size: 28px;
+  margin-top: 0.5rem;
+`;
+
+const Button = styled.button`
+  margin-top: 1rem;
+  width: 141px;
+  height: 34px;
+  background-color: #105c23;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(11, 71, 26, 0.13);
+  }
+`;
+
+// Componente principal
 const WorkSolutionsSection = () => {
   return (
-    <section className="w-full py-20 px-4 flex flex-col items-center">
-      {/* Título principal */}
-      <h2 className="text-[#1D311F] font-[Spectral] font-semibold text-[40px] text-center mb-16">
-        PERFORME SEU MÁXIMO EM TODO LUGAR
-      </h2>
-
-      {/* Blocos */}
-      <div className="grid lg:grid-cols-2 gap-12 max-w-[1240px] w-full">
+    <Section>
+      <Title>PERFORME SEU MÁXIMO EM TODO LUGAR</Title>
+      <Grid>
         {/* Bloco 1 - Individual */}
-        <div className="flex flex-col items-center lg:items-start">
-          <img
-            src={imgGrupo}
-            alt="Trabalho Individual"
-            className="w-[602.84px] h-[391px] object-cover rounded-md"
-          />
-          <h3 className="text-[#1D311F] font-[Spectral] font-semibold text-[40px] mt-6">
-            Do Trabalho Individual
-          </h3>
-          <p className="text-[#1D311F] font-[Spectral] font-medium text-[28px] mt-2">
-            O essencial para usar no dia a dia
-          </p>
-          <button className="mt-4 w-[141px] h-[34px] bg-[#105C23] hover:bg-[#0B471A]/[0.13] text-white font-[Inter] font-semibold text-[18px] rounded-[10px] shadow-md">
-            Veja Mais
-          </button>
-        </div>
+        <Block>
+          <Image src={imgGrupo} alt="Trabalho Individual" />
+          <SubTitle>Do Trabalho Individual</SubTitle>
+          <Description>O essencial para usar no dia a dia</Description>
+          <Button>Veja Mais</Button>
+        </Block>
 
         {/* Bloco 2 - Grupo */}
-        <div className="flex flex-col items-center lg:items-start">
-          <img
-            src={imgIndividual}
-            alt="Trabalho em Grupo"
-            className="w-[602.84px] h-[391px] object-cover rounded-md"
-          />
-          <h3 className="text-[#1D311F] font-[Spectral] font-semibold text-[40px] mt-6">
-            Ao Trabalho Em Grupo
-          </h3>
-          <p className="text-[#1D311F] font-[Spectral] font-medium text-[28px] mt-2">
-            Soluções para equipes de todos os tamanhos
-          </p>
-          <button className="mt-4 w-[141px] h-[34px] bg-[#105C23] hover:bg-[#0B471A]/[0.13] text-white font-[Inter] font-semibold text-[18px] rounded-[10px] shadow-md">
-            Veja Mais
-          </button>
-        </div>
-      </div>
-    </section>
+        <Block>
+          <Image src={imgIndividual} alt="Trabalho em Grupo" />
+          <SubTitle>Ao Trabalho Em Grupo</SubTitle>
+          <Description>Soluções para equipes de todos os tamanhos</Description>
+          <Button>Veja Mais</Button>
+        </Block>
+      </Grid>
+    </Section>
   );
 };
 
 export default WorkSolutionsSection;
+
