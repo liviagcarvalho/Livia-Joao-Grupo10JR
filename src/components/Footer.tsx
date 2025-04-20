@@ -59,7 +59,79 @@ import React from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
+//local de contato
+const ContactBar = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+  font-family: 'Inter', 'sans-serif';
 
+  @media (min-width: 768px) {
+    margin-bottom: 5rem;
+  }
+`;
+
+
+
+const ContactTitle = styled.h4`
+  font-family: 'Inter', 'sans-serif';
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+
+  @media(min-width: 640px) {
+    font-size: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    font-size: 26px;
+  }
+`;
+
+const ContactInputs = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+`;
+
+const InputField = styled.input`
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  width: 250px;
+  background-color: #f0f5f1;
+  color: #1d311f;
+
+  &::placeholder {
+    color: #1d311f88;
+  }
+`;
+
+const SendButton = styled.button`
+  padding: 0.8rem 2rem;
+  background-color: #b4d9c4;
+  color: #1d311f;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #cde6d8;
+  }
+`;
+
+
+
+//local do logo e infos do footer
 const FooterContainer = styled.footer`
   background-color: #1D311F;
   color: white;
@@ -234,6 +306,17 @@ const LegalNotice = styled.div`
 const Footer = () => {
   return (
     <FooterContainer>
+      <ContactBar>
+        <ContactTitle>Entre em contato com a empresa</ContactTitle>
+        <ContactInputs>
+          <InputField type="text" placeholder="Nome" />
+          <InputField type="tel" placeholder="Telefone" />
+          <InputField type="email" placeholder="Email" />
+        </ContactInputs>
+        <SendButton type="button">ENVIAR</SendButton>
+      </ContactBar>
+
+
       <CenterContent>
         <Logo>R. Amaral Office</Logo>
         <NavLinks>

@@ -162,6 +162,7 @@ const Orcamento: React.FC<OrcamentoProps> = ({ closeOrcamento }) => {
 
   return (
     <Overlay>
+
       <ModalContent>
         <CloseButton onClick={closeOrcamento}>&times;</CloseButton>
         <Form onSubmit={handleSubmit}>
