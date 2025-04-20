@@ -5,7 +5,7 @@ import { ProductCard } from '../components/ProductCard';
 import Footer from '../components/Footer';
 import allProducts from '../components/allProducts'
 import { FiSearch } from 'react-icons/fi';
-
+import Header from '../components/Header'
 const Container = styled.div`
   width: 100%;
 `;
@@ -272,6 +272,7 @@ const VerMaisWrapper = styled.div`
   // JSX retornado pelo componente
   return (
     <Container>
+      <Header />
       {/* Barra de busca centralizada */}
       <SearchWrapper>
         <SearchBox>

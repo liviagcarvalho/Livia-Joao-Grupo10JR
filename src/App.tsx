@@ -10,7 +10,6 @@ import HomeB2C from './pages/HomeB2C'
 function App() {
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/b2c" element={<HomeB2C />} />
         <Route path="/ajuda-b2b" element={<AjudaB2B />} />

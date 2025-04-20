@@ -3,6 +3,7 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 //import ProductHighlights from '../components/ProductHighlights';
 // import LaunchBanner from '../components/LaunchBanner';
+import Header from '../components/Header'
 import ValueProps from '../components/ValueProps';
 import WorkSolutions from '../components/WorkSolutions';
 import ContactForm from '../components/ContactForm';
@@ -17,6 +18,7 @@ import ProductCarousel from '../components/ProductCarousel';
 const Home = () => {
   return (
     <>
+      <Header />
       <HeroSection />
       <ProductCarousel />
       <GradientBackground>

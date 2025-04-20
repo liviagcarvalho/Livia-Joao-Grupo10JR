@@ -143,7 +143,7 @@ const Switch = styled.div`
   gap: 0.75rem;
 
   span {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     font-family: 'Spectral', serif;
   }
@@ -262,10 +262,10 @@ const Header = () => {
 
         <SwitchContainer>
           <Switch>
-            <span>Loja</span>
+            <span>Para Clientes</span>
             <SwitchToggle />
               <div />
-            <span>Pedido Corporativo</span>
+            <span>Para Empresas</span>
           </Switch>
 
           <Logo to="/">R. Amaral Office</Logo>
