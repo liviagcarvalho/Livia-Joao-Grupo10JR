@@ -1,40 +1,165 @@
-//banner
 import React from "react";
+import styled from "styled-components";
 import cooworkingHomePage from "../assets/HomePage/PrincipalHomeB2B.png";
+
+// Wrapper principal da seção
+const Section = styled.section`
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  height: 757px;
+  margin: 0 auto;
+  padding: 0 1rem;
+`;
+
+// Imagem de fundo
+const BackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+// Gradiente branco com blur à esquerda
+const GradientVeil = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 1400px; /* valor máximo */
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+  border-top-right-radius: 300px;
+  border-bottom-right-radius: 300px;
+  filter: blur(8px);
+  z-index: 10;
+
+  @media (max-width: 1280px) {
+    width: 1300px;
+  }
+  @media (max-width: 1024px) {
+    width: 1200px;
+  }
+  @media (max-width: 768px) {
+    width: 1100px;
+  }
+  @media (max-width: 640px) {
+    width: 1000px;
+  }
+`;
+
+// Camada de conteúdo acima do véu
+const Content = styled.div`
+  position: absolute;
+  z-index: 20;
+  color: #1d311f;
+  width: 100%;
+  max-width: 556px;
+
+  top: 147px;
+  left: 80px;
+
+  @media (max-width: 1024px) {
+    top: 112px;
+    left: 48px;
+  }
+
+  @media (max-width: 768px) {
+    top: 96px;
+    left: 32px;
+  }
+
+  @media (max-width: 640px) {
+    top: 64px;
+    left: 16px;
+  }
+`;
+
+const Title = styled.h1`
+  font-family: 'Spectral', serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1024px) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 28px;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-family: 'Spectral', serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 2rem;
+
+  @media (max-width: 1024px) {
+    font-size: 22px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 18px;
+  }
+`;
+
+const CTAButton = styled.button`
+  background-color: #1d311f;
+  color: white;
+  font-family: 'Spectral', serif;
+  font-weight: 700;
+  font-size: 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  width: 257px;
+  height: 55px;
+
+  @media (max-width: 1024px) {
+    font-size: 22px;
+    width: 240px;
+    height: 52px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    width: 220px;
+    height: 48px;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 18px;
+    width: 200px;
+    height: 45px;
+  }
+`;
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full max-w-[1280px] h-[757px] mx-auto px-4">
-      {/* Imagem de fundo */}
-      <img
-        src={cooworkingHomePage}
-        alt="Ambiente de trabalho"
-        className="w-full h-full object-cover"
-      />
-
-      {/* Véu em gradiente branco no lado esquerdo */}
-      <div className="absolute top-0 left-0 w-[1000px] sm:w-[1100px] md:w-[1200px] lg:w-[1300px] xl:w-[1400px] h-full bg-gradient-to-r from-white/80 to-transparent rounded-r-[300px] blur-md z-10" />
-
-      {/* Camada de conteúdo por cima do véu */}
-      <div className="absolute z-20 text-[#1D311F] w-full max-w-[556px]
-                      top-16 left-4
-                      sm:top-24 sm:left-8
-                      md:top-28 md:left-12
-                      lg:top-[147px] lg:left-[80px]">
-        <h1 className="font-[Spectral] font-bold text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-tight mb-4 drop-shadow-md">
+    <Section>
+      <BackgroundImage src={cooworkingHomePage} alt="Ambiente de trabalho" />
+      <GradientVeil />
+      <Content>
+        <Title>
           Transforme Seu Espaço, <br /> Inspire Produtividade
-        </h1>
-        <p className="font-[Spectral] font-semibold text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] mb-8">
+        </Title>
+        <Subtitle>
           Ambientes que aliam design inteligente, conforto e eficiência
-        </p>
-        <button className="bg-[#1D311F] text-white font-[Spectral] font-bold text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]
-                           w-[200px] sm:w-[220px] md:w-[240px] lg:w-[257px]
-                           h-[45px] sm:h-[48px] md:h-[52px] lg:h-[55px]
-                           rounded-[30px]">
-          CONHEÇA AGORA
-        </button>
-      </div>
-    </section>
+        </Subtitle>
+        <CTAButton>CONHEÇA AGORA</CTAButton>
+      </Content>
+    </Section>
   );
 };
 

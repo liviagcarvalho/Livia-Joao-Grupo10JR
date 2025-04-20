@@ -1,6 +1,90 @@
 import React, { useState } from "react";
-import { Icon } from '@iconify/react';
+import styled from "styled-components";
+import { Icon } from "@iconify/react";
 
+const Section = styled.section`
+  width: 100%;
+  background-color: #1d311f;
+  padding: 5rem 1rem;
+  position: relative;
+`;
+
+const Title = styled.h2`
+  color: white;
+  font-family: "Spectral", serif;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  background-color: #1d311f;
+  padding: 1.5rem 0;
+
+  @media (max-width: 1024px) {
+    position: static;
+    font-size: 48px;
+  }
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, auto);
+  }
+`;
+
+const Card = styled.div<{ position: string }>`
+  width: 360px;
+  height: 250px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    ${({ position }) => position};
+  }
+`;
+
+const CardText = styled.p`
+  font-size: 20px;
+  font-family: "Spectral", serif;
+  font-weight: 800;
+  color: #1d311f;
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const CardTitle = styled.span`
+  font-size: 20px;
+  font-family: "Spectral", serif;
+  font-weight: 800;
+  color: #1d311f;
+`;
+
+// Dados
 const items = [
   {
     title: "Design Funcional",
@@ -34,50 +118,43 @@ const items = [
   },
 ];
 
+// Posições em grid (CSS grid line syntax)
+const gridPositions = [
+  "grid-column-start: 1; grid-row-start: 1;",
+  "grid-column-start: 3; grid-row-start: 2;",
+  "grid-column-start: 2; grid-row-start: 3;",
+  "grid-column-start: 1; grid-row-start: 4;",
+  "grid-column-start: 3; grid-row-start: 5;",
+];
+
 const ValuePropsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-[#1D311F] py-20 px-4 relative">
-      <h2 className="text-white font-[Spectral] font-bold text-[96px] leading-tight text-center mb-12 lg:sticky lg:top-0 lg:py-6 z-0 bg-[#1D311F]">
+    <Section>
+      <Title>
         TUDO QUE <br className="hidden lg:block" /> VOCÊ PRECISA <br className="hidden lg:block" /> ESTÁ AQUI
-      </h2>
-      <div className="grid relative z-10 grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 lg:grid-rows-5 gap-y-12 gap-x-4 max-w-[1200px] mx-auto">
-        {items.map((item, index) => {
-          const baseClass = "w-[360px] h-[250px] bg-white rounded-xl shadow-md flex items-center justify-center text-center px-6 cursor-pointer";
-
-          const positions = [
-            "lg:col-start-1 lg:row-start-1",
-            "lg:col-start-3 lg:row-start-2",
-            "lg:col-start-2 lg:row-start-3",
-            "lg:col-start-1 lg:row-start-4",
-            "lg:col-start-3 lg:row-start-5"
-          ];
-
-          return (
-            <div
-              key={index}
-              className={`${baseClass} ${positions[index]}`}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {hoveredIndex === index ? (
-                <p className="text-[20px] font-[Spectral] font-extrabold text-[#1D311F]">
-                  {item.description}
-                </p>
-              ) : (
-                <div className="flex flex-col items-center gap-4">
-                  <Icon icon={item.icon} width="48" color="#1D311F" />
-                  <span className="text-[20px] font-[Spectral] font-extrabold text-[#1D311F]">
-                    {item.title}
-                  </span>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </section>
+      </Title>
+      <Grid>
+        {items.map((item, index) => (
+          <Card
+            key={index}
+            position={gridPositions[index]}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            {hoveredIndex === index ? (
+              <CardText>{item.description}</CardText>
+            ) : (
+              <CardContent>
+                <Icon icon={item.icon} width="48" color="#1D311F" />
+                <CardTitle>{item.title}</CardTitle>
+              </CardContent>
+            )}
+          </Card>
+        ))}
+      </Grid>
+    </Section>
   );
 };
 
