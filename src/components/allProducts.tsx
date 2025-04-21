@@ -1109,7 +1109,7 @@ const allProducts = [
     name: 'Vaso Decorativo Pequeno',
     price: 'R$699,90',
     images: {
-      '#000000': '/src/assets/Produtos/Organizacao/Vaso 1.png'
+      '#000000': '/src/assets/Produtos/Decoração/Vaso 1.png'
     },
     colors: ['#000000'],
     categoria: 'ambientacao',

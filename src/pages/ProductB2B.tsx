@@ -162,7 +162,7 @@ export default function ProductB2B() {
   const [showCor, setShowCor] = useState(false); // dropdown de cor 
   const [categoriaFiltro, setCategoriaFiltro] = useState<string | null>(null); // filtro por tag
   const [corFiltro, setCorFiltro] = useState<string | null>(null); // filtro por cor
-  const [mostrarTodos, setMostrarTodos] = useState(false); // controla se deve mostrar tudo ou só os primeiros
+  const [quantidadeVisivel, setQuantidadeVisivel] = useState(8); // controla se deve mostrar tudo ou só os primeiros
   const [busca, setBusca] = useState(''); // termo da barra de busca
 
 
@@ -414,19 +414,21 @@ const VerMaisWrapper = styled.div`
 
           {/* Grid com os cards dos produtos */}
           <Grid>
-            {(mostrarTodos ? produtosOrdenados : produtosOrdenados.slice(0, 8)).map((product, index) => (
-              <ProductCard key={index} {...product} />
-            ))}
+          {produtosOrdenados.slice(0, quantidadeVisivel).map((product, index) => (
+            <ProductCard key={index} {...product} />
+          ))}
+
           </Grid>
 
           {/* Botão para ver mais produtos, aparece só se houver mais de 8 e não estiver mostrando todos ainda */}
-          {!mostrarTodos && produtosOrdenados.length > 8 && (
+          {quantidadeVisivel < produtosOrdenados.length && (
             <VerMaisWrapper>
-              <VerMaisButton onClick={() => setMostrarTodos(true)}>
+              <VerMaisButton onClick={() => setQuantidadeVisivel(prev => prev + 8)}>
                 VER MAIS
               </VerMaisButton>
             </VerMaisWrapper>
           )}
+
         </ContentWrapper>
       </Main>
 
