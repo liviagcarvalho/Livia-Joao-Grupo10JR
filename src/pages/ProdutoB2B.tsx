@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import allProducts from '../components/allProducts';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Orcamento from '../pages/OrcamentoB2B'; 
+
 
 const PageContainer = styled.div`
   background-color: #f5f8f5;
@@ -112,11 +114,16 @@ export default function Produto() {
   const produto = allProducts.find((p) => p.name === nome);
 
   const [corSelecionada, setCorSelecionada] = useState(produto?.colors[0]);
+  const [mostrarOrcamento, setMostrarOrcamento] = useState(false);
+
 
   if (!produto) return <p>Produto não encontrado.</p>;
 
   const imagens = produto.images || {};
   const imagemPrincipal = imagens[corSelecionada] || Object.values(imagens)[0];
+
+  const abrirModal = () => setMostrarOrcamento(true);
+  const fecharModal = () => setMostrarOrcamento(false);
 
   return (
     <PageContainer>
@@ -144,23 +151,26 @@ export default function Produto() {
             <ProductName>{produto.name}</ProductName>
             <ProductPrice>{produto.price}</ProductPrice>
             <Divider />
-            <Description>xxxxxxxxxxxxxx</Description>
+            <Description>{produto.description}</Description>
 
-            <ColorOptions>
-              {produto.colors.map((cor) => (
-                <ColorDot
-                  key={cor}
-                  color={cor}
-                  selected={corSelecionada === cor}
-                  onClick={() => setCorSelecionada(cor)}
-                />
-              ))}
-            </ColorOptions>
+            {produto.colors.length > 1 && (
+              <ColorOptions>
+                {produto.colors.map((cor) => (
+                  <ColorDot
+                    key={cor}
+                    color={cor}
+                    selected={corSelecionada === cor}
+                    onClick={() => setCorSelecionada(cor)}
+                  />
+                ))}
+              </ColorOptions>
+            )}
 
-            <BudgetButton>REALIZE SEU ORÇAMENTO</BudgetButton>
+            <BudgetButton onClick={abrirModal}>REALIZE SEU ORÇAMENTO</BudgetButton>
           </InfoBox>
         </ProductSection>
       </Content>
+      {mostrarOrcamento && <Orcamento closeOrcamento={fecharModal} />}
       <Footer />
     </PageContainer>
   );

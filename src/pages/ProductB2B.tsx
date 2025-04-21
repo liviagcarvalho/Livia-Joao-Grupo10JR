@@ -6,6 +6,9 @@ import Footer from '../components/Footer';
 import allProducts from '../components/allProducts'
 import { FiSearch } from 'react-icons/fi';
 import Header from '../components/Header'
+
+
+
 const Container = styled.div`
   width: 100%;
 `;

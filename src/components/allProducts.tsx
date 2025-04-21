@@ -605,7 +605,8 @@ const allProducts = [
     },
     colors: ['#ffffff', '#5C4033', '#000000'],
     categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: 'A Cadeira Conforto Pro oferece ergonomia de alto nível com apoio ajustável e acabamento premium, ideal para jornadas longas de trabalho.'
   },
   {
     name: 'Porta Papel Elegante',
@@ -615,7 +616,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Organize seus documentos com estilo. Feito em material resistente, une praticidade e estética minimalista."
   },
   {
     name: 'Persiana com Blackout',
@@ -628,7 +630,8 @@ const allProducts = [
     },
     colors: ['#ffffff', '#9E9E9E', '#5C4033', '#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Controle total da iluminação com elegância. Ideal para escritórios modernos e ambientes corporativos sofisticados."
   },
   {
     name: 'MousePad Confortável',
@@ -638,7 +641,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Superfície suave e antiderrapante, ideal para conforto e precisão no uso contínuo do mouse."
   },    
   {
     name: 'Mesa Regular Com Altura Ajustável',
@@ -649,7 +653,8 @@ const allProducts = [
     },
     colors: ['#DEB887', '#5C4033'],
     categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Funcionalidade ergonômica com regulagem de altura para promover conforto e saúde no trabalho."
   },
   {
     name: 'Telefone Sem Fio',
@@ -659,7 +664,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Comunicação descomplicada com design moderno e bateria de longa duração. Ideal para ambientes corporativos."
   },
   {
     name: 'Cadeira Joelhos',
@@ -669,7 +675,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Postura ativa e conforto aliados em um design ergonômico que favorece a saúde da coluna."
   },
   {
     name: 'Mesa Para Quatro Pessoas',
@@ -680,7 +687,8 @@ const allProducts = [
     },
     colors: ['#DEB887', '#5C4033'],
     categoria: 'moveis',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Versatilidade e espaço para equipes colaborarem com conforto. Acabamento refinado e estrutura robusta."
   },
   {
     name: 'Porta Cartão de Visita',
@@ -690,7 +698,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Organização e elegância em um acessório essencial para recepções e mesas executivas."
   },
   {
     name: 'Locker G',
@@ -702,7 +711,8 @@ const allProducts = [
     },
     colors: ['#003366', '#FFD700', '#228B22'],
     categoria: 'moveis',
-    tags: ['lancamentos', 'ver-tudo']
+    tags: ['lancamentos', 'ver-tudo'],
+    description: "Armazenamento seguro e estilizado. Ideal para escritórios compartilhados ou áreas de staff."
   },
   {
     name: 'Mesa L',
@@ -713,7 +723,8 @@ const allProducts = [
     },
     colors: ['#ffffff', '#5C4033'],
     categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Design funcional para otimizar cantos de salas. Excelente para home offices e estações de trabalho eficientes."
   },
   {
     name: 'Suporte de Monitor',
@@ -723,7 +734,8 @@ const allProducts = [
     },
     colors: ['#D3D3D3'],
     categoria: 'materiais',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Elevação ergonômica que melhora a postura e libera espaço na mesa. Estrutura firme e design discreto."
   },
   {
     name: 'Cadeira Ergométrica',
@@ -735,7 +747,8 @@ const allProducts = [
     },
     colors: ['#000000', '#C62828', '#64B5F6'],
     categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Ideal para longos períodos de uso, oferece ajustes personalizados e suporte total à coluna."
   },
   {
     name: 'Apoio de Itens',
@@ -746,7 +759,8 @@ const allProducts = [
     },
     colors: ['#ffffff', "#000000"],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Suporte versátil para periféricos e acessórios. Compacto, resistente e funcional."
   },
   {
     name: 'Impressora Multifuncinal Pro',
@@ -756,7 +770,8 @@ const allProducts = [
     },
     colors: ['#ffffff'],
     categoria: 'eletronicos',
-    tags: ['mais vendidos', 'lacamentos']
+    tags: ['mais vendidos', 'lacamentos'],
+    description: "Alta performance para escritórios exigentes: imprime, copia e digitaliza com qualidade profissional."
   },
   {
     name: 'Ampulheta Moderna',
@@ -766,7 +781,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Decoração funcional que une design contemporâneo com um toque de sofisticação atemporal."
   },
   {
     name: 'Tapete Estampado Decorativo',
@@ -776,8 +792,9 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
-  },    
+    tags: ['ver-tudo'],
+    description: "Estilo e aconchego em um só item. Ideal para decorar ambientes profissionais com personalidade."
+  },
   {
     name: 'Locker M',
     price: 'R$2300,00',
@@ -787,7 +804,8 @@ const allProducts = [
     },
     colors: ['#ffffff', "#228B22"],
     categoria: 'moveis',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Locker funcional com excelente divisão de espaços. Segurança e praticidade para uso corporativo."
   },
   {
     name: 'Armário Multifuncial Com Gavetas',
@@ -798,7 +816,8 @@ const allProducts = [
     },
     colors: ['#DEB887', "#5C4033"],
     categoria: 'moveis',
-    tags: ['ver-tudo', 'mais-vendidos']
+    tags: ['ver-tudo', 'mais-vendidos'],
+    description: "Armazenamento inteligente com gavetas amplas. Acabamento refinado para ambientes executivos."
   },
   {
     name: 'Telefone Intelbras Com Fio',
@@ -808,7 +827,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo','mais-vendidos']
+    tags: ['ver-tudo','mais-vendidos'],
+    description: "Confiabilidade e clareza em ligações. Design compacto ideal para qualquer estação de trabalho."
   },
   {
     name: 'Mesa de Seis Pessoas',
@@ -820,7 +840,8 @@ const allProducts = [
     },
     colors: ['#ffffff', "#DEB887", '#5C4033'],
     categoria: 'moveis',
-    tags: ['ver-tudo', 'lancamentos']
+    tags: ['ver-tudo', 'lancamentos'],
+    description: "Solução ampla e elegante para equipes maiores. Design contemporâneo e estrutura firme."
   },
   {
     name: 'Globo Decorativo de Mesa',
@@ -830,7 +851,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Toque clássico e sofisticado para sua decoração. Combina com escritórios e salas de reunião."
   },
   {
     name: 'Tapetes',
@@ -842,7 +864,8 @@ const allProducts = [
     },
     colors: ['#003366', "#FFC0CB", '#228B22'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Conforto e estilo sob os pés. Disponível em diversas cores para harmonizar com qualquer ambiente."
   },
   {
     name: 'Impressora Multifuncinal',
@@ -852,7 +875,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Impressão de qualidade e funções completas para escritórios que exigem eficiência."
   },
   {
     name: 'Combo Cartucho (Preto + Colorido)',
@@ -862,7 +886,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Alto rendimento em um kit econômico. Ideal para manter a produtividade sem interrupções."
   },
   {
     name: 'Combo: Mesa e Cadeira',
@@ -874,7 +899,8 @@ const allProducts = [
     },
     colors: ['#DEB887', "#000000", '#64B5F6'],
     categoria: 'moveis',
-    tags: ['ver-tudo', 'lancamentos']
+    tags: ['ver-tudo', 'lancamentos'],
+    description: "Conjunto ergonômico e moderno para estações completas de trabalho. Estilo e funcionalidade combinados."
   },
   {
     name: 'Espelho Orgânico Decorativo',
@@ -884,7 +910,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Design fluido e contemporâneo para dar um toque artístico ao ambiente profissional."
   },
   {
     name: 'Telefone Intelbras Simples Com Fio',
@@ -894,59 +921,65 @@ const allProducts = [
     },
     colors: ['#ffffff'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Modelo básico, eficiente e confiável. Ideal para comunicação interna em empresas."
   },
   {
-    name: 'Pins Para Quadro',
-    price: 'R$299,99',
-    images: {
-      '#D3D3D3': '/src/assets/Produtos/Pins/Pins para quadro.png'
+    "name": "Pins Para Quadro",
+    "price": "R$299,99",
+    "images": {
+      "#D3D3D3": "/src/assets/Produtos/Pins/Pins para quadro.png"
     },
-    colors: ['#D3D3D3'],
-    categoria: 'materiais',
-    tags: ['ver-tudo']
+    "colors": ["#D3D3D3"],
+    "categoria": "materiais",
+    "tags": ["ver-tudo"],
+    "description": "Coloridos e funcionais, ideais para murais de recado em escritórios e salas de reunião."
   },
   {
-    name: 'Head Fone Bluetooth Preto',
-    price: 'R$1000,00',
-    images: {
-      '#000000': '/src/assets/Produtos/Cabos-Fones/HeadFone.png'
+    "name": "Head Fone Bluetooth Preto",
+    "price": "R$1000,00",
+    "images": {
+      "#000000": "/src/assets/Produtos/Cabos-Fones/HeadFone.png"
     },
-    colors: ['#000000'],
-    categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    "colors": ["#000000"],
+    "categoria": "eletronicos",
+    "tags": ["ver-tudo"],
+    "description": "Qualidade sonora com liberdade de movimento. Ideal para chamadas e concentração no trabalho."
   },
   {
-    name: 'Carrinho Porta Itens',
-    price: 'R$2999,99',
-    images: {
-      '#ffffff': '/src/assets/Produtos/Armários/Carrinho Branco 1.png',
-      '#DEB887': '/src/assets/Produtos/Armários/Carrinho Claro 1.png',
-      '#000000': '/src/assets/Produtos/Armários/Carrinho Escuro 1.png',
+    "name": "Carrinho Porta Itens",
+    "price": "R$2999,99",
+    "images": {
+      "#ffffff": "/src/assets/Produtos/Armários/Carrinho Branco 1.png",
+      "#DEB887": "/src/assets/Produtos/Armários/Carrinho Claro 1.png",
+      "#000000": "/src/assets/Produtos/Armários/Carrinho Escuro 1.png"
     },
-    colors: ['#ffffff', "#DEB887", '#000000'],
-    categoria: 'moveis',
-    tags: ['ver-tudo']
+    "colors": ["#ffffff", "#DEB887", "#000000"],
+    "categoria": "moveis",
+    "tags": ["ver-tudo"],
+    "description": "Mobilidade e organização para ambientes dinâmicos. Perfeito para escritórios multifuncionais."
   },
   {
-    name: 'Relógio de Parede Minimalista',
-    price: 'R$660,90',
-    images: {
-      '#000000': '/src/assets/Produtos/Decoração/Relogio 1.png'
+    "name": "Relógio de Parede Minimalista",
+    "price": "R$660,90",
+    "images": {
+      "#000000": "/src/assets/Produtos/Decoração/Relogio 1.png"
     },
-    colors: ['#000000'],
-    categoria: 'ambientacao',
-    tags: ['ver-tudo', 'mais-vendidos']
+    "colors": ["#000000"],
+    "categoria": "ambientacao",
+    "tags": ["ver-tudo", "mais-vendidos"],
+    "description": "Design limpo e moderno para manter a pontualidade com estilo em qualquer ambiente."
   },
   {
-    name: 'Cartucho Tinta Preta',
-    price: 'R$580,70',
-    images: {
-      '#000000': '/src/assets/Produtos/Cartuchos/Cartucho1.png'
+    "name": "Cartucho Tinta Preta",
+    "price": "R$580,70",
+    "images": {
+      "#000000": "/src/assets/Produtos/Cartuchos/Cartucho1.png"
     },
-    colors: ['#000000'],
-    categoria: 'materiais',
-    tags: ['ver-tudo']
+    "colors": ["#000000"],
+    "categoria": "materiais",
+    "tags": ["ver-tudo"],
+    "description": "Cartucho de alta qualidade para impressões nítidas e profissionais em documentos do dia a dia."
   },
   {
     name: 'Cartucho Tinta Colorida',
@@ -956,7 +989,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Cartucho confiável para impressões coloridas com qualidade profissional e alto rendimento."
   },
   {
     name: 'Porta Caneta Minimalista',
@@ -966,7 +1000,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Organização com elegância. Ideal para escritórios que valorizam estética e funcionalidade."
   },
   {
     name: 'Cadeira Com Suporte de Pescoço',
@@ -978,7 +1013,8 @@ const allProducts = [
     },
     colors: ['#ffffff', '#9E9E9E', '#228B22'],
     categoria: 'moveis',
-    tags: ['mais-vendidos', 'ver-tudo']
+    tags: ['mais-vendidos', 'ver-tudo'],
+    description: "Conforto e ergonomia elevados com apoio para o pescoço. Ideal para longas jornadas de trabalho."
   },
   {
     name: 'Cabo HDMI',
@@ -988,7 +1024,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo','mais-vendidos']
+    tags: ['ver-tudo','mais-vendidos'],
+    description: "Conexão rápida e estável para monitores e TVs. Transmita com qualidade de som e imagem."
   },
   {
     name: 'Fone Bluetooth Portátil',
@@ -998,7 +1035,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo','mais-vendidos']
+    tags: ['ver-tudo','mais-vendidos'],
+    description: "Compacto, potente e sem fios. Ideal para produtividade e chamadas no ambiente de trabalho."
   },
   {
     name: 'Mesa Móvel Simples',
@@ -1009,7 +1047,8 @@ const allProducts = [
     },
     colors: ["#DEB887", '#5C4033'],
     categoria: 'moveis',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Versátil e funcional, com design limpo. Perfeita para espaços corporativos modernos."
   },
   {
     name: 'Organizador de Mesa Preto',
@@ -1019,7 +1058,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Conjunto completo para manter a mesa organizada com elegância e eficiência."
   },
   {
     name: 'Cabo Adaptador usbc para hdmi',
@@ -1029,7 +1069,8 @@ const allProducts = [
     },
     colors: ['#ffffff'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Conecte dispositivos com USB-C a monitores HDMI com praticidade e alta definição."
   },
   {
     name: 'Fone Com Fio',
@@ -1039,7 +1080,8 @@ const allProducts = [
     },
     colors: ['#fffffff'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Solução simples e eficaz para chamadas nítidas e uso prolongado com conforto."
   },
   {
     name: 'Fone Bluetooth Portátil',
@@ -1049,7 +1091,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo','mais-vendidos']
+    tags: ['ver-tudo','mais-vendidos'],
+    description: "Mobilidade e som de qualidade. Ideal para ambientes corporativos e reuniões online."
   },
   {
     name: 'Prateleira',
@@ -1062,7 +1105,8 @@ const allProducts = [
     },
     colors: ['#FFD700', "#64B5F6", '#ffffff', '#228B22'],
     categoria: 'moveis',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Prateleira versátil com visual moderno, ideal para decoração e organização de escritórios."
   },
   {
     name: 'Apontador de Mesa',
@@ -1072,7 +1116,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Compacto e robusto, ideal para manter lápis sempre prontos no ambiente de trabalho."
   },
   {
     name: 'Vaso Decorativo Médio',
@@ -1082,7 +1127,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Elegância natural para complementar a decoração de mesas, estantes e recepções."
   },
   {
     name: 'Organizador de Mesa Rosa',
@@ -1092,7 +1138,8 @@ const allProducts = [
     },
     colors: ['#FFC0CB'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Charme e funcionalidade para o dia a dia. Perfeito para escritórios mais criativos."
   },
   {
     name: 'Agenda Clássica',
@@ -1103,8 +1150,9 @@ const allProducts = [
     },
     colors: ['#000000', '#FFC0CB'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
-  },
+    tags: ['ver-tudo'],
+    description: "Para quem valoriza organização com estilo. Capa resistente e layout funcional para o trabalho."
+  },  
   {
     name: 'Vaso Decorativo Pequeno',
     price: 'R$699,90',
@@ -1113,7 +1161,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'ambientacao',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Um toque sutil de elegância para compor ambientes sofisticados com estilo minimalista."
   },
   {
     name: 'Borracha Escolar',
@@ -1123,7 +1172,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Pequena, eficiente e indispensável no dia a dia de qualquer escritório ou sala de aula."
   },
   {
     name: 'Calculadora Portátil',
@@ -1133,7 +1183,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'eletronicos',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Compacta, leve e prática. Ideal para cálculos rápidos com visual clean e moderno."
   },
   {
     name: 'Calendário de Mesa 2025',
@@ -1143,7 +1194,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Organize compromissos com clareza e estilo. Design funcional e ideal para qualquer mesa."
   },
   {
     name: 'Caneta Bic (50 unidades)',
@@ -1155,7 +1207,8 @@ const allProducts = [
     },
     colors: ['#000000', '#003366', '#C62828'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Pacote econômico com 50 unidades. Escrita macia, confiável e duradoura para o dia a dia."
   },
   {
     name: 'Folha A4 (5 pacotes)',
@@ -1165,7 +1218,8 @@ const allProducts = [
     },
     colors: ['#ffffff'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Pacote com 5 resmas de folhas A4. Ideal para impressões em alta qualidade e uso intenso."
   },
   {
     name: 'Marca Texto Colorida',
@@ -1175,7 +1229,8 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
+    tags: ['ver-tudo'],
+    description: "Realce suas anotações com cores vibrantes. Ideal para leitura, organização e estudos."
   },
   {
     name: 'Post-it Colorido',
@@ -1185,8 +1240,9 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo']
-  }
+    tags: ['ver-tudo'],
+    description: "Notas adesivas práticas para recados, lembretes ou marcações rápidas no ambiente de trabalho."
+  }  
 ];
 
 export default allProducts;
