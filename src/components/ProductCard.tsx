@@ -131,6 +131,7 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 export interface ProductCardProps {
   name: string;
@@ -153,6 +154,7 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
+  cursor: pointer;
 `;
 
 const ProductImage = styled.img`
@@ -235,14 +237,19 @@ export const ProductCard = ({
   colors,
 }: ProductCardProps) => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const navigate = useNavigate();
 
   const displayImage =
     images && selectedColor in images
       ? images[selectedColor]
       : image ?? Object.values(images ?? {})[0];
 
+  const handleClick = () => {
+    navigate(`/produto/${encodeURIComponent(name)}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <ProductImage src={displayImage} alt={name} />
 
       <Info>
@@ -258,7 +265,10 @@ export const ProductCard = ({
               key={cor}
               color={cor}
               selected={selectedColor === cor}
-              onClick={() => setSelectedColor(cor)}
+              onClick={(e) => {
+                e.stopPropagation(); // previne redirecionamento ao clicar na cor
+                setSelectedColor(cor);
+              }}
             />
           ))}
       </ColorPicker>

@@ -6,6 +6,7 @@ import ProductB2B from './pages/ProductB2B';
 import AjudaB2B from './pages/AjudaB2B';
 import SobreB2B from './pages/SobreB2B';
 import HomeB2C from './pages/HomeB2C'
+import ProdutoB2B from './pages/ProdutoB2B';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<HomeB2B />} />
         <Route path="/produtos" element={<ProductB2B />} />
         <Route path="/produtos/:categoria" element={<ProductB2B />} />
+        <Route path="/produto/:nome" element={<ProdutoB2B />} />
       </Routes>
     </Router>
   );
