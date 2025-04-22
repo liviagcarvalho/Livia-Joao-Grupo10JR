@@ -6,12 +6,10 @@ import cooworkingHomePage from "../assets/HomePage/PrincipalHomeB2B.png";
 const Section = styled.section`
   position: relative;
   width: 100%;
-  max-width: 1280px;
-  height: 757px;
-  margin: 0 auto;
+  height: 100vh; 
   padding: 0 1rem;
+  overflow: hidden;
 `;
-
 // Imagem de fundo
 const BackgroundImage = styled.img`
   width: 100%;

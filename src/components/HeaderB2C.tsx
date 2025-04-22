@@ -194,12 +194,14 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
       <TopBar>
         <TopContent>
           <ButtonGroup>
-            <TopLink to="/sobre">
-              Sobre nós <FiChevronDown size={14} />
-            </TopLink>
-            <TopLink to="/ajuda-b2b">
-              Ajuda <FiChevronDown size={14} />
-            </TopLink>
+          <TopLink to="/sobre-b2c">
+            Sobre nós <FiChevronDown size={14} />
+          </TopLink>
+          <TopLink to="/ajuda-b2c">
+            Ajuda <FiChevronDown size={14} />
+          </TopLink>
+
+
           </ButtonGroup>
 
           <Language>
