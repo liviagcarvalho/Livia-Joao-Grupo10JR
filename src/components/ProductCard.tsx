@@ -132,6 +132,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../components/CartContext';
 
 export interface ProductCardProps {
   name: string;
@@ -139,6 +140,8 @@ export interface ProductCardProps {
   images?: Record<string, string | undefined>; // imagens por cor
   image?: string; // fallback
   colors: string[];
+  modo?: 'b2b' | 'b2c';
+  abrirCarrinho?:  () => void;
 }
 
 // Styled Components
@@ -211,20 +214,21 @@ const ColorDot = styled.button<{ color: string; selected: boolean }>`
   cursor: pointer;
 `;
 
-const MoreButton = styled.button`
-  background-color: #1d311f;
-  color: white;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 14px;
+const MoreButton = styled.button<{ modo?: 'b2b' | 'b2c' }>`
+  background-color: ${({ modo }) => (modo === 'b2c' ? '#9CAF88' : '#1D311F')};
+  color: ${({ modo }) => (modo === 'b2c' ? '#1D311F' : '#FFFFFF')};
+  width: ${({ modo }) => (modo === 'b2c' ? '100%' : '100%')};
+  padding: ${({ modo }) => (modo === 'b2c' ? '0.75rem' : '0.5rem')};
+  font-size: ${({ modo }) => (modo === 'b2c' ? '14px' : '14px')};
   font-weight: 600;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  align-self: center;
 
   &:hover {
-    background-color: #16341c;
+    background-color: ${({ modo }) => (modo === 'b2c' ? '#859872' : '#16341c')};
   }
 `;
 
@@ -235,7 +239,11 @@ export const ProductCard = ({
   images,
   image,
   colors,
+  modo = 'b2b',
+  abrirCarrinho,
 }: ProductCardProps) => {
+  const { addItem } = useCart();
+
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const navigate = useNavigate();
 

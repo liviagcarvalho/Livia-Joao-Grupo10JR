@@ -44,6 +44,7 @@ const ViewMoreButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-left: 2rem;
 
   &:hover {
     background-color: #16341c;

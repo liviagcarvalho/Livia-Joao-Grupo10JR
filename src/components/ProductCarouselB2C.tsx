@@ -2,9 +2,8 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { ProductCard, ProductCardProps } from "./ProductCard";
 import allProducts from "./allProducts";
-import { ChevronLeft, ChevronRight, Subtitles } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 
 // Styled Components
 const Section = styled.section`
@@ -44,9 +43,10 @@ const ViewMoreButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-left: 2rem;
 
   &:hover {
-    background-color: #9CAF88;
+    background-color: #859872;
   }
 `;
 
@@ -92,8 +92,10 @@ const Arrow = styled.button<{ left?: boolean }>`
   }
 `;
 
-const ProductCarousel = () => {
+// ✅ ADICIONADO: recebe abrirCarrinho como prop
+const ProductCarousel = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const scroll = (direction: "left" | "right") => {
     if (carouselRef.current) {
@@ -103,7 +105,6 @@ const ProductCarousel = () => {
       });
     }
   };
-  const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate("/produtos/mais-vendidos");
@@ -112,13 +113,12 @@ const ProductCarousel = () => {
   return (
     <Section>
       <Title>Essenciais para o seu escritório</Title>
-      <SubTitle>
-        Planeje cada detalhe
-      </SubTitle>
+      <SubTitle>Planeje cada detalhe</SubTitle>
+
       <ViewMoreButton onClick={handleNavigate}>
         Ver mais vendidos
       </ViewMoreButton>
-    
+
       <Arrow left onClick={() => scroll("left")}>
         <ChevronLeft />
       </Arrow>
@@ -129,7 +129,11 @@ const ProductCarousel = () => {
       <Carousel ref={carouselRef}>
         {allProducts.map((product: ProductCardProps, index: number) => (
           <CarouselItem key={index}>
-            <ProductCard {...product} />
+            <ProductCard
+              {...product}
+              modo="b2c"
+              abrirCarrinho={abrirCarrinho} // ✅ AQUI PASSA A FUNÇÃO
+            />
           </CarouselItem>
         ))}
       </Carousel>

@@ -1,25 +1,27 @@
-//importando os componentes para eu poder usar
-import React from 'react';
+// Importando os componentes
+import React, { useState } from 'react';
 import HeroSection from '../components/HeroSectionB2C';
-//import ProductHighlights from '../components/ProductHighlights';
-// import LaunchBanner from '../components/LaunchBanner';
+import Carrinho from '../components/Carrinho';
 import ValueProps from '../components/ValuePropsB2C';
 import WorkSolutions from '../components/WorkSolutionsB2C';
 import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer';
+import Footer from '../components/FooterB2C';
 import LaunchBanner from '../components/LaunchBannerB2C';
 import GradientBackground from '../components/DegradefundoB2C';
 import ProductCarousel from '../components/ProductCarouselB2C';
-import Header from '../components/HeaderB2C'
-//funcao que retorna a tela home, a qual estou denominando aqui
-//dentrp da função return estiou montando com blocos a página home
-//<>....</> é uma froma de agrupar essas informações no lugar de um div(É um envoltório invisível que o React usa pra agrupar múltiplos elementos sem jogar uma div extra no HTML.)
-const Home = () => {
+import Header from '../components/HeaderB2C';
+
+const HomeB2C = () => {
+  const [carrinhoAberto, setCarrinhoAberto] = useState(false); // 👈 controle do carrinho
+
   return (
     <>
-      <Header />
+      <Header abrirCarrinho={() => setCarrinhoAberto(true)} /> {/* Passa para o Header */}
       <HeroSection />
-      <ProductCarousel />
+      
+      {/* ✅ Passa a função para o ProductCarousel também */}
+      <ProductCarousel abrirCarrinho={() => setCarrinhoAberto(true)} />
+      
       <GradientBackground>
         <section className="py-20">
           <LaunchBanner />
@@ -33,13 +35,17 @@ const Home = () => {
           <WorkSolutions />
         </section>
       </GradientBackground>
+      
       <ContactForm />
       <Footer />
 
-
+      {/* Carrinho visível ou não */}
+      <Carrinho
+        isOpen={carrinhoAberto}
+        onClose={() => setCarrinhoAberto(false)}
+      />
     </>
   );
 };
 
-export default Home;
-
+export default HomeB2C;
