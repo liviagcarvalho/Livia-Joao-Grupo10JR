@@ -9,7 +9,7 @@ import SobreB2B from './pages/SobreB2B';
 import SobreB2C from './pages/SobreB2C';
 import HomeB2C from './pages/HomeB2C';
 import ProdutoB2B from './pages/ProdutoB2B';
-import { CartProvider } from './components/CartContext'; // 👈 importa o provider
+import { CartProvider } from './components/CartContext'; 
 
 function App() {
   return (
