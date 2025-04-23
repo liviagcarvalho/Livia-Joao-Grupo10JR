@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Section = styled.section`
   position: relative;
   width: 100%;
-  height: 100vh; 
+  height: 757px; 
   padding: 0 1rem;
   overflow: hidden;
 `;
