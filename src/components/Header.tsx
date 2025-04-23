@@ -82,6 +82,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 const HeaderWrapper = styled.header`
   width: 100%;
   font-family: 'Inter', sans-serif;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 1000;
+  // background-color: white;
 `;
 
 const TopBar = styled.div`

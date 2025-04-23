@@ -105,12 +105,6 @@ const items = [
       "Nosso compromisso vai além da venda. Garantimos agilidade e cuidado na entrega, respeitando prazos e qualidade no transporte.",
   },
   {
-    title: "Sustentabilidade",
-    icon: "carbon:sustainability",
-    description:
-      "Desenvolvemos produtos com responsabilidade ambiental, priorizando materiais conscientes e processos sustentáveis.",
-  },
-  {
     title: "Atendimento Personalizado",
     icon: "ri:customer-service-2-fill",
     description:
@@ -124,7 +118,6 @@ const gridPositions = [
   "grid-column-start: 3; grid-row-start: 2;",
   "grid-column-start: 2; grid-row-start: 3;",
   "grid-column-start: 1; grid-row-start: 4;",
-  "grid-column-start: 3; grid-row-start: 5;",
 ];
 
 const ValuePropsSection = () => {

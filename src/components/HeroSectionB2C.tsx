@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import cooworkingHomePage from "../assets/HomePage/PrincipalHomeB2B.png";
+import cooworkingHomePage from "../assets/HomePage/PrincipalHome.png";
 
 // Wrapper principal da seção
 const Section = styled.section`
@@ -16,7 +16,6 @@ const Section = styled.section`
 const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
 `;
 
 // Gradiente branco com blur à esquerda

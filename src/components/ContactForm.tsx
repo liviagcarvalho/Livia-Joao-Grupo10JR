@@ -82,18 +82,31 @@ const ContactSupportForm = () => {
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    if (!nome || !email || !mensagem) {
+  //   if (!nome || !email || !mensagem) {
+  //     setErro(true);
+  //   } else {
+  //     setErro(false);
+  //     console.log("Formulário enviado:", { nome, email, mensagem });
+  //     // Aqui você pode integrar com backend ou mostrar um alert
+  //     setNome("");
+  //     setEmail("");
+  //     setMensagem("");
+  //   }
+  // };
+
+  const handleSubmit = (e: React.FormEvent) => { // Porque precisa guardar info se não estamos trabalhando com backend? - "mesmo que você não tenha um back-end, precisa guardar temporariamente as informações que o usuário digita" - ChatGPT
+    e.preventDefault(); /* impede o comportamento padrão do formulário (recarregar a página */
+    if (!nome || !email || !mensagem) { /* verifica se algum campo está vazio */
       setErro(true);
     } else {
-      setErro(false);
-      console.log("Formulário enviado:", { nome, email, mensagem });
-      // Aqui você pode integrar com backend ou mostrar um alert
-      setNome("");
-      setEmail("");
-      setMensagem("");
+      alert("Informações enviadas com sucesso!"); // ou console.log mostra a caixinha do navegador (um popup) - alert() é uma função nativa do JavaScript
+      setNome(''); //limpa os campos
+      setEmail('');
+      setMensagem('');
+      setErro(false); // mensagem de erro
     }
   };
 

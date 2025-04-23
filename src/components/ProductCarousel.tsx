@@ -29,8 +29,8 @@ const SubTitle = styled.p`
   font-size: 30px;
   color: #1d311f;
   text-align: center;
-  margin-top: -1rem;
-  margin-bottom: 3rem;
+  margin-top: -2rem;
+  margin-bottom: 2rem;
 `;
 
 const ViewMoreButton = styled.button`
@@ -44,6 +44,7 @@ const ViewMoreButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-bottom: 1rem;
   margin-left: 2rem;
 
   &:hover {
@@ -107,7 +108,9 @@ const ProductCarousel = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/produtos/mais-vendidos");
+    navigate('/produtos', {
+      state: { filtroInicial: 'mais-vendidos' }
+    });
   };
 
   return (

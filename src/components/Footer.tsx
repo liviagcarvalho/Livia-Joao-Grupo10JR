@@ -55,7 +55,7 @@
 // export default Footer;
 
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
@@ -72,8 +72,6 @@ const ContactBar = styled.div`
     margin-bottom: 5rem;
   }
 `;
-
-
 
 const ContactTitle = styled.h4`
   font-family: 'Inter', 'sans-serif';
@@ -128,8 +126,6 @@ const SendButton = styled.button`
     background-color: #cde6d8;
   }
 `;
-
-
 
 //local do logo e infos do footer
 const FooterContainer = styled.footer`
@@ -214,7 +210,6 @@ const ContactSection = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-
   font-family: 'Inter', 'sans-serif';
 
   h3 {
@@ -249,7 +244,6 @@ const ContactSection = styled.div`
     }
   }
 `;
-
 
 const Icons = styled.div`
   display: flex;
@@ -304,18 +298,45 @@ const LegalNotice = styled.div`
 `;
 
 const Footer = () => {
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = () => {
+    // Aqui futuramente pode ser feita a validação/envio para backend
+    setNome("");
+    setTelefone("");
+    setEmail("");
+  };
+
   return (
     <FooterContainer>
       <ContactBar>
         <ContactTitle>Entre em contato com a empresa</ContactTitle>
         <ContactInputs>
-          <InputField type="text" placeholder="Nome" />
-          <InputField type="tel" placeholder="Telefone" />
-          <InputField type="email" placeholder="Email" />
+          <InputField
+            type="text"
+            placeholder="Nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+          <InputField
+            type="tel"
+            placeholder="Telefone"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+          />
+          <InputField
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </ContactInputs>
-        <SendButton type="button">ENVIAR</SendButton>
+        <SendButton type="button" onClick={handleSubmit}>
+          ENVIAR
+        </SendButton>
       </ContactBar>
-
 
       <CenterContent>
         <Logo>R. Amaral Office</Logo>
