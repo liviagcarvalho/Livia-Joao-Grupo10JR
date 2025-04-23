@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import cooworkingHomePage from "../assets/HomePage/PrincipalHomeB2B.png";
+import cooworkingHomePage from "../assets/HomePage/PrincipalHome.png";
+import { useNavigate } from 'react-router-dom';
 
 // Wrapper principal da seção
 const Section = styled.section`
@@ -14,7 +15,6 @@ const Section = styled.section`
 const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
 `;
 
 // Gradiente branco com blur à esquerda
@@ -144,6 +144,7 @@ const CTAButton = styled.button`
 `;
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <Section>
       <BackgroundImage src={cooworkingHomePage} alt="Ambiente de trabalho" />
@@ -155,7 +156,9 @@ const HeroSection = () => {
         <Subtitle>
           Ambientes que aliam design inteligente, conforto e eficiência
         </Subtitle>
-        <CTAButton>CONHEÇA AGORA</CTAButton>
+        <CTAButton onClick={() => navigate('/produtos', { state: { filtroInicial: 'ver-tudo' } })}>
+          CONHEÇA AGORA
+        </CTAButton>
       </Content>
     </Section>
   );

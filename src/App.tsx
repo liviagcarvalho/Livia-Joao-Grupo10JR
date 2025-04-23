@@ -8,6 +8,7 @@ import AjudaB2C from './pages/AjudaB2C';
 import SobreB2B from './pages/SobreB2B';
 import SobreB2C from './pages/SobreB2C';
 import HomeB2C from './pages/HomeB2C';
+import ProdutoB2B from './pages/ProdutoB2B';
 import { CartProvider } from './components/CartContext'; // 👈 importa o provider
 
 function App() {

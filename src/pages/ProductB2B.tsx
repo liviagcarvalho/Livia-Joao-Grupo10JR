@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import allProducts from '../components/allProducts'
 import { FiSearch } from 'react-icons/fi';
 import Header from '../components/Header'
+import { useLocation } from 'react-router-dom';
+
 
 
 
@@ -159,6 +161,8 @@ export default function ProductB2B() {
   const { categoria } = useParams();
 
   // Estados usados para filtros e ordenações
+  const location = useLocation();
+  const filtroInicial = location.state?.filtroInicial || null;
   const [sortOption, setSortOption] = useState(''); // como ordenar os produtos
   const [isOpen, setIsOpen] = useState(false); // dropdown de ordenação 
   const [showCategoria, setShowCategoria] = useState(false); // dropdown de categoria 
@@ -168,7 +172,16 @@ export default function ProductB2B() {
   const [quantidadeVisivel, setQuantidadeVisivel] = useState(8); // controla se deve mostrar tudo ou só os primeiros
   const [busca, setBusca] = useState(''); // termo da barra de busca
 
-
+  // quando pessoa clica no botao do carrossel da pagina B2b ela é direcionada ao mais vendidos 
+  React.useEffect(() => {
+    if (filtroInicial) {
+      setCategoriaFiltro(filtroInicial);
+      // Limpa o state da URL para não reaplicar em reloads ou navegação
+      window.history.replaceState({}, document.title);
+    }
+  }, []);
+  
+  
   // Filtra produtos com base na categoria 
   let produtosFiltrados = categoria
   ? allProducts.filter((p) => p.categoria === categoria.toLowerCase())

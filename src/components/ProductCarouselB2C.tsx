@@ -28,7 +28,7 @@ const SubTitle = styled.p`
   font-size: 30px;
   color: #1d311f;
   text-align: center;
-  margin-top: -1rem;
+  margin-top: -2rem;
   margin-bottom: 3rem;
 `;
 
@@ -44,6 +44,7 @@ const ViewMoreButton = styled.button`
   cursor: pointer;
   transition: background-color 0.2s ease;
   margin-left: 2rem;
+  margin-bottom: 1rem;
 
   &:hover {
     background-color: #859872;
