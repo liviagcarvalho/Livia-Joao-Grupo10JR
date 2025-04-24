@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import HomeB2B from './pages/HomeB2B';
 import ProductB2B from './pages/ProductB2B';
+import ProductB2C from './pages/ProductsB2C';
 import AjudaB2B from './pages/AjudaB2B';
 import AjudaB2C from './pages/AjudaB2C';
 import SobreB2B from './pages/SobreB2B';
@@ -23,7 +24,9 @@ function App() {
           <Route path="/sobre" element={<SobreB2B />} />
           <Route path="/" element={<HomeB2B />} />
           <Route path="/produtos" element={<ProductB2B />} />
+          <Route path="/produtos-b2c" element={<ProductB2C />} />
           <Route path="/produtos/:categoria" element={<ProductB2B />} />
+          <Route path="/produtos-b2c/:categoria" element={<ProductB2C />} />
           <Route path="/produto/:nome" element={<ProdutoB2B />} />
         </Routes>
       </Router>

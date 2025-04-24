@@ -223,7 +223,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
   );
 };
 
-const AjudaB2B = () => {
+const AjudaB2C = () => {
   const [nome, setNome] = useState(''); /* Use state- onde os dados são guardados */
   const [email, setEmail] = useState(''); 
   const [mensagem, setMensagem] = useState('');
@@ -320,4 +320,4 @@ const AjudaB2B = () => {
   );
 };
 
-export default AjudaB2B;
+export default AjudaB2C;

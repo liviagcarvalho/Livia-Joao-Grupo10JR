@@ -4,6 +4,7 @@ import cooworkingHomePage from "../assets/HomePage/PrincipalHome.png";
 
 // Wrapper principal da seção
 const Section = styled.section`
+  margin-top: 8rem;
   position: relative;
   width: 100%;
   height: 757px;
