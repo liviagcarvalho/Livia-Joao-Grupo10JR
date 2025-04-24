@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { ProductCard } from '../components/ProductCard';
-import Footer from '../components/Footer';
-import allProducts from '../components/allProducts'
+import { ProductCard } from '../components/ProductCardB2C';
+import Footer from '../components/FooterB2C';
+import allProductsB2C from '../components/allProductsB2C';
 import { FiSearch } from 'react-icons/fi';
-import Header from '../components/Header'
+import HeaderB2C from '../components/HeaderB2C';
 import { useLocation } from 'react-router-dom';
-
+import Carrinho from '../components/Carrinho';
+import { useCart } from '../components/CartContext';
 
 // Função principal do componente da página de produtos
-export default function ProductB2B() {
+const ProductB2C = () => {
   // Pega a categoria do Header - parametros (ex: "moveis", "materiais", etc.)
   const { categoria } = useParams();
+  const [carrinhoAberto, setCarrinhoAberto] = useState(false);
 
   // Estados usados para filtros e ordenações
   const location = useLocation();
@@ -38,8 +40,8 @@ export default function ProductB2B() {
   
   // Filtra produtos com base na categoria 
   let produtosFiltrados = categoria
-  ? allProducts.filter((p) => p.categoria === categoria.toLowerCase())
-  : allProducts;
+  ? allProductsB2C.filter((p) => p.categoria === categoria.toLowerCase())
+  : allProductsB2C;
 
   // Aplica busca textual (por nome)
   if (busca.trim() !== '') {
@@ -48,7 +50,6 @@ export default function ProductB2B() {
       p.name.toLowerCase().includes(termo)
     );
   }
-
 
   // Aplica filtro adicional por "tags" (como 'lancamentos', 'mais-vendidos') - se o filtro for ver tudo, então não aplica filtro
   if (categoriaFiltro && categoriaFiltro !== 'ver-tudo') {
@@ -120,29 +121,12 @@ const nomesCategorias: Record<string, string> = {
   "ver-tudo": "Ver Tudo"
 };
 
-// Botão que aparece após duas linhas de produtos para expandir e ver mais
-const VerMaisButton = styled.button`
-  background-color: #1D311F;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  font-size: 0.875rem;
-  cursor: pointer;
-  border: none;
-`;
-
-// Centralizaçao o botão "Ver Mais" - Wrapper - nome que se da quando é um componente que engloba outros elementos 
-const VerMaisWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-`;
-
-
   // JSX retornado pelo componente
+
   return (
+    <>
+    <HeaderB2C abrirCarrinho={() => setCarrinhoAberto(true)} />
     <Container>
-      <Header />
       {/* Barra de busca centralizada */}
       <SearchWrapper>
         <SearchBox>
@@ -284,11 +268,20 @@ const VerMaisWrapper = styled.div`
 
           {/* Grid com os cards dos produtos */}
           <Grid>
-          {produtosOrdenados.slice(0, quantidadeVisivel).map((product, index) => (
-            <ProductCard key={index} {...product} />
-          ))}
-
-          </Grid>
+            {produtosOrdenados
+                .slice(0, quantidadeVisivel)
+                .map((product, index) => {
+                const { name, price, images, colors } = product;
+                return <ProductCard
+                    key={index}
+                    name={name}
+                    price={price}
+                    images={images}
+                    colors={colors}
+                    abrirCarrinho={() => setCarrinhoAberto(true)}
+                />;
+                })}
+            </Grid>
 
           {/* Botão para ver mais produtos, aparece só se houver mais de 8 e não estiver mostrando todos ainda */}
           {quantidadeVisivel < produtosOrdenados.length && (
@@ -304,9 +297,15 @@ const VerMaisWrapper = styled.div`
 
       {/* Rodapé da página */}
       <Footer />
+      <Carrinho
+        isOpen={carrinhoAberto}
+        onClose={() => setCarrinhoAberto(false)}
+        />
     </Container>
+    </>
   );
 }
+export default ProductB2C;
 
 
 
@@ -375,10 +374,11 @@ const FiltroWrapper = styled.div`
 
 //Estilização de botões (ex: botão "Categoria", "Cor", "Ordenar por") - cor verde escura de fundo, com letras brancas
 const Botao = styled.button`
-  background-color: #1D311F;
-  color: white;
+  background-color: #9CAF88;
+  color: #1D311F;
   padding: 0.25rem 1rem;
   border-radius: 5px;
+  font-weight: bold;
 `;
 
 //Caixinha que aparece embaixo dos botões quando você clica neles 
@@ -454,3 +454,23 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
 `;
+
+//Botão que aparece após duas linhas de produtos para expandir e ver mais
+const VerMaisButton = styled.button`
+  background-color: #9CAF88;
+  color: #1D311F;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+`;
+
+// Centralizaçao o botão "Ver Mais" - Wrapper - nome que se da quando é um componente que engloba outros elementos 
+const VerMaisWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+`;
+

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { ProductCard, ProductCardProps } from "./ProductCard";
-import allProducts from "./allProducts";
+import allProducts from "./allProductsB2C";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 

@@ -1,3 +1,21 @@
+
+
+livia
+- favoritos b2c
+- sale b2c
+- produtos B2B
+
+joao
+- pagina funcionario
+- perfil b2c
+- alert no checkout Carrinho
+
+
+
+
+
+COMANDOS GIT HUB
+
 git checkout -b [nome branch]
 git checkout main 
 git checkout [nome branch]
@@ -6,13 +24,11 @@ git pull --rebase
 git pull origin joao
 git commit -m "mensagem"
 git push
-
 git add arquivo
 git add .
 
 
-
-CORES:
+NOSSA PALETA DE CORES
 
 BRANCO: #ffffff
 PRETO: #000000
@@ -26,17 +42,60 @@ CINZA: #9E9E9E
 VERMELHO: #C62828
 AZUL CLARO: #64B5F6
 
-
-Botao para "Para clientes/empresa"
-Wpp
-footer - formulario de contato - HP trocar central de ajuda por botao de precisa de ajuda (que direciona a Ajuda)
-LUPA GRANDE NO CENTRO NA PÁGINA DE PRODUTOS 
-
-botao para sempore voltar pra home - problema, nao sei onde colocar - livia.
+ESTUDO SOBRE CÓDIGO - Livia 
 
 
+STYLED COMPONENTS:
 
-Ambientação e conforto: Decoraçao, luminárias e persianas
-Materiais: Tudo
+faz ficar um do lado do outro: display: flex;
+width: 100%; - vai ocupar 100% da largura do seu elemento-pai 
+gap: 1.5rem; - espaçamento entre os itens/linhas
+font-family: 'Inter', sans-serif; - fonte utilizada
+font-size: 15px; - tamanho da letra
+font-weight: bold;
+color: white; - cor do componente (mas nao do fundo)
+background-color: white; - cor de fundo
+justify-content: space-between; - coloca o primeiro item na borda inicial e o ultimo na borda final e distribui o espaço restante igualitariamente entre os itens.
+align-items: flex-start; - Alinha todos os itens no início desse eixo, ou seja, no topo do container (quando o eixo é horizontal).
+align-items: flex-end ou center; - outras opcoes de align items\
+flex-grow: 1; //Faz o componente “crescer” para ocupar todo o espaço horizontal disponível, empurrando o botão para a direita
 
-transformar preco de unidade para preço a cada 30un 
+margin: 0 auto; - margem geral
+margin-top: 0.5rem; - margem de cima 
+border-radius: 9999px; - curva da borda
+
+padding = 4 tamanhos --> está definindo, em ordem:
+// padding-top: 0.5rem;
+// padding-right: 1.5rem;
+// padding-bottom: 0.25rem;
+// padding-left: 1.5rem;
+
+para fixar um item:
+position: fixed; - fixado
+top: 0; - deixa preso no inicio superior da pagina
+left: 0; - deixa preso no inicio lateral da pagina
+z-index: 1000; - o quao para frente vai estar
+
+obs: tem que dar um margin no primeiro componente que vem depois do header, para um nao ficar em cima do outro
+
+quando o mouse passar por cima, adiciona sublinhado:
+  &:hover {
+    text-decoration: underline;
+  }
+
+quando o mouse passar por cima, cor do botao muda
+&:hover {
+    background-color: #2b452d;
+  }
+
+const xxxxxx = styled.div`…` --> cria um bloco sem semântica específica, bloco genérico
+const HeaderWrapper = styled.header`…` --> cria um header que é para usar no topo das páginas
+const Imagem = styled.img`…` --> para estilizar imagens
+const Link = styled(Link)` --> é um componente do React Router -trocar de rota sem recarregar a página inteira
+Em vez de usar href="…", você passa to="/alguma-rota":
+
+
+REACT COM JAVASCRIPT
+
+
+

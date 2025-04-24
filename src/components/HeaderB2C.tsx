@@ -6,6 +6,8 @@ import { FiChevronDown } from 'react-icons/fi';
 import Orcamento from '../pages/OrcamentoB2B'; // aqui está o seu modal de orçamento
 import { useLocation, useNavigate } from "react-router-dom";
 import { User, Heart, ShoppingCart } from 'lucide-react';
+import { useCart } from './CartContext';
+
 
 
 
@@ -14,6 +16,11 @@ import { User, Heart, ShoppingCart } from 'lucide-react';
 const HeaderWrapper = styled.header`
   width: 100%;
   font-family: 'Inter', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
 `;
 
 const TopBar = styled.div`
@@ -48,19 +55,6 @@ const TopLink = styled(Link)`
   }
 `;
 
-const Language = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 15px;
-`;
-
-const Flag = styled.img`
-  width: 20px;
-  height: 16px;
-  object-fit: cover;
-`;
-
 const SwitchContainer = styled.div`
   max-width: 1282px;
   margin: 0 auto;
@@ -88,6 +82,7 @@ const Toggle = styled.div`
   background: white;
   border-radius: 9999px;
   position: relative;
+  cursor: pointer;
 
   div {
     width: 20px;
@@ -178,8 +173,8 @@ const IconButton = styled.button`
 `;
 const B2CIcons = styled.div`
   position: absolute;
-  bottom: 4px;
-  right: 24px;
+  bottom: 15px;
+  right: 15px;
   display: flex;
   gap: 12px;
   color: #1D311F;
@@ -203,11 +198,6 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
 
 
           </ButtonGroup>
-
-          <Language>
-            <span>Idioma</span>
-            <Flag src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil" />
-          </Language>
         </TopContent>
 
         <SwitchContainer>
@@ -218,7 +208,7 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
             <span>Para Empresas</span>
           </Switch>
 
-          <Logo to="/">R. Amaral Office</Logo>
+          <Logo to="/b2c">R. Amaral Office</Logo>
 
           <Spacer />
         </SwitchContainer>
@@ -239,11 +229,11 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
       <MenuWrapper>
         <MenuContent>
           <Nav>
-            <Link to="/produtos">EXPLORAR</Link>
-            <Link to="/produtos/moveis">MÓVEIS</Link>
-            <Link to="/produtos/eletronicos">ELETRÔNICOS</Link>
-            <Link to="/produtos/materiais">MATERIAIS</Link>
-            <Link to="/produtos/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
+            <Link to="/produtos-b2c">EXPLORAR</Link>
+            <Link to="/produtos-b2c/moveis">MÓVEIS</Link>
+            <Link to="/produtos-b2c/eletronicos">ELETRÔNICOS</Link>
+            <Link to="/produtos-b2c/materiais">MATERIAIS</Link>
+            <Link to="/produtos-b2c/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
           </Nav>
           <QuoteButton onClick={() => setOrcamentoOpen(true)}>
             SALE
