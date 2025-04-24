@@ -73,7 +73,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
-import Orcamento from '../pages/OrcamentoB2B'; // aqui está o seu modal de orçamento
+import Orcamento from '../pages/OrcamentoB2B'; 
 import { useLocation, useNavigate } from "react-router-dom";
 
 
