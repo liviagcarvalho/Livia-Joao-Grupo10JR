@@ -10,6 +10,7 @@ import Orcamento from '../pages/OrcamentoB2B';
 const PageContainer = styled.div`
   background-color: #f5f8f5;
   min-height: 100vh;
+  margin-top: 10rem;
 `;
 
 const Content = styled.div`

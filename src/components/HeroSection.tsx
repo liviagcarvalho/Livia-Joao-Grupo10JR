@@ -10,6 +10,7 @@ const Section = styled.section`
   height: 100vh; 
   padding: 0 1rem;
   overflow: hidden;
+  margin-top: 8rem;
 `;
 // Imagem de fundo
 const BackgroundImage = styled.img`
