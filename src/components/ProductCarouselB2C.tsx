@@ -128,12 +128,12 @@ const ProductCarousel = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
       </Arrow>
 
       <Carousel ref={carouselRef}>
-        {allProducts.map((product: ProductCardProps, index: number) => (
+        {allProducts.map((product, index) => (
           <CarouselItem key={index}>
             <ProductCard
               {...product}
               modo="b2c"
-              abrirCarrinho={abrirCarrinho} // ✅ AQUI PASSA A FUNÇÃO
+              abrirCarrinho={abrirCarrinho}
             />
           </CarouselItem>
         ))}
