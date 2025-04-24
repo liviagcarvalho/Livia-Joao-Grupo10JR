@@ -13,6 +13,7 @@ import { useLocation } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100%;
+  margin-top: 10rem;
 `;
 
 // Wrapper para centralizar e posicionar a barra de busca
