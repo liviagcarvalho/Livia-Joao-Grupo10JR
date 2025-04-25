@@ -1,19 +1,81 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import { useCart } from '../components/CartContext';
 
 export interface ProductCardProps {
   name: string;
   price: string;
-  images?: Record<string, string | undefined>;
+  images?: Record<string, string>;
   image?: string;
   colors: string[];
-  modo?: 'b2b' | 'b2c';
   abrirCarrinho?: () => void;
+  modo?: 'b2b' | 'b2c'; // ✅ Agora está tipado corretamente
 }
 
-// Styled Components
+export const ProductCard = ({
+  name,
+  price,
+  images,
+  image,
+  colors,
+  abrirCarrinho,
+  modo = 'b2c', // Valor padrão: B2C
+}: ProductCardProps) => {
+  const { addItem } = useCart();
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+
+  const displayImage =
+    images && selectedColor in images
+      ? images[selectedColor]!
+      : image ?? Object.values(images ?? {})[0] ?? '';
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addItem({
+      name,
+      price,
+      image: displayImage,
+      quantity: 1,
+    });
+    abrirCarrinho?.();
+  };
+
+  return (
+    <Card>
+      <ProductImage src={displayImage} alt={name} />
+
+      <Info>
+        <ProductName>{name}</ProductName>
+        <ProductPrice>{price}</ProductPrice>
+      </Info>
+
+      <ColorPicker>
+        {colors.length > 1 &&
+          colors.map((cor) => (
+            <ColorDot
+              key={cor}
+              color={cor}
+              selected={selectedColor === cor}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedColor(cor);
+              }}
+            />
+          ))}
+      </ColorPicker>
+
+      {/* Botão só é mostrado no modo B2C */}
+      {modo === 'b2c' && (
+        <AddButton onClick={handleButtonClick}>
+          ADICIONAR AO CARRINHO
+        </AddButton>
+      )}
+    </Card>
+  );
+};
+
+// --- Styled Components ---
+
 const Card = styled.div`
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -55,13 +117,6 @@ const ProductPrice = styled.p`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 0.25rem;
-`;
-
-const PriceNote = styled.p`
-  font-size: 12px;
-  color: #666;
-  text-align: center;
 `;
 
 const ColorPicker = styled.div`
@@ -76,15 +131,16 @@ const ColorDot = styled.button<{ color: string; selected: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  border: ${({ color }) => (color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
+  border: ${({ color }) =>
+    color === '#ffffff' ? '1px solid #d1d5db' : 'none'};
   background-color: ${({ color }) => color};
   outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')};
   cursor: pointer;
 `;
 
-const MoreButton = styled.button<{ modo?: 'b2b' | 'b2c' }>`
-  background-color: ${({ modo }) => (modo === 'b2c' ? '#9CAF88' : '#1D311F')};
-  color: ${({ modo }) => (modo === 'b2c' ? '#1D311F' : '#FFFFFF')};
+const AddButton = styled.button`
+  background-color: #DDE3DC;
+  color: #1D311F;
   width: 100%;
   padding: 0.75rem;
   font-size: 14px;
@@ -95,72 +151,8 @@ const MoreButton = styled.button<{ modo?: 'b2b' | 'b2c' }>`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: ${({ modo }) => (modo === 'b2c' ? '#859872' : '#16341c')};
+    background-color: #C7D8BF;
   }
 `;
 
-export const ProductCard = ({
-  name,
-  price,
-  images,
-  image,
-  colors,
-  modo = 'b2b',
-  abrirCarrinho,
-}: ProductCardProps) => {
-  const { addItem } = useCart();
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const navigate = useNavigate();
-
-  const displayImage =
-    images && selectedColor in images
-      ? images[selectedColor]
-      : image ?? Object.values(images ?? {})[0];
-
-  const handleButtonClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (modo === 'b2c') {
-      addItem({
-        name,
-        price,
-        image: displayImage || '',
-        quantity: 1,
-      });
-      abrirCarrinho?.();
-    } else {
-      navigate(`/produto/${encodeURIComponent(name)}`);
-    }
-  };
-
-  return (
-    <Card>
-      <ProductImage src={displayImage} alt={name} />
-
-      <Info>
-        <ProductName>{name}</ProductName>
-        <ProductPrice>{price}</ProductPrice>
-        <PriceNote>preço referente ao pacote com 10 unidades</PriceNote>
-      </Info>
-
-      <ColorPicker>
-        {colors.length > 1 &&
-          colors.map((cor) => (
-            <ColorDot
-              key={cor}
-              color={cor}
-              selected={selectedColor === cor}
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedColor(cor);
-              }}
-            />
-          ))}
-      </ColorPicker>
-
-      <MoreButton modo={modo} onClick={handleButtonClick}>
-        {modo === 'b2c' ? 'ADICIONAR AO CARRINHO' : 'SAIBA MAIS'}
-      </MoreButton>
-    </Card>
-  );
-};
 
