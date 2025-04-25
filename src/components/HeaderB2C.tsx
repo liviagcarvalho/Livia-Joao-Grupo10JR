@@ -147,7 +147,7 @@ const Nav = styled.nav`
   }
 `;
 
-const QuoteButton = styled.button`
+const QuoteButton = styled(Link)`
   background-color: transparent;
   color: red;
   font-size: 24px;
@@ -155,9 +155,10 @@ const QuoteButton = styled.button`
   padding: 0.5rem 2.5rem;
   border-radius: 30px;
   height: 48px;
-  width: 300px;
+  width: 150px;
   transition: 0.3s;
   cursor: pointer;
+  
 
   &:hover {
     background-color: #2b452d;
@@ -235,9 +236,10 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
             <Link to="/produtos-b2c/materiais">MATERIAIS</Link>
             <Link to="/produtos-b2c/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
           </Nav>
-          <QuoteButton onClick={() => setOrcamentoOpen(true)}>
+          <QuoteButton to="/Sale">
             SALE
           </QuoteButton>
+          
         </MenuContent>
       </MenuWrapper>
 
