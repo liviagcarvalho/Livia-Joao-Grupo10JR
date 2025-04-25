@@ -11,6 +11,7 @@ import SobreB2C from './pages/SobreB2C';
 import HomeB2C from './pages/HomeB2C';
 import ProdutoB2B from './pages/ProdutoB2B';
 import { CartProvider } from './components/CartContext'; 
+import ProdutoB2C from './pages/ProdutoB2C';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/produtos/:categoria" element={<ProductB2B />} />
           <Route path="/produtos-b2c/:categoria" element={<ProductB2C />} />
           <Route path="/produto/:nome" element={<ProdutoB2B />} />
+          <Route path="/produto-b2c/:nome"    element={<ProdutoB2C />} />
         </Routes>
       </Router>
     </CartProvider>

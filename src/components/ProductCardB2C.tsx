@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { useCart } from '../components/CartContext';
 
 export interface ProductCardProps {
   name: string;
   price: string;
   images?: Record<string, string>;
-  image?: string;
   colors: string[];
   abrirCarrinho?: () => void;
 }
@@ -14,8 +14,7 @@ export interface ProductCardProps {
 export const ProductCard = ({
   name,
   price,
-  images,
-  image,
+  images = {},
   colors,
   abrirCarrinho,
 }: ProductCardProps) => {
@@ -23,9 +22,7 @@ export const ProductCard = ({
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const displayImage =
-    images && selectedColor in images
-      ? images[selectedColor]!
-      : image ?? Object.values(images ?? {})[0] ?? '';
+    images[selectedColor] ?? Object.values(images)[0] ?? '';
 
   const handleButtonClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -38,13 +35,22 @@ export const ProductCard = ({
     abrirCarrinho?.();
   };
 
+  // monta o link (coloque aqui a sua rota de detalhe)
+  const detalheLink = `/produto-b2c/${encodeURIComponent(name)}`;
 
   return (
     <Card>
-      <ProductImage src={displayImage} alt={name} />
+      <Link to={detalheLink}>
+        <ProductImage src={displayImage} alt={name} />
+      </Link>
 
       <Info>
-        <ProductName>{name}</ProductName>
+        <Link
+          to={detalheLink}
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          <ProductName>{name}</ProductName>
+        </Link>
         <ProductPrice>{price}</ProductPrice>
       </Info>
 

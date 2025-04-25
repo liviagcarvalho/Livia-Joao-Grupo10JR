@@ -43,7 +43,7 @@ const HomeB2C = () => {
       <Header abrirCarrinho={() => setCarrinhoAberto(true)} /> {/* Passa para o Header */}
       <HeroSection />
       
-      {/* ✅ Passa a função para o ProductCarousel também */}
+      {/* Passa a função para o ProductCarousel também */}
       <ProductCarousel abrirCarrinho={() => setCarrinhoAberto(true)} />
       
       <GradientBackground>
