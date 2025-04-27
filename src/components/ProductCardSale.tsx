@@ -12,14 +12,14 @@ export interface ProductCardProps {
   abrirCarrinho?: () => void;
 }
 
-export const ProductCardSale: React.FC<ProductCardProps> = ({
+export const ProductCardSale = ({
   name,
   pricenormal,
   pricedesconto,
   images = {},
   colors,
   abrirCarrinho,
-}) => {
+}: ProductCardProps) => {
   const { addItem } = useCart();
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
@@ -30,7 +30,7 @@ export const ProductCardSale: React.FC<ProductCardProps> = ({
     e.stopPropagation();
     addItem({
       name,
-      price: pricedesconto,  // passa o preço de desconto corretamente
+      price: pricedesconto,
       image: displayImage,
       quantity: 1,
     });
@@ -41,6 +41,7 @@ export const ProductCardSale: React.FC<ProductCardProps> = ({
 
   return (
     <Card>
+      <Badge>SALE</Badge>
       <Link to={detalheLink}>
         <ProductImage src={displayImage} alt={name} />
       </Link>
@@ -49,8 +50,8 @@ export const ProductCardSale: React.FC<ProductCardProps> = ({
         <Link to={detalheLink} style={{ textDecoration: 'none', color: 'inherit' }}>
           <ProductName>{name}</ProductName>
         </Link>
-        <ProductPrice>{pricenormal}</ProductPrice>
-        <ProductPrice>{pricedesconto}</ProductPrice>
+        <OriginalPrice>{pricenormal}</OriginalPrice>
+        <DiscountPrice>{pricedesconto}</DiscountPrice>
       </Info>
 
       <ColorPicker>
@@ -78,6 +79,7 @@ export const ProductCardSale: React.FC<ProductCardProps> = ({
 // --- Styled Components ---
 
 const Card = styled.div`
+  position: relative;
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
@@ -89,6 +91,19 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
+`;
+
+const Badge = styled.span`
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #e60023;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  text-transform: uppercase;
 `;
 
 const ProductImage = styled.img`
@@ -114,13 +129,15 @@ const ProductName = styled.h3`
   text-align: center;
 `;
 
-const ProductPrice = styled.p`
+const OriginalPrice = styled.p`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
+  color: #6b7280;
+  text-decoration: line-through;
 `;
 
-const ProductPrice2 = styled.p`
+const DiscountPrice = styled.p`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -138,14 +155,14 @@ const ColorDot = styled.button<{ color: string; selected: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  border: ${(props) => (props.color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
-  background-color: ${(props) => props.color};
-  outline: ${(props) => (props.selected ? '2px solid #1D311F' : 'none')};
+  border: ${({ color }) => (color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
+  background-color: ${({ color }) => color};
+  outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')};
   cursor: pointer;
 `;
 
 const AddButton = styled.button`
-  background-color: #DDE3DC;    /* verde claro B2C */
+  background-color: #DDE3DC;
   color: #1D311F;
   width: 100%;
   padding: 0.75rem;
@@ -157,6 +174,6 @@ const AddButton = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #C7D8BF;  /* hover um pouquinho mais escuro */
+    background-color: #C7D8BF;
   }
 `;
