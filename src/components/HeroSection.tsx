@@ -24,7 +24,7 @@ const GradientVeil = styled.div`
   top: 0;
   left: 0;
   height: 100%;
-  width: 1400px; /* valor máximo */
+  width: 1400px; 
   background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
   border-top-right-radius: 300px;
   border-bottom-right-radius: 300px;
