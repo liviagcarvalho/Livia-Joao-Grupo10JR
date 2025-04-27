@@ -134,7 +134,13 @@ const CheckoutButton = styled.button`
 `;
 
 const Carrinho = ({ isOpen, onClose }: CarrinhoProps) => {
-  const { cartItems, increaseQuantity, decreaseQuantity, getTotal } = useCart();
+  const { cartItems, increaseQuantity, decreaseQuantity, getTotal, clearCart } = useCart();
+
+  const handleCheckout = () => {
+    alert('Compra realizada com sucesso!');
+    clearCart(); // ✅ Esvazia o carrinho
+    onClose(); // ✅ Fecha o carrinho se quiser
+  };
 
   return (
     <>
@@ -173,10 +179,11 @@ const Carrinho = ({ isOpen, onClose }: CarrinhoProps) => {
         </CarrinhoBody>
 
         <Total>Total: R$ {getTotal().toFixed(2).replace('.', ',')}</Total>
-        <CheckoutButton>CHECKOUT</CheckoutButton>
+        <CheckoutButton onClick={handleCheckout}>CHECKOUT</CheckoutButton>
       </CarrinhoWrapper>
     </>
   );
 };
 
 export default Carrinho;
+
