@@ -183,6 +183,7 @@ const B2CIcons = styled.div`
 // ===== COMPONENTE PRINCIPAL =====
 const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
     const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
+    const navigate = useNavigate();
 
   return (
     <HeaderWrapper>
@@ -214,7 +215,7 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
           <Spacer />
         </SwitchContainer>
         <B2CIcons>
-        <IconButton aria-label="Conta">
+        <IconButton aria-label="Conta" onClick= {() => navigate('/perfil')}>
             <User size={24} strokeWidth={3} />
         </IconButton>
         <IconButton aria-label="Carrinho" onClick={abrirCarrinho}>
