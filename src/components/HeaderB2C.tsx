@@ -217,9 +217,6 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
         <IconButton aria-label="Conta">
             <User size={24} strokeWidth={3} />
         </IconButton>
-        <IconButton aria-label="Favoritos">
-            <Heart size={24} strokeWidth={3} />
-        </IconButton>
         <IconButton aria-label="Carrinho" onClick={abrirCarrinho}>
             <ShoppingCart size={24} strokeWidth={3} />
         </IconButton>

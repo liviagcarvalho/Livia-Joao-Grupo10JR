@@ -5,19 +5,21 @@ import { useCart } from '../components/CartContext';
 
 export interface ProductCardProps {
   name: string;
-  price: string;
+  pricenormal: string;
+  pricedesconto: string;
   images?: Record<string, string>;
   colors: string[];
   abrirCarrinho?: () => void;
 }
 
-export const ProductCard = ({
+export const ProductCardSale: React.FC<ProductCardProps> = ({
   name,
-  price,
+  pricenormal,
+  pricedesconto,
   images = {},
   colors,
   abrirCarrinho,
-}: ProductCardProps) => {
+}) => {
   const { addItem } = useCart();
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
@@ -28,14 +30,13 @@ export const ProductCard = ({
     e.stopPropagation();
     addItem({
       name,
-      price,
+      price: pricedesconto,  // passa o preço de desconto corretamente
       image: displayImage,
       quantity: 1,
     });
     abrirCarrinho?.();
   };
 
-  // monta o link (coloque aqui a sua rota de detalhe)
   const detalheLink = `/produto-b2c/${encodeURIComponent(name)}`;
 
   return (
@@ -45,13 +46,11 @@ export const ProductCard = ({
       </Link>
 
       <Info>
-        <Link
-          to={detalheLink}
-          style={{ textDecoration: 'none', color: 'inherit' }}
-        >
+        <Link to={detalheLink} style={{ textDecoration: 'none', color: 'inherit' }}>
           <ProductName>{name}</ProductName>
         </Link>
-        <ProductPrice>{price}</ProductPrice>
+        <ProductPrice>{pricenormal}</ProductPrice>
+        <ProductPrice>{pricedesconto}</ProductPrice>
       </Info>
 
       <ColorPicker>
@@ -121,6 +120,12 @@ const ProductPrice = styled.p`
   text-align: center;
 `;
 
+const ProductPrice2 = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+`;
+
 const ColorPicker = styled.div`
   display: flex;
   justify-content: center;
@@ -133,10 +138,9 @@ const ColorDot = styled.button<{ color: string; selected: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  border: ${({ color }) =>
-    color === '#ffffff' ? '1px solid #d1d5db' : 'none'};
-  background-color: ${({ color }) => color};
-  outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')};
+  border: ${(props) => (props.color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
+  background-color: ${(props) => props.color};
+  outline: ${(props) => (props.selected ? '2px solid #1D311F' : 'none')};
   cursor: pointer;
 `;
 
