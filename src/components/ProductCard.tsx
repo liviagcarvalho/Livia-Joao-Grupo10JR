@@ -5,7 +5,7 @@ import { useCart } from '../components/CartContext';
 export interface ProductCardProps {
   name: string;
   price: string;
-  images?: Record<string, string>;
+  images?: Record<string, string | undefined>;
   image?: string;
   colors: string[];
   abrirCarrinho?: () => void;
