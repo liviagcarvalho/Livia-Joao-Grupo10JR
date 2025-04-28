@@ -106,10 +106,12 @@ const ProductCarousel = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
       });
     }
   };
-
   const handleNavigate = () => {
-    navigate("/produtos/mais-vendidos");
+    navigate('/produtos-b2c', {
+      state: { filtroInicial: 'mais-vendidos' }
+    });
   };
+  
 
   return (
     <Section>
