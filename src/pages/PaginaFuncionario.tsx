@@ -121,22 +121,24 @@ const SubmitButton = styled.button`
 `;
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'b2b' | 'customers' | 'products'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'b2b' | 'customers' | 'products'>('overview');//guarda qual aba está escolhida no momento
 
+  //guarda os produtos cadastrados
   const [products, setProducts] = useState([
     { id: 1, name: 'Cadeira Ergonômica', price: 'R$420,00', category: 'MÓVEIS', active: true, sale: false, highlight: true },
     { id: 2, name: 'Mesa Compacta', price: 'R$699,90', category: 'MÓVEIS', active: true, sale: false, highlight: false },
     { id: 3, name: 'Luminária LED', price: 'R$89,00', category: 'ELETRÔNICOS', active: false, sale: true, highlight: false },
   ]);
-
+//guarda oq esta sendo digitado para adicionaar um novo produto
   const [newProduct, setNewProduct] = useState({ name: '', price: '', sale: false, highlight: false, category: 'MÓVEIS' });
-  const [editingProductId, setEditingProductId] = useState<number | null>(null);
+  const [editingProductId, setEditingProductId] = useState<number | null>(null); // guarda o produo e está sendo editado
   const [editedProduct, setEditedProduct] = useState({ name: '', price: '', sale: false, highlight: false, category: 'MÓVEIS' });
 
+  // qauando o formulário é enviado, adicona novo produto
   const handleAddProduct = (e: React.FormEvent) => {
     e.preventDefault();
     const newProd = {
-      id: Date.now(),
+      id: Date.now(), //onde o Id é definido, Date.now() é uma função do JavaScript que retorna o timestamp atual: o número de milissegundos desde 1 de janeiro de 1970 até agora.
       name: newProduct.name,
       price: newProduct.price,
       active: true,
@@ -148,10 +150,11 @@ const AdminDashboard = () => {
     setNewProduct({ name: '', price: '', sale: false, highlight: false, category: 'MÓVEIS' });
   };
 
+  //remove por filtro igualmente no carrinhgo, sq diferente do nome é por ID
   const handleRemoveProduct = (id: number) => {
     setProducts(prev => prev.filter(product => product.id !== id));
   };
-
+  //guarda as informações to item que ta sendo editado
   const handleStartEdit = (product: any) => {
     setEditingProductId(product.id);
     setEditedProduct({
@@ -162,7 +165,7 @@ const AdminDashboard = () => {
       category: product.category,
     });
   };
-
+//Salva oq foi editado
   const handleSaveEdit = (id: number) => {
     setProducts(prev =>
       prev.map(prod =>
