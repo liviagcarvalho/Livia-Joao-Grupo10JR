@@ -1,16 +1,10 @@
-import SwitchToggle from "../components/SwitchToggle"
+import SwitchToggle from "../components/SwitchToggle"; // importa um botão de alternância
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi'; // seta para dropdown
 import Orcamento from '../pages/OrcamentoB2B'; // aqui está o seu modal de orçamento
-import { useLocation, useNavigate } from "react-router-dom";
-import { User, Heart, ShoppingCart } from 'lucide-react';
-import { useCart } from './CartContext';
-
-
-
-
+import { User, ShoppingCart } from 'lucide-react'; // ícones de usuário e carrinho
 
 // ====== ESTILOS COM STYLED-COMPONENTS ======
 const HeaderWrapper = styled.header`
@@ -35,12 +29,23 @@ const TopContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
   gap: 1.5rem;
   font-size: 15px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
 const TopLink = styled(Link)`
@@ -62,6 +67,11 @@ const SwitchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 const Switch = styled.div`
@@ -108,10 +118,18 @@ const Logo = styled(Link)`
   &:hover {
     opacity: 0.9;
   }
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
 `;
 
 const Spacer = styled.div`
   width: 220px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuWrapper = styled.div`
@@ -127,6 +145,11 @@ const MenuContent = styled.div`
   padding: 0.75rem 0.5rem;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 const Nav = styled.nav`
@@ -136,6 +159,8 @@ const Nav = styled.nav`
   font-weight: bold;
   color: #1D311F;
   flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: center;
 
   a {
     white-space: nowrap;
@@ -158,10 +183,15 @@ const QuoteButton = styled(Link)`
   width: 150px;
   transition: 0.3s;
   cursor: pointer;
-  
 
   &:hover {
     background-color: #2b452d;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    text-align: center;
   }
 `;
 
@@ -172,6 +202,7 @@ const IconButton = styled.button`
   display: flex;
   align-items: center;
 `;
+
 const B2CIcons = styled.div`
   position: absolute;
   bottom: 15px;
@@ -179,26 +210,30 @@ const B2CIcons = styled.div`
   display: flex;
   gap: 12px;
   color: #1D311F;
+
+  @media (max-width: 768px) {
+    position: static;
+    margin-top: 1rem;
+  }
 `;
+
 // ===== COMPONENTE PRINCIPAL =====
 const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
-    const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
-    const navigate = useNavigate();
+  const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <HeaderWrapper>
-      {/* TOPO VERDE ESCURO */}
+      {/* TOPO VERDE CLARO */}
       <TopBar>
         <TopContent>
           <ButtonGroup>
-          <TopLink to="/sobre-b2c">
-            Sobre nós <FiChevronDown size={14} />
-          </TopLink>
-          <TopLink to="/ajuda-b2c">
-            Ajuda <FiChevronDown size={14} />
-          </TopLink>
-
-
+            <TopLink to="/sobre-b2c">
+              Sobre nós <FiChevronDown size={14} />
+            </TopLink>
+            <TopLink to="/ajuda-b2c">
+              Ajuda <FiChevronDown size={14} />
+            </TopLink>
           </ButtonGroup>
         </TopContent>
 
@@ -206,7 +241,7 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
           <Switch>
             <span>Para Clientes</span>
             <SwitchToggle />
-              <div />
+            <div />
             <span>Para Empresas</span>
           </Switch>
 
@@ -214,13 +249,14 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
 
           <Spacer />
         </SwitchContainer>
+
         <B2CIcons>
-        <IconButton aria-label="Conta" onClick= {() => navigate('/perfil')}>
+          <IconButton aria-label="Conta" onClick={() => navigate('/perfil')}>
             <User size={24} strokeWidth={3} />
-        </IconButton>
-        <IconButton aria-label="Carrinho" onClick={abrirCarrinho}>
+          </IconButton>
+          <IconButton aria-label="Carrinho" onClick={abrirCarrinho}>
             <ShoppingCart size={24} strokeWidth={3} />
-        </IconButton>
+          </IconButton>
         </B2CIcons>
       </TopBar>
 
@@ -237,7 +273,6 @@ const Header = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
           <QuoteButton to="/Sale">
             SALE
           </QuoteButton>
-          
         </MenuContent>
       </MenuWrapper>
 

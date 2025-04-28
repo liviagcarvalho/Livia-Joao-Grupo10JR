@@ -11,6 +11,18 @@ const Section = styled.section`
   padding: 0 1rem;
   overflow: hidden;
   margin-top: 8rem;
+
+  @media (max-width: 1280px) {
+    margin-top: 8rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 16rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 21rem;
+  }
+  @media (max-width: 640px) {
+    margin-top: 26rem;
 `;
 // Imagem de fundo
 const BackgroundImage = styled.img`
