@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { ProductCard, ProductCardProps } from "./ProductCard";
+import { ProductCardB2B, ProductCardProps } from "./ProductCard";
 import allProducts from "./allProducts";
 import { ChevronLeft, ChevronRight, Subtitles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -133,7 +133,7 @@ const ProductCarousel = () => {
       <Carousel ref={carouselRef}>
         {allProducts.map((product: ProductCardProps, index: number) => (
           <CarouselItem key={index}>
-            <ProductCard {...product} />
+            <ProductCardB2B {...product} />
           </CarouselItem>
         ))}
       </Carousel>
