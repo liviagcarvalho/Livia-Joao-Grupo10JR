@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { ProductCard, ProductCardProps } from "./ProductCard";
+import { ProductCard, ProductCardProps } from "./ProductCardB2C";
 import allProducts from "./allProductsB2C";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -132,7 +132,6 @@ const ProductCarousel = ({ abrirCarrinho }: { abrirCarrinho: () => void }) => {
           <CarouselItem key={index}>
             <ProductCard
               {...product}
-              modo="b2c"
               abrirCarrinho={abrirCarrinho}
             />
           </CarouselItem>

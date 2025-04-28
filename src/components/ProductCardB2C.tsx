@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useCart } from '../components/CartContext';
 
+
+
 export interface ProductCardProps {
   name: string;
   price: string;
