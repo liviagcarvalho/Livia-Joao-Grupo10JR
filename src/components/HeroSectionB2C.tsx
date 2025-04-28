@@ -10,6 +10,18 @@ const Section = styled.section`
   height: 757px;
   padding: 0 1rem;
   overflow: hidden;
+
+    @media (max-width: 1280px) {
+    margin-top: 8rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 16rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 21rem;
+  }
+  @media (max-width: 640px) {
+    margin-top: 26rem;
 `;
 
 // Imagem de fundo
