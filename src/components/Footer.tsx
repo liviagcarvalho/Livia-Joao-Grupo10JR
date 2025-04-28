@@ -2,6 +2,107 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
+const Footer = () => {
+  //Cada linha cria uma constante - state hook- para armazenar o valor do respectivo campo
+  // todos se inciam vazios, sem string
+  //setXXX é a funcao usada para atualizar o valor, conforme o usuário digita
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [email, setEmail] = useState("");
+
+  // quando apertamos o botao enviar, limpa todos os campos 
+  // botao enviar funciona com handle submit 
+  const handleSubmit = () => {
+    setNome("");
+    setTelefone("");
+    setEmail("");
+  };
+
+  // type = text recebe uma string, =email recebe .com e @, =tel - teclado numerico
+  //value = o que faz, então é o que vai ser enviado no meu input
+  //place holder = orienta o que a pessoa vai escrever no input 
+
+  //ONCHANGE - IMPORTANTE
+  // e representa mudanca no react
+  // e.target.value é o novo texto que o usuário acabou de digitar.
+  //Quando o usuário digita algo, o React dispara essa função, que chama setNome(...)
+  //resumindo - quando o usuario esta digitando o e.target.value vai salvando o texto digitado e quando a pessoa envia ela "set" um nome
+  // Usamos onChange pq sem ele o react nao saberis quando o texto mudou e nao conseguiriamos capturar o valor do input
+
+  //HANDLE SUBMIT - quando clicamos no botao com  essa funcao as informacoes sao enviadas e os campos são limpos 
+  //const que definimos ali em cima 
+ 
+  return (
+    <FooterContainer>
+      <ContactBar>
+        <ContactTitle>Entre em contato com a empresa</ContactTitle>
+        <ContactInputs>
+          <InputField
+            type="text"
+            placeholder="Nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+          <InputField
+            type="tel"
+            placeholder="Telefone"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+          />
+          <InputField
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </ContactInputs>
+        <SendButton type="button" onClick={handleSubmit}>
+          ENVIAR
+        </SendButton>
+      </ContactBar>
+
+      <CenterContent>
+        <Logo>R. Amaral Office</Logo>
+        <NavLinks>
+          <a href="#">EMPRESA</a>
+          <a href="#">FUNCIONARIOS</a>
+        </NavLinks>
+      </CenterContent>
+
+      <BottomContent>
+        <ContactSection>
+          <h3>FALE CONOSCO:</h3>
+          <p>R.AmaralOffice@gmail.com</p>
+          <p>+55 (11) 8265-3746</p>
+          <p>Nossa Loja Física: Rua dos Pinheiros, n48 - São Paulo, SP</p>
+        </ContactSection>
+
+        <Icons>
+          <a href="https://facebook.com" target="_blank">
+            <FaFacebookF />
+          </a>
+          <a href="https://instagram.com" target="_blank" >
+            <FaInstagram />
+          </a>
+          <a href="https://linkedin.com" target="_blank" >
+            <FaLinkedinIn />
+          </a>
+        </Icons>
+      </BottomContent>
+
+      <LegalNotice>
+        2025 R. Amaral Office - Todos os direitos reservados \{' '}
+        <a >Política de Privacidade</a> \{' '}
+        <a >Termos de uso</a>
+      </LegalNotice>
+    </FooterContainer>
+  );
+};
+
+// link dos icones, foram feitos com href e com  target blank que abre uma nova pagina no navegador 
+//eles sao styled.div
+export default Footer;
+
 //local de contato
 const ContactBar = styled.div`
   display: flex;
@@ -250,103 +351,3 @@ const LegalNotice = styled.div`
     font-size: 12px;
   }
 `;
-
-
-const Footer = () => {
-  //Cada linha cria uma constante - state hook- para armazenar o valor do respectivo campo
-  // todos se inciam vazios, sem string
-  //setXXX é a funcao usada para atualizar o valor, conforme o usuário digita
-  const [nome, setNome] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [email, setEmail] = useState("");
-
-  // quando apertamos o botao enviar, limpa todos os campos 
-  // botao enviar funciona com handle submit 
-  const handleSubmit = () => {
-    setNome("");
-    setTelefone("");
-    setEmail("");
-  };
-
-  // type = text recebe uma string, =email recebe .com e @, =tel - teclado numerico
-  //value = o que faz, então é o que vai ser enviado no meu input
-  //place holder = orienta o que a pessoa vai escrever no input 
-
-  //ONCHANGE - IMPORTANTE
-  // e representa mudanca no react
-  // e.target.value é o novo texto que o usuário acabou de digitar.
-  //Quando o usuário digita algo, o React dispara essa função, que chama setNome(...)
-  //resumindo - quando o usuario esta digitando o e.target.value vai salvando o texto digitado e quando a pessoa envia ela "set" um nome
-  // Usamos onChange pq sem ele o react nao saberis quando o texto mudou e nao conseguiriamos capturar o valor do input
-
-  //HANDLE SUBMIT - quando clicamos no botao com  essa funcao as informacoes sao enviadas e os campos são limpos 
-  //const que definimos ali em cima 
- 
-  return (
-    <FooterContainer>
-      <ContactBar>
-        <ContactTitle>Entre em contato com a empresa</ContactTitle>
-        <ContactInputs>
-          <InputField
-            type="text"
-            placeholder="Nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-          <InputField
-            type="tel"
-            placeholder="Telefone"
-            value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}
-          />
-          <InputField
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </ContactInputs>
-        <SendButton type="button" onClick={handleSubmit}>
-          ENVIAR
-        </SendButton>
-      </ContactBar>
-
-      <CenterContent>
-        <Logo>R. Amaral Office</Logo>
-        <NavLinks>
-          <a href="#">EMPRESA</a>
-          <a href="#">FUNCIONARIOS</a>
-        </NavLinks>
-      </CenterContent>
-
-      <BottomContent>
-        <ContactSection>
-          <h3>FALE CONOSCO:</h3>
-          <p>R.AmaralOffice@gmail.com</p>
-          <p>+55 (11) 8265-3746</p>
-          <p>Nossa Loja Física: Rua dos Pinheiros, n48 - São Paulo, SP</p>
-        </ContactSection>
-
-        <Icons>
-          <a href="https://facebook.com" target="_blank">
-            <FaFacebookF />
-          </a>
-          <a href="https://instagram.com" target="_blank" >
-            <FaInstagram />
-          </a>
-          <a href="https://linkedin.com" target="_blank" >
-            <FaLinkedinIn />
-          </a>
-        </Icons>
-      </BottomContent>
-
-      <LegalNotice>
-        2025 R. Amaral Office - Todos os direitos reservados \{' '}
-        <a >Política de Privacidade</a> \{' '}
-        <a >Termos de uso</a>
-      </LegalNotice>
-    </FooterContainer>
-  );
-};
-
-export default Footer;
