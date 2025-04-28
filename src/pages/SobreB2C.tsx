@@ -19,6 +19,18 @@ const HeroSection = styled.section`
   justify-content: flex-start;
   padding: 0 5%;
   color: white;
+  
+    @media (max-width: 1280px) {
+    margin-top: 8rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 16rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 21rem;
+  }
+  @media (max-width: 640px) {
+    margin-top: 26rem;
 `;
 
 const HeroText = styled.div`
