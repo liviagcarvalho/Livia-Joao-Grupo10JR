@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
-//local de contato
+// local de contato
 const ContactBar = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,8 +15,6 @@ const ContactBar = styled.div`
     margin-bottom: 5rem;
   }
 `;
-
-
 
 const ContactTitle = styled.h4`
   font-family: 'Inter', 'sans-serif';
@@ -54,6 +52,10 @@ const InputField = styled.input`
   &::placeholder {
     color: #1d311f88;
   }
+
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 `;
 
 const SendButton = styled.button`
@@ -70,11 +72,13 @@ const SendButton = styled.button`
   &:hover {
     background-color: #cde6d8;
   }
+
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 `;
 
-
-
-//local do logo e infos do footer
+// local do logo e infos do footer
 const FooterContainer = styled.footer`
   background-color: #9CAF88;
   color: #1d311f;
@@ -156,9 +160,13 @@ const BottomContent = styled.div`
 const ContactSection = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center; // Centraliza no mobile para ficar mais harmonioso
 
   font-family: 'Inter', 'sans-serif';
+
+  @media(min-width: 640px) {
+    text-align: left; // Em telas maiores, volta a ser alinhado à esquerda
+  }
 
   h3 {
     font-family: 'Inter', 'sans-serif'; 
@@ -193,15 +201,10 @@ const ContactSection = styled.div`
   }
 `;
 
-
 const Icons = styled.div`
   display: flex;
   gap: 1rem;
-  align-self: flex-start;
-
-  @media(min-width: 640px) {
-    align-self: center;
-  }
+  align-self: center;
 
   svg {
     width: 48px;
@@ -260,6 +263,7 @@ const Footer = () => {
 
   return (
     <FooterContainer>
+      {/* Bloco de Contato */}
       <ContactBar>
         <ContactTitle>Entre em contato com a empresa</ContactTitle>
         <ContactInputs>
@@ -287,7 +291,7 @@ const Footer = () => {
         </SendButton>
       </ContactBar>
 
-
+      {/* Bloco Central - Logo e Navegação */}
       <CenterContent>
         <Logo>R. Amaral Office</Logo>
         <NavLinks>
@@ -297,6 +301,7 @@ const Footer = () => {
         </NavLinks>
       </CenterContent>
 
+      {/* Bloco Inferior - Contatos e Ícones */}
       <BottomContent>
         <ContactSection>
           <h3>FALE CONOSCO:</h3>
@@ -318,9 +323,10 @@ const Footer = () => {
         </Icons>
       </BottomContent>
 
+      {/* Aviso Legal */}
       <LegalNotice>
-        2025 R. Amaral Office - Todos os direitos reservados \{' '}
-        <a href="#">Política de Privacidade</a> \{' '}
+        2025 R. Amaral Office - Todos os direitos reservados {' '}
+        <a href="#">Política de Privacidade</a> {' '}
         <a href="#">Termos de uso</a>
       </LegalNotice>
     </FooterContainer>

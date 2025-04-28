@@ -1,4 +1,3 @@
-
 // export default Header;
 import SwitchToggle from "../components/SwitchToggle" //importa um componente personalizado; Geralmente é um botão que “liga/desliga” algo no UI.
 import React, { useState } from 'react';
@@ -18,6 +17,7 @@ const Header = () => {
   //isOrcamentoOpen: é o nome da caixinha. Quando for true, o orçamento está aberto; quando for false, está fechado.
   const [isOrcamentoOpen, setOrcamentoOpen] = useState(false);
   //setOrcamentoOpen: é a função para mudar o valor dentro dessa caixinha. Para abrir o orçamento, chamar setOrcamentoOpen(true); para fechar, setOrcamentoOpen(false).
+
   return (
     <HeaderWrapper>
       {/* TOPO VERDE ESCURO 
@@ -25,35 +25,27 @@ const Header = () => {
       <TopBar>
         <TopContent>
           <ButtonGroup>
-            {/* O TopLink é um componente React criado com a biblioteca styled-components - veja no código la em baixo - que “empacota” o componente <Link> do React Router e já aplica estilos CSS nele
-            Vem de import { Link } from 'react-router-dom'.
-            Substitui a tag <a> tradicional: ao clicar, muda a rota sem recarregar a página inteira
-            Em vez de usar href="…", passa a usar to="/alguma-rota":*/}
+            {/* O TopLink é um componente React criado com a biblioteca styled-components - veja no código lá em baixo - que “empacota” o componente <Link> do React Router e já aplica estilos CSS nele */}
             <TopLink to="/sobre"> 
               Sobre nós <FiChevronDown/>
             </TopLink>
             <TopLink to="/ajuda-b2b">
-              Ajuda <FiChevronDown/>  {/* dentro do styled compnents top link, tem o que esta escrcrito e a flechinha da biblioteca */}
+              Ajuda <FiChevronDown/>  {/* dentro do styled-components TopLink, tem o que está escrito e a flechinha da biblioteca */}
             </TopLink>
           </ButtonGroup>
-
-          {/*<Language>
-            <span>Idioma</span>
-            <Flag src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil" />
-          </Language>*/}
         </TopContent>
 
         <SwitchContainer>
           <Switch>
             <span>Para Clientes</span>
             <SwitchToggle />
-              <div />
+            <div />
             <span>Para Empresas</span>
           </Switch>
 
           <Logo to="/">R. Amaral Office</Logo>
 
-          <Spacer />  {/* Espaço é porque como estabeleci que justify-content: space-between; preciso colocar alguma coisa para ficar no final pois se nao o logo iria ficar grudado do lado direito */}
+          <Spacer /> {/* Espaço é porque como estabeleci que justify-content: space-between; preciso colocar alguma coisa para ficar no final pois se não o logo iria ficar grudado do lado direito */}
         </SwitchContainer>
       </TopBar>
 
@@ -66,10 +58,9 @@ const Header = () => {
             <Link to="/produtos/materiais">MATERIAIS</Link>
             <Link to="/produtos/ambientacao">AMBIENTAÇÃO & CONFORTO</Link>
           </Nav>
-          <QuoteButton onClick={() => setOrcamentoOpen(true)}> {/* on click deixa setOrcamentoOpen(true) então antes estava falso e agora quando a pessoa clica fica open*/}
+          <QuoteButton onClick={() => setOrcamentoOpen(true)}> {/* onClick deixa setOrcamentoOpen(true) então antes estava falso e agora quando a pessoa clica fica open */}
             FAÇA SEU ORÇAMENTO
           </QuoteButton>
-        
       </MenuWrapper>
 
       {/* MODAL DE ORÇAMENTO */}
@@ -98,27 +89,30 @@ const TopBar = styled.div`
   width: 100%; // vai ocupar 100% da largura do seu elemento-pai 
   padding: 0.5rem 1.5rem 0.25rem 1.5rem;
 `;
-//está definindo, em ordem:
-// padding-top: 0.5rem;
-// padding-right: 1.5rem;
-// padding-bottom: 0.25rem;
-// padding-left: 1.5rem;
 
 const TopContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
 `;
 
 const ButtonGroup = styled.div`
-  display: flex; // faz ficar um do lado do outro e nao um em cima do outro
-  gap: 1.5rem; // espçamento entre os itens do button group (sobre nos e ajuda)
+  display: flex; // faz ficar um do lado do outro e não um em cima do outro
+  gap: 1.5rem; // espaçamento entre os itens do button group (Sobre nós e Ajuda)
   font-size: 15px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
-//styled-components permite escrever CSS dentro de um template literal e associá-lo a um componente React.
-// styled(Link) - é um componente do React Router -trocar de rota sem recarregar a página inteira
-// Em vez de usar href="…", você passa to="/alguma-rota":
 const TopLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -151,8 +145,12 @@ const SwitchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
-// SwitchContainer é só o “caixote” que agrupa o switch
 
 const Switch = styled.div`
   display: flex;
@@ -165,28 +163,25 @@ const Switch = styled.div`
     font-family: 'Spectral', serif;
   }
 `;
-// Switch define o espaço para as duas legendas e a alavanca do toggle
 
 const Toggle = styled.div`
-  width: 40px; //largura total do trilho (40px).
+  width: 40px; // largura total do trilho (40px).
   height: 20px; // altura total
-  background: white; //Cor de fundo
-  border-radius: 9999px; //Arredonda fortemente as bordas, gerando um formato “pílula”
+  background: white; // cor de fundo
+  border-radius: 9999px; // arredonda fortemente as bordas, gerando um formato “pílula”
   position: relative;
 
-  div { /* Seleciona o <div> interno (a bolinha do toggle)*/
-    width: 20px; // altura e largura iguais para quando aplicar o border ficar uma bolinha
+  div { // seleciona o <div> interno (a bolinha do toggle)
+    width: 20px;
     height: 20px;
-    background: #1D311F; // cor do fundo da pilula quando a bolinha desliza desliza
+    background: #1D311F; // cor do fundo da pílula quando a bolinha desliza
     border-radius: 9999px;
-    position: absolute; 
-    right: 0; //Encosta a bolinha no lado direito
-    transition: all 0.3s; // faz a mudaça de posicao da bolota ser suave
+    position: absolute;
+    right: 0;
+    transition: all 0.3s; // faz a mudança de posição da bolota ser suave
   }
 `;
-// Toggle é o estilo do “trilho” branco (onde a bolinha desliza) e da bolinha escura que muda de lado
 
-//Logo é o nome da empresa que tem link pois quando a pessoa clica vai para a home 
 const Logo = styled(Link)`
   font-size: 48px;
   font-weight: 800;
@@ -200,11 +195,18 @@ const Logo = styled(Link)`
   &:hover {
     opacity: 0.9;
   }
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
 `;
 
-// spacer explicado no código
 const Spacer = styled.div`
   width: 220px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuWrapper = styled.div`
@@ -216,21 +218,28 @@ const MenuWrapper = styled.div`
   padding: 0.75rem 0.5rem;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
-//área onde reune os links que ajudam o usuário a “navegar” pelo site
+// styled.nav cria uma tag <nav> estilizada, semântica para navegação
 const Nav = styled.nav`
   display: flex;
   gap: 2.5rem;
   font-size: 20px;
   font-weight: bold;
   color: #1D311F;
-  flex-grow: 1; //Faz o nav “crescer” para ocupar todo o espaço horizontal disponível, empurrando o botão para a direita
+  flex-grow: 1; // faz o nav “crescer” para ocupar espaço horizontal disponível, empurrando o botão para a direita
+  flex-wrap: wrap;
+  justify-content: center;
 
-  a { //Seleciona cada <a> dentro do nav para aplicar estilos específicos aos links
-    white-space: nowrap; //Impede que o texto quebre em várias linhas; mantém tudo numa única linha
+  a { // seleciona cada <a> dentro do nav para aplicar estilos específicos aos links
+    white-space: nowrap; // impede que o texto quebre em várias linhas; mantém tudo numa única linha
 
-    &:hover { // quando o cursor esta em cima muda para marrom dourado ( a cor das letras)
+    &:hover {
       color: #aa8453;
     }
   }
@@ -250,5 +259,10 @@ const QuoteButton = styled.button`
 
   &:hover {
     background-color: #2b452d;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    max-width: 300px;
   }
 `;
