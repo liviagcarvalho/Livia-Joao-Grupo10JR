@@ -1,60 +1,3 @@
-// import React from "react";
-// import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-
-// const Footer = () => {
-//   return (
-//     <footer className="bg-[#1D311F] text-white w-full px-6 py-10 flex flex-col justify-between">
-//       {/* Logo e Navegação */}
-//       <div className="flex flex-col items-center text-center">
-//         <h2 className="font-[Spectral] font-extrabold text-[32px] sm:text-[40px] lg:text-[48px] leading-tight mb-4">
-//           R. Amaral Office
-//         </h2>
-//         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 font-[Inter] font-extrabold text-[20px] sm:text-[22px] lg:text-[24px]">
-//           <a href="#">EMPRESA</a>
-//           <a href="#">ATENDIMENTO</a>
-//           <a href="#">PRODUTOS</a>
-//         </div>
-//       </div>
-
-//       {/* Contato e Ícones */}
-//       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full max-w-[1280px] mx-auto mt-10 gap-10 sm:gap-0">
-//         {/* Contato à esquerda */}
-//         <div className="flex flex-col text-left">
-//           <h3 className="font-[Inter] font-extrabold text-[24px] sm:text-[28px] lg:text-[32px] mb-2">
-//             FALE CONOSCO:
-//           </h3>
-//           <p className="font-[Inter] font-medium text-[20px] sm:text-[22px] lg:text-[24px]">
-//             R.AmaralOffice@gmail.com
-//           </p>
-//           <p className="font-[Inter] font-medium text-[20px] sm:text-[22px] lg:text-[24px]">
-//             +55 (11) 8265-3746
-//           </p>
-//           <p className="font-[Inter] font-medium text-[20px] sm:text-[22px] lg:text-[24px]">
-//             Nossa Loja Física: Rua dos Pinheiros, n48 - São Paulo, SP
-//           </p>
-//         </div>
-
-//         {/* Ícones à direita */}
-//         <div className="flex gap-4 self-start sm:self-center">
-//           <a href="#"><FaFacebookF className="w-[48px] h-[48px] sm:w-[55px] sm:h-[55px] lg:w-[60px] lg:h-[60px]" /></a>
-//           <a href="#"><FaInstagram className="w-[48px] h-[48px] sm:w-[55px] sm:h-[55px] lg:w-[60px] lg:h-[60px]" /></a>
-//           <a href="#"><FaLinkedinIn className="w-[48px] h-[48px] sm:w-[55px] sm:h-[55px] lg:w-[60px] lg:h-[60px]" /></a>
-//         </div>
-//       </div>
-
-//       {/* Rodapé final */}
-//       <div className="text-center text-[11px] sm:text-[12px] font-[Inter] font-normal mt-10">
-//         2025 R. Amaral Office - Todos os direitos reservados \{' '}
-//         <a href="#" className="underline">Política de Privacidade</a> \{' '}
-//         <a href="#" className="underline">Termos de uso</a>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
@@ -73,6 +16,7 @@ const ContactBar = styled.div`
   }
 `;
 
+// titulo da area de contato com a empresa (parte de cima do footer)
 const ContactTitle = styled.h4`
   font-family: 'Inter', 'sans-serif';
   font-weight: 700;
@@ -88,6 +32,7 @@ const ContactTitle = styled.h4`
   }
 `;
 
+// local que agrupa todos os inputs fields
 const ContactInputs = styled.div`
   display: flex;
   gap: 1rem;
@@ -97,6 +42,7 @@ const ContactInputs = styled.div`
   max-width: 900px;
 `;
 
+// local para por as infos do local de contato
 const InputField = styled.input`
   padding: 0.7rem 1rem;
   border-radius: 20px;
@@ -111,6 +57,8 @@ const InputField = styled.input`
   }
 `;
 
+
+// botao enviar do local de contato (parte de cima do footer)
 const SendButton = styled.button`
   padding: 0.8rem 2rem;
   background-color: #b4d9c4;
@@ -138,6 +86,7 @@ const FooterContainer = styled.footer`
   justify-content: space-between;
 `;
 
+//onde fica o logo e "empresa e funcionarios" no meio ao centro do footer 
 const CenterContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -145,6 +94,7 @@ const CenterContent = styled.div`
   text-align: center;
 `;
 
+//logo da emoresa, com responsividade
 const Logo = styled.h2`
   font-family: 'Spectral', serif;
   font-weight: 800;
@@ -161,6 +111,9 @@ const Logo = styled.h2`
   }
 `;
 
+// nav links - Empresa e funcionarios em baixo do logo - com responsividade
+//quando passa o cursor por cima tem unrline e muda de cor 
+// tem responsividade com media 
 const NavLinks = styled.div`
   display: flex;
   flex-direction: column;
@@ -189,6 +142,7 @@ const NavLinks = styled.div`
   }
 `;
 
+//secao/ container do fale conosco e in=cones de social media - com responsividade media 
 const BottomContent = styled.div`
   margin-top: 2.5rem;
   display: flex;
@@ -205,6 +159,11 @@ const BottomContent = styled.div`
     gap: 0;
   }
 `;
+
+//area para contato
+//titulo h3 com responsividade -media  - dependendo do tamanho da tela muda fonte
+//info fale conosco (p) - responsividade media - muda fonte e espacamento dependendo do tamanho de telas
+//primeiro tem os valores iniciais e depois o media com a responsividade
 
 const ContactSection = styled.div`
   display: flex;
@@ -245,6 +204,9 @@ const ContactSection = styled.div`
   }
 `;
 
+// & hover, quando cursor estiver em cima, mudar de cor 
+// @media - responsividade para quando o tamanho da tela for de 640px - responsividade container e dps para os icones
+//svg icones insta, face e linkedin 
 const Icons = styled.div`
   display: flex;
   gap: 1rem;
@@ -276,6 +238,7 @@ const Icons = styled.div`
   }
 `;
 
+// quando a lagura for de 640px mudar a fonte - responsividade @media
 const LegalNotice = styled.div`
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -286,29 +249,39 @@ const LegalNotice = styled.div`
   @media(min-width: 640px) {
     font-size: 12px;
   }
-
-  a {
-    color: white;
-    text-decoration: underline;
-
-    &:hover {
-      color: #b4d9c4;
-    }
-  }
 `;
 
+
 const Footer = () => {
+  //Cada linha cria uma constante - state hook- para armazenar o valor do respectivo campo
+  // todos se inciam vazios, sem string
+  //setXXX é a funcao usada para atualizar o valor, conforme o usuário digita
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
 
+  // quando apertamos o botao enviar, limpa todos os campos 
+  // botao enviar funciona com handle submit 
   const handleSubmit = () => {
-    // Aqui futuramente pode ser feita a validação/envio para backend
     setNome("");
     setTelefone("");
     setEmail("");
   };
 
+  // type = text recebe uma string, =email recebe .com e @, =tel - teclado numerico
+  //value = o que faz, então é o que vai ser enviado no meu input
+  //place holder = orienta o que a pessoa vai escrever no input 
+
+  //ONCHANGE - IMPORTANTE
+  // e representa mudanca no react
+  // e.target.value é o novo texto que o usuário acabou de digitar.
+  //Quando o usuário digita algo, o React dispara essa função, que chama setNome(...)
+  //resumindo - quando o usuario esta digitando o e.target.value vai salvando o texto digitado e quando a pessoa envia ela "set" um nome
+  // Usamos onChange pq sem ele o react nao saberis quando o texto mudou e nao conseguiriamos capturar o valor do input
+
+  //HANDLE SUBMIT - quando clicamos no botao com  essa funcao as informacoes sao enviadas e os campos são limpos 
+  //const que definimos ali em cima 
+ 
   return (
     <FooterContainer>
       <ContactBar>
@@ -342,8 +315,7 @@ const Footer = () => {
         <Logo>R. Amaral Office</Logo>
         <NavLinks>
           <a href="#">EMPRESA</a>
-          <a href="#">ATENDIMENTO</a>
-          <a href="#">PRODUTOS</a>
+          <a href="#">FUNCIONARIOS</a>
         </NavLinks>
       </CenterContent>
 
@@ -356,13 +328,13 @@ const Footer = () => {
         </ContactSection>
 
         <Icons>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://facebook.com" target="_blank">
             <FaFacebookF />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://instagram.com" target="_blank" >
             <FaInstagram />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://linkedin.com" target="_blank" >
             <FaLinkedinIn />
           </a>
         </Icons>
@@ -370,8 +342,8 @@ const Footer = () => {
 
       <LegalNotice>
         2025 R. Amaral Office - Todos os direitos reservados \{' '}
-        <a href="#">Política de Privacidade</a> \{' '}
-        <a href="#">Termos de uso</a>
+        <a >Política de Privacidade</a> \{' '}
+        <a >Termos de uso</a>
       </LegalNotice>
     </FooterContainer>
   );
