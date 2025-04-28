@@ -360,8 +360,6 @@ const LegalNotice = styled.div`
   @media (min-width: 640px) {
     font-size: 12px;
   }
-`;
-
 
   a {
     color: white;
@@ -372,91 +370,4 @@ const LegalNotice = styled.div`
     }
   }
 `;
-
-const Footer = () => {
-  const [nome, setNome] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = () => {
-    // Aqui futuramente pode ser feita a validação/envio para backend
-    setNome("");
-    setTelefone("");
-    setEmail("");
-  };
-
-  return (
-    <FooterContainer>
-      {/* Bloco de Contato */}
-      <ContactBar>
-        <ContactTitle>Entre em contato com a empresa</ContactTitle>
-        <ContactInputs>
-          <InputField
-            type="text"
-            placeholder="Nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-          <InputField
-            type="tel"
-            placeholder="Telefone"
-            value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}
-          />
-          <InputField
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </ContactInputs>
-        <SendButton type="button" onClick={handleSubmit}>
-          ENVIAR
-        </SendButton>
-      </ContactBar>
-
-      {/* Bloco Central - Logo e Navegação */}
-      <CenterContent>
-        <Logo>R. Amaral Office</Logo>
-        <NavLinks>
-          <a href="#">EMPRESA</a>
-          <a href="#">ATENDIMENTO</a>
-          <a href="#">PRODUTOS</a>
-        </NavLinks>
-      </CenterContent>
-
-      {/* Bloco Inferior - Contatos e Ícones */}
-      <BottomContent>
-        <ContactSection>
-          <h3>FALE CONOSCO:</h3>
-          <p>R.AmaralOffice@gmail.com</p>
-          <p>+55 (11) 8265-3746</p>
-          <p>Nossa Loja Física: Rua dos Pinheiros, n48 - São Paulo, SP</p>
-        </ContactSection>
-
-        <Icons>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <FaFacebookF />
-          </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <FaInstagram />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn />
-          </a>
-        </Icons>
-      </BottomContent>
-
-      {/* Aviso Legal */}
-      <LegalNotice>
-        2025 R. Amaral Office - Todos os direitos reservados {' '}
-        <a href="#">Política de Privacidade</a> {' '}
-        <a href="#">Termos de uso</a>
-      </LegalNotice>
-    </FooterContainer>
-  );
-};
-
-export default Footer;
-
 
