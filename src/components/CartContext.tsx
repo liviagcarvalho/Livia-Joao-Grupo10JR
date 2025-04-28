@@ -14,7 +14,7 @@ interface CartContextProps {
   decreaseQuantity: (name: string) => void;
   removeItem: (name: string) => void;
   getTotal: () => number;
-  clearCart: () => void; // ✅ Adicionado
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);

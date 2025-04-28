@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useCart } from '../components/CartContext';
+import { Link } from 'react-router-dom';
 
 export interface ProductCardProps {
   name: string;
@@ -8,20 +8,15 @@ export interface ProductCardProps {
   images?: Record<string, string | undefined>;
   image?: string;
   colors: string[];
-  abrirCarrinho?: () => void;
-  modo?: 'b2b' | 'b2c'; // ✅ Agora está tipado corretamente
 }
 
-export const ProductCard = ({
+export const ProductCardB2B = ({
   name,
   price,
   images,
   image,
   colors,
-  abrirCarrinho,
-  modo = 'b2c', // Valor padrão: B2C
 }: ProductCardProps) => {
-  const { addItem } = useCart();
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const displayImage =
@@ -29,23 +24,21 @@ export const ProductCard = ({
       ? images[selectedColor]!
       : image ?? Object.values(images ?? {})[0] ?? '';
 
-  const handleButtonClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    addItem({
-      name,
-      price,
-      image: displayImage,
-      quantity: 1,
-    });
-    abrirCarrinho?.();
-  };
+  const detalheLink = `/produto/${encodeURIComponent(name)}`;
 
   return (
     <Card>
-      <ProductImage src={displayImage} alt={name} />
+      <Link to={detalheLink}>
+        <ProductImage src={displayImage} alt={name} />
+      </Link>
 
       <Info>
-        <ProductName>{name}</ProductName>
+        <Link
+          to={detalheLink}
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          <ProductName>{name}</ProductName>
+        </Link>
         <ProductPrice>{price}</ProductPrice>
       </Info>
 
@@ -64,12 +57,9 @@ export const ProductCard = ({
           ))}
       </ColorPicker>
 
-      {/* Botão só é mostrado no modo B2C */}
-      {modo === 'b2c' && (
-        <AddButton onClick={handleButtonClick}>
-          ADICIONAR AO CARRINHO
-        </AddButton>
-      )}
+      <SaibaMaisButton as={Link} to={detalheLink}>
+        SAIBA MAIS
+      </SaibaMaisButton>
     </Card>
   );
 };
@@ -131,16 +121,15 @@ const ColorDot = styled.button<{ color: string; selected: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  border: ${({ color }) =>
-    color === '#ffffff' ? '1px solid #d1d5db' : 'none'};
+  border: ${({ color }) => (color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
   background-color: ${({ color }) => color};
   outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')};
   cursor: pointer;
 `;
 
-const AddButton = styled.button`
-  background-color: #DDE3DC;
-  color: #1D311F;
+const SaibaMaisButton = styled.button`
+  background-color: #1D311F;
+  color: white;
   width: 100%;
   padding: 0.75rem;
   font-size: 14px;
@@ -148,10 +137,12 @@ const AddButton = styled.button`
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #C7D8BF;
+    background-color: #16371B;
   }
 `;
 

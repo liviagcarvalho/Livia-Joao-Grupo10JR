@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { ProductCard } from '../components/ProductCard';
 import Footer from '../components/Footer';
 import allProducts from '../components/allProducts'
 import { FiSearch } from 'react-icons/fi';
 import Header from '../components/Header'
 import { useLocation } from 'react-router-dom';
+import {ProductCardB2B} from '../components/ProductCard';
 
 
 // Função principal do componente da página de produtos
@@ -285,7 +285,7 @@ const VerMaisWrapper = styled.div`
           {/* Grid com os cards dos produtos */}
           <Grid>
           {produtosOrdenados.slice(0, quantidadeVisivel).map((product, index) => (
-            <ProductCard key={index} {...product} />
+            <ProductCardB2B key={index} {...product} />
           ))}
 
           </Grid>
