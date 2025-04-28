@@ -92,7 +92,7 @@ const allProducts = [
     },
     colors: ['#DEB887', '#5C4033'],
     categoria: 'moveis',
-    tags: ['ver-tudo'],
+    tags: ['ver-tudo', 'lancamentos'],
     description: "Versatilidade e espaço para equipes colaborarem com conforto. Acabamento refinado e estrutura robusta."
   },
   {
@@ -348,7 +348,7 @@ const allProducts = [
     },
     "colors": ["#000000"],
     "categoria": "eletronicos",
-    "tags": ["ver-tudo"],
+    "tags": ["ver-tudo", 'lancamentos'],
     "description": "Qualidade sonora com liberdade de movimento. Ideal para chamadas e concentração no trabalho."
   },
   {
@@ -405,7 +405,7 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo'],
+    tags: ['ver-tudo', 'lancamentos'],
     description: "Organização com elegância. Ideal para escritórios que valorizam estética e funcionalidade."
   },
   {
@@ -463,7 +463,7 @@ const allProducts = [
     },
     colors: ['#000000'],
     categoria: 'materiais',
-    tags: ['ver-tudo'],
+    tags: ['ver-tudo', 'lancamentos'],
     description: "Conjunto completo para manter a mesa organizada com elegância e eficiência."
   },
   {

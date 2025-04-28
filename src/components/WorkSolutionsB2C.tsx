@@ -121,6 +121,7 @@ import React from "react";
 import styled from "styled-components";
 import imgIndividual from "../assets/HomePage/cooworkingHomePage.png";
 import imgGrupo from "../assets/HomePage/EscritorioPrivadoHomePage.png";
+import { useNavigate } from "react-router-dom";
 
 // Wrapper da seção com degradê correto
 const Section = styled.section`
@@ -218,6 +219,14 @@ const Button = styled.button`
 `;
 
 const WorkSolutionsSection = () => {
+  const navigate = useNavigate();
+  
+  const handleNavigate = () => {
+    navigate('/produtos-b2c', {
+      state: { filtroInicial: 'lancamentos' }
+    });
+  };
+
   return (
     <Section>
       <Title>PERFORME SEU MÁXIMO EM TODO LUGAR</Title>
@@ -226,14 +235,14 @@ const WorkSolutionsSection = () => {
           <Image src={imgGrupo} alt="Trabalho Individual" />
           <SubTitle>Do Trabalho Individual</SubTitle>
           <Description>O essencial para usar no dia a dia</Description>
-          <Button>Veja Mais</Button>
+          <Button onClick={handleNavigate} >Veja Mais</Button>
         </Block>
 
         <Block>
           <Image src={imgIndividual} alt="Trabalho em Grupo" />
           <SubTitle>Ao Trabalho Em Grupo</SubTitle>
           <Description>Soluções para equipes de todos os tamanhos</Description>
-          <Button>Veja Mais</Button>
+          <Button onClick={handleNavigate} > Veja Mais </Button>
         </Block>
       </Grid>
     </Section>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom"
 
 const Overlay = styled.div`
   position: fixed;
@@ -102,6 +103,7 @@ const LojaLink = styled.p`
   font-size: 20px;
   font-weight: 500;
   font-family: 'sans-serif';
+  cursor: pointer;
 
   strong {
     font-weight: bold;
@@ -160,6 +162,13 @@ const Orcamento: React.FC<OrcamentoProps> = ({ closeOrcamento }) => {
     setProdutos('');
   };
 
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate('/b2c', {
+      state: { filtroInicial: 'lancamentos' }
+    });
+  };
+
   return (
     <Overlay>
 
@@ -203,8 +212,8 @@ const Orcamento: React.FC<OrcamentoProps> = ({ closeOrcamento }) => {
           {erro && <ErrorText>Por favor, preencha todos os campos antes de enviar.</ErrorText>}
           <SubmitButton type="submit">SOLICITAR ORÇAMENTO</SubmitButton>
         </Form>
-        <LojaLink>
-          Pedidos menores? Confira nossa <strong>LOJA</strong>
+        <LojaLink onClick={handleNavigate} >
+          Não é uma empresa? Confira nossa <strong>LOJA</strong>
         </LojaLink>
       </ModalContent>
     </Overlay>

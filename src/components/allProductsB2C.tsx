@@ -91,7 +91,7 @@ const allProducts = [
         },
         colors: ['#DEB887', '#5C4033'],
         categoria: 'moveis',
-        tags: ['ver-tudo'],
+        tags: ['ver-tudo', 'lancamentos'],
         detailedDescription: `Perfeita para reuniões rápidas ou coworkings, a Mesa Para Quatro Pessoas é feita em MDF resistente com acabamento UV, fácil de limpar e resistente a manchas. Medindo 120x80cm, acomoda confortavelmente quatro cadeiras padrão. Estrutura metálica com pintura powder-coat aumenta durabilidade e estabilidade. Pés com regulagem de nível compensam pisos irregulares, evitando balanços. Design retangular clean integra-se a diferentes estilos; cores disponíveis em claro ou escuro para combinar com o ambiente. Montagem simples, entregue com kit completo.`,
       },
       {
@@ -347,7 +347,7 @@ const allProducts = [
         },
         colors: ['#000000'],
         categoria: 'eletronicos',
-        tags: ['ver-tudo'],
+        tags: ['ver-tudo', 'lancamentos'],
         detailedDescription: `Fone de ouvido Bluetooth com drivers de 40mm, conexão estéreo sem fio, até 20h de bateria e microfone integrado. Almofadas acolchoadas e haste ajustável. Controles no earcup para volume e chamadas. ` 
       },
       {
@@ -451,7 +451,7 @@ const allProducts = [
         },
         colors: ['#DEB887', '#5C4033'],
         categoria: 'moveis',
-        tags: ['ver-tudo'],
+        tags: ['ver-tudo', 'lancamentos'],
         detailedDescription: `Mesa móvel com tampo de MDF resistente e rodízios giratórios com trava. Ideal para ambientes dinâmicos e coworkings. Mede 60x40x75cm. Montagem simples sem ferramentas especiais. ` 
       },
       {
@@ -462,7 +462,7 @@ const allProducts = [
         },
         colors: ['#000000'],
         categoria: 'materiais',
-        tags: ['ver-tudo'],
+        tags: ['ver-tudo', 'lancamentos'],
         detailedDescription: `Organizador de mesa com seis compartimentos de diferentes formatos, ideal para canetas, clipes, post-its e acessórios. Feito em ABS resistente, base antiderrapante. ` 
       },
       {
