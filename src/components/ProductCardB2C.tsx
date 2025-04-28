@@ -1,3 +1,5 @@
+//comentarios no product card b2b 
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -20,7 +22,7 @@ export const ProductCard = ({
   colors,
   abrirCarrinho,
 }: ProductCardProps) => {
-  const { addItem } = useCart();
+  const { addItem } = useCart(); // puxando o que fizemos no arquivo do carrinho
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const displayImage =

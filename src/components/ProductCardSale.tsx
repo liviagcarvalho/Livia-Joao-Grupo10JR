@@ -1,3 +1,5 @@
+//comentarios no product card b2b 
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';

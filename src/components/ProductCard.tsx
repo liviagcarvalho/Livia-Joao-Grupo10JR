@@ -137,13 +137,14 @@ const ColorPicker = styled.div`
   margin-bottom: 1rem;
 `;
 
-const ColorDot = styled.button<{ color: string; selected: boolean }>`
+//explicacao do botao no codigo 
+const ColorDot = styled.button<{ color: string; selected: boolean }>` // cria botao chamado color dot que recebe essas duas props 
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  border: ${({ color }) => (color === '#ffffff' ? '1px solid #d1d5db' : 'none')};
-  background-color: ${({ color }) => color};
-  outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')};
+  border: ${({ color }) => (color === '#ffffff' ? '1px solid #d1d5db' : 'none')}; //Se a cor for branco puro (#ffffff), exibe uma borda cinza clara de 1px; caso contrário, não há borda. Isso evita que um ponto branco “sumido” no fundo branco fique imperceptível.
+  background-color: ${({ color }) => color}; //Preenche o círculo com a cor passada na prop color
+  outline: ${({ selected }) => (selected ? '2px solid #1D311F' : 'none')}; //Se selected for true, desenha um contorno externo (outline) de 2px em verde-escuro (#1D311F)
   cursor: pointer;
 `;
 
