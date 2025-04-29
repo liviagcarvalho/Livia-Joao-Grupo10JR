@@ -66,7 +66,6 @@ const Footer = () => {
         <Logo>R. Amaral Office</Logo>
         <NavLinks>
           <a href="#">EMPRESA</a>
-          <a href="#">FUNCIONARIOS</a>
         </NavLinks>
       </CenterContent>
 
