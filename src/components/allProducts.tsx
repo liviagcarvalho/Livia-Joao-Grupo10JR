@@ -489,17 +489,6 @@ const allProducts = [
     description: "Solução simples e eficaz para chamadas nítidas e uso prolongado com conforto."
   },
   {
-    name: 'Fone Bluetooth Portátil',
-    price: 'R$1130,00',
-    images: {
-      '#000000': '/src/assets/Produtos/Cabos-Fones/FoneBP.png'
-    },
-    colors: ['#000000'],
-    categoria: 'eletronicos',
-    tags: ['ver-tudo','mais-vendidos'],
-    description: "Mobilidade e som de qualidade. Ideal para ambientes corporativos e reuniões online."
-  },
-  {
     name: 'Prateleira',
     price: 'R$1870,00',
     images: {
