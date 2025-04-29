@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import apoiamonitor from "../assets/HomePage/apoiamonitor.png";
 
@@ -103,9 +104,10 @@ const ProductDesc = styled.p`
   line-height: 1.6;
 `;
 
-const Button = styled.button`
-  background-color: #9CAF8821
-;
+// Usamos Link do React Router para navegação declarativa
+const ButtonLink = styled(Link)`
+  display: inline-block;
+  background-color: #9CAF8821;
   color: #1d311f;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -113,7 +115,7 @@ const Button = styled.button`
   padding: 0.75rem 2.5rem;
   border-radius: 10px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  border: none;
+  text-decoration: none;
   cursor: pointer;
 
   @media (min-width: 1024px) {
@@ -129,19 +131,19 @@ const LaunchBanner = () => {
 
       <ContentWrapper>
         <ImageWrapper>
-          <ProductImage src={apoiamonitor} alt="Suporte de Monitor Ergonômico" />
+          <ProductImage src={apoiamonitor} alt="Suporte de Monitor" />
           <NewTag>NEW</NewTag>
         </ImageWrapper>
 
         <InfoBox>
           <ProductTitle>
             <span>Suporte de Monitor</span>
-            <span>Ergonômico</span>
           </ProductTitle>
           <ProductDesc>
             Sua versatilidade permite melhorar a postura, alinhando o monitor para os seus olhos
           </ProductDesc>
-          <Button>Confira Já!</Button>
+          {/* Link declarativo para a página de detalhes */}
+          <ButtonLink to={`/produto-b2c/${encodeURIComponent("Suporte de Monitor")}`}>Confira Já!</ButtonLink>
         </InfoBox>
       </ContentWrapper>
     </Section>

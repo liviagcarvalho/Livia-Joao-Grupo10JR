@@ -1,3 +1,5 @@
+//comentarios no product card b2b  e comentarios sobre a parte do carrinho no b2c 
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -93,6 +95,7 @@ const Card = styled.div`
   margin: 0 auto;
 `;
 
+//styled do sale (vermelhinho no canto)
 const Badge = styled.span`
   position: absolute;
   top: 0.75rem;
@@ -128,7 +131,7 @@ const ProductName = styled.h3`
   font-weight: 500;
   text-align: center;
 `;
-
+//preco normal cortado com line-through e cor mais clara
 const OriginalPrice = styled.p`
   font-size: 16px;
   font-weight: bold;
@@ -137,6 +140,7 @@ const OriginalPrice = styled.p`
   text-decoration: line-through;
 `;
 
+//preco com disconto em bold 
 const DiscountPrice = styled.p`
   font-size: 16px;
   font-weight: bold;

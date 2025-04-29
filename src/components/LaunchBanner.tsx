@@ -1,4 +1,6 @@
+
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import apoiamonitor from "../assets/HomePage/apoiamonitor.png";
 
@@ -121,6 +123,13 @@ const Button = styled.button`
 `;
 
 const LaunchBanner = () => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    // Navega para a página do produto Suporte de Monitor (B2C)
+    navigate(`/produto/${encodeURIComponent("Suporte de Monitor")}`);
+  };
+
   return (
     <Section>
       <Title>CONFIRA NOSSO ÚLTIMO LANÇAMENTO</Title>
@@ -128,19 +137,18 @@ const LaunchBanner = () => {
 
       <ContentWrapper>
         <ImageWrapper>
-          <ProductImage src={apoiamonitor} alt="Suporte de Monitor Ergonômico" />
+          <ProductImage src={apoiamonitor} alt="Suporte de Monitor" />
           <NewTag>NEW</NewTag>
         </ImageWrapper>
 
         <InfoBox>
           <ProductTitle>
             <span>Suporte de Monitor</span>
-            <span>Ergonômico</span>
           </ProductTitle>
           <ProductDesc>
             Sua versatilidade permite melhorar a postura, alinhando o monitor para os seus olhos
           </ProductDesc>
-          <Button>Confira Já!</Button>
+          <Button onClick={handleClick}>Confira Já!</Button>
         </InfoBox>
       </ContentWrapper>
     </Section>

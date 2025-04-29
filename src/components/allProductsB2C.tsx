@@ -95,17 +95,6 @@ const allProducts = [
         detailedDescription: `Perfeita para reuniões rápidas ou coworkings, a Mesa Para Quatro Pessoas é feita em MDF resistente com acabamento UV, fácil de limpar e resistente a manchas. Medindo 120x80cm, acomoda confortavelmente quatro cadeiras padrão. Estrutura metálica com pintura powder-coat aumenta durabilidade e estabilidade. Pés com regulagem de nível compensam pisos irregulares, evitando balanços. Design retangular clean integra-se a diferentes estilos; cores disponíveis em claro ou escuro para combinar com o ambiente. Montagem simples, entregue com kit completo.`,
       },
       {
-        name: 'Porta Cartão de Visita',
-        price: 'R$29,00',
-        images: {
-          '#000000': 'src/assets/Produtos/Organizacao/Porta cartao 1.png',
-        },
-        colors: ['#000000'],
-        categoria: 'materiais',
-        tags: ['ver-tudo'],
-        detailedDescription: `Este Porta Cartão de Visita mantém seus cartões organizados e à mão com estilo minimalista. Feito em acrílico preto de alta transparência, exibe até 30 cartões padrão (8,5x5cm). Base antiderrapante evita deslizamentos. Ideal para recepções, eventos e ambientes corporativos, confere profissionalismo e organização. Peça leve e resistente a riscos.`,
-      },
-      {
         name: 'Locker G',
         price: 'R$350,00',
         images: {

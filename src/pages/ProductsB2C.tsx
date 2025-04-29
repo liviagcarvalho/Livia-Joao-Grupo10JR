@@ -1,3 +1,5 @@
+//comentarios mais detalhados no products B2B
+
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';

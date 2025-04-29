@@ -3,6 +3,126 @@ import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Header from '../components/Header'
 
+
+interface FAQItemProps { //interface é uma forma de você definir um contrato para objetos e classes — ou seja, especificar quais propriedades e tipos aquele objeto deve ter.
+  question: string;
+  answer: string;
+}
+
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => { // const que é um function component do React
+  const [open, setOpen] = useState(false); // resposta comeca invisível (usestate false)
+  return (
+    <div>  
+      <Question onClick={() => setOpen(!open)}> {/* inverte o estado open on click*/}
+        <span>{question}</span> {/* texto recebido em um <span>, span nao quebra a linha enquanto o div sempre comeca uma nova linha - elemento inline*/}
+        <Chevron $open={open}>⌄</Chevron>{/* Quando usamos props personalizadas com styled-components, prefixar com $ evita que a prop seja passada como atributo HTML inválido para o DOM; chevron é a flechinha*/}
+      </Question>
+      {open && <Answer>{answer}</Answer>} {/* Usa short-circuit: se open for true, aí sim o React renderiza <Answer>{answer}</Answer>.*/}
+    </div>
+  );
+};
+
+const AjudaB2B = () => {
+  const [nome, setNome] = useState(''); /* Use state- onde os dados são guardados */
+  const [email, setEmail] = useState(''); 
+  const [mensagem, setMensagem] = useState('');
+  const [erro, setErro] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => { // Porque precisa guardar info se não estamos trabalhando com backend? - "mesmo que você não tenha um back-end, precisa guardar temporariamente as informações que o usuário digita" - ChatGPT
+    e.preventDefault(); /* impede o comportamento padrão do formulário (recarregar a página */
+    if (!nome || !email || !mensagem) { /* verifica se algum campo está vazio */
+      setErro(true);
+    } else {
+      alert("Informações enviadas com sucesso!"); // ou console.log mostra a caixinha do navegador (um popup) - alert() é uma função nativa do JavaScript
+      setNome(''); //limpa os campos
+      setEmail('');
+      setMensagem('');
+      setErro(false); // mensagem de erro
+    }
+  };
+  return (
+    <>
+      <Header />
+      <Container>
+        <Wrapper>
+          <Title>Perguntas Frequentes</Title>
+
+          <Section>
+            <SectionTitle>Pedidos, Rastreamento e Entrega</SectionTitle>
+            <FAQItem question="Como entrar em contato da maneira mais rápida?" answer="É possível realizar um orçamento diretamente no site e obterá um retorno em menos de 24hs, entretanto, se for extremamente urgente ligue em +55 (11) 8265-3746. Para mais informações contate-nos via whatsapp." />
+            <FAQItem question="Consigo mudar meu endereço após o pedido?" answer="Sim, dentro de 48hs antes do pedido ser enviado esta ação pode ser realizada, para isso entre em contato via whatsapp que resolveremos todos os seus problemas da maneira mais rápida possível." />
+            <FAQItem question="O que fazer se meu pedido chegou incompleto?" answer="Entre em contato com o nosso suporte com o número do pedido e fotos dos itens recebidos." />
+            <FAQItem question="Como acompanho o rastreamento do meu pedido B2B?" answer="Para garantir um atendimento mais personalizado, o rastreamento de pedidos B2B é realizado diretamente por nossos canais exclusivos. Assim que seu pedido for despachado, nossa equipe enviará por e-mail os dados de rastreio com o link da transportadora responsável. Em caso de dúvidas ou necessidade de atualizações adicionais, você pode entrar em contato diretamente com nosso time pelo e-mail ou aplicativo de atendimento corporativo." />
+          </Section>
+
+          <Section>
+            <SectionTitle>Informações dos Produtos</SectionTitle>
+            <FAQItem question="É possivel ajustar as cadeiras para o meu tamanho?" answer="Sim! Todas as nossas cadeiras possuem ajuste de altura e inclinação, sendo adaptável ao seu tamanho. Elas também são pensadas na sua saúde e conforto, todas são ergonômicas para proteger a sua coluna." />
+            <FAQItem question="Posso ver seus produtos pessoalmente antes de comprá-los?" answer="Sim! Temos nossa loja física em Rua dos Pinheiros, n48 - São Paulo, SP. Precisa de atendimento personalizado? Ligue em +55 (11) 8265-3746 para agendar o melhor horário que encontrarmos para você." />
+          </Section>
+
+          <Section>
+            <SectionTitle>Retornos e Reembolsos</SectionTitle>
+            <FAQItem question="Qual é a política de retorno e reembolso?" answer="Você tem até 3 dias úteis após o recebimento do produto para solicitar a devolução dos mesmos. Este processo pode ser feito através do nosso canal de suporte ou em nossas principais vias: Whatsapp e telefone." />
+            <FAQItem question="Em quanto tempo receberei meu reembolso após a devolução?" answer="Após o recebimento e análise do produto devolvido, o reembolso é processado em até 7 dias úteis após a validação da solicitação. O valor será creditado conforme o meio de pagamento utilizado na compra — no caso de cartão de crédito, o estorno pode aparecer em até duas faturas subsequentes, conforme regras da administradora." />
+            <FAQItem question="Posso trocar um produto ou apenas solicitar reembolso?" answer="Você pode optar tanto pela troca quanto pelo reembolso, desde que a solicitação esteja dentro do prazo de 3 dias após o recebimento. Para trocas, oferecemos a possibilidade de escolher um novo item de igual valor ou gerar um crédito em loja. Basta entrar em contato com nosso suporte." />
+          </Section>
+
+          {/* Formulário de contato */}
+          <FormWrapper>
+          <FormTitle>Central de Apoio ao Cliente</FormTitle>
+            <form onSubmit={handleSubmit}>
+              <Input
+                type="text" /* Define que é campo de texto */
+                placeholder="Digite seu Nome e Sobrenome" /* O que aparece antes de começar a digitar */
+                value={nome} /* O que ta sendo guardado */
+                onChange={(e) => setNome(e.target.value)} /* Atualize o nome toda vez que alguem digita */
+              />
+              <Input
+                type="email" /* Muito importante: validação automática do navegador que não aceita quando nao tem @ ou .com */
+                placeholder="Digite seu Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextArea
+                placeholder="Nos conte seu problema aqui"
+                value={mensagem}
+                onChange={(e) => setMensagem(e.target.value)}
+              />
+              <Button type="submit">Enviar</Button>
+              {erro && <ErrorMessage>Por favor, preencha todos os campos antes de enviar.</ErrorMessage>} {/* Se erro for verdadeiro, mostre esse texto - aparece em vermelho*/}
+            </form>
+          </FormWrapper>
+
+        </Wrapper>
+
+        <ContactBox>
+          <TitleContact>Entre em contato conosco</TitleContact>
+          <Subtitle>
+            Obtenha todas as suas respostas aqui e aprenda mais sobre nossas coleções, serviços e equipe!
+          </Subtitle>
+          <ButtonGroup>
+            <ContatoItem>
+              <Label>Email para contato</Label>
+              <EmailButton>R.AmaralOffice@gmail.com</EmailButton>
+            </ContatoItem>
+            <ContatoItem>
+              <Label>Telefone para contato</Label>
+              <PhoneButton>+55 (11) 8265-3746</PhoneButton>
+            </ContatoItem>
+          </ButtonGroup>
+
+      </ContactBox>
+      </Container>
+      <Footer />
+    </>
+  );
+};
+
+export default AjudaB2B;
+
+
+//Styled-components
 //PERGUNTAS FREQUÊNTES
 //limitador de largura 
 const Wrapper = styled.div`
@@ -12,6 +132,8 @@ const Wrapper = styled.div`
   background-color: #DCDACE;
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+
+  margin-top: 10rem;
 
     @media (max-width: 1280px) {
     margin-top: 8rem;
@@ -103,15 +225,35 @@ const ErrorMessage = styled.p`
 `;
 
 
+ // Define o formato das props que o componente Chevron vai receber
 interface ChevronProps {
-    $open: boolean;
-  }
-  
-  const Chevron = styled.span<ChevronProps>`
-    font-size: 1.25rem;
-    transition: transform 0.2s;
-    transform: ${({ $open }) => ($open ? 'rotate(180deg)' : 'rotate(0deg)')};
-  `;
+  // Prop customizada que indica se o chevron está "aberto" (true) ou "fechado" (false)
+  //Uma prop customizada é qualquer prop que você mesmo define, que não faz parte dos atributos HTML nativos (como id, className, href, etc.).
+  //A prop customizada $open serve para dizer: “estou aberto ou fechado?”
+  $open: boolean;
+}
+
+//Quando open é false, <Chevron> recebe $open={false}.
+//Quando o usuário clica, setOpen(!open) inverte para true, e <Chevron> agora tem $open={true}
+
+// Cria um componente styled <span>, tipado com ChevronProps para usar a prop $open
+const Chevron = styled.span<ChevronProps>`
+  /* Define o tamanho da fonte do ícone (por exemplo, uma seta) */
+  font-size: 1.25rem;
+
+  /* Anima suavemente qualquer mudança na propriedade transform em 0.2 segundos */
+  transition: transform 0.2s;
+
+  /* 
+   Define a rotação do span:
+   - Se $open for true, aplica 'rotate(180deg)' (vira de cabeça para baixo)
+   - Se $open for false, mantém em 'rotate(0deg)' (posição padrão)
+  */
+  transform: ${({ $open }) => ($open ? 'rotate(180deg)' : 'rotate(0deg)')};
+`;
+
+//Prefixo $ evita “sujar” o HTML
+
   
 
 // FORMULÁRIO - CENTRAL DE APOIO
@@ -215,121 +357,3 @@ const EmailButton = styled.div`
 `;
 
 const PhoneButton = styled(EmailButton)``; // usa os mesmos estilos do EmailButton
-
-
-interface FAQItemProps {
-  question: string;
-  answer: string;
-}
-
-const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div>
-      <Question onClick={() => setOpen(!open)}>
-        <span>{question}</span>
-        <Chevron $open={open}>⌄</Chevron>{/* Quando usamos props personalizadas com styled-components, prefixar com $ evita que a prop seja passada como atributo HTML inválido para o DOM*/}
-      </Question>
-      {open && <Answer>{answer}</Answer>}
-    </div>
-  );
-};
-
-const AjudaB2B = () => {
-  const [nome, setNome] = useState(''); /* Use state- onde os dados são guardados */
-  const [email, setEmail] = useState(''); 
-  const [mensagem, setMensagem] = useState('');
-  const [erro, setErro] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => { // Porque precisa guardar info se não estamos trabalhando com backend? - "mesmo que você não tenha um back-end, precisa guardar temporariamente as informações que o usuário digita" - ChatGPT
-    e.preventDefault(); /* impede o comportamento padrão do formulário (recarregar a página */
-    if (!nome || !email || !mensagem) { /* verifica se algum campo está vazio */
-      setErro(true);
-    } else {
-      alert("Informações enviadas com sucesso!"); // ou console.log mostra a caixinha do navegador (um popup) - alert() é uma função nativa do JavaScript
-      setNome(''); //limpa os campos
-      setEmail('');
-      setMensagem('');
-      setErro(false); // mensagem de erro
-    }
-  };
-  return (
-    <>
-      <Header />
-      <Container>
-        <Wrapper>
-          <Title>Perguntas Frequentes</Title>
-
-          <Section>
-            <SectionTitle>Pedidos, Rastreamento e Entrega</SectionTitle>
-            <FAQItem question="Como entrar em contato da maneira mais rápida?" answer="É possível realizar um orçamento diretamente no site e obterá um retorno em menos de 24hs, entretanto, se for extremamente urgente ligue em +55 (11) 8265-3746. Para mais informações contate-nos via whatsapp." />
-            <FAQItem question="Consigo mudar meu endereço após o pedido?" answer="Sim, dentro de 48hs antes do pedido ser enviado esta ação pode ser realizada, para isso entre em contato via whatsapp que resolveremos todos os seus problemas da maneira mais rápida possível." />
-            <FAQItem question="O que fazer se meu pedido chegou incompleto?" answer="Entre em contato com o nosso suporte com o número do pedido e fotos dos itens recebidos." />
-            <FAQItem question="Como acompanho o rastreamento do meu pedido B2B?" answer="Para garantir um atendimento mais personalizado, o rastreamento de pedidos B2B é realizado diretamente por nossos canais exclusivos. Assim que seu pedido for despachado, nossa equipe enviará por e-mail os dados de rastreio com o link da transportadora responsável. Em caso de dúvidas ou necessidade de atualizações adicionais, você pode entrar em contato diretamente com nosso time pelo e-mail ou aplicativo de atendimento corporativo." />
-          </Section>
-
-          <Section>
-            <SectionTitle>Informações dos Produtos</SectionTitle>
-            <FAQItem question="É possivel ajustar as cadeiras para o meu tamanho?" answer="Sim! Todas as nossas cadeiras possuem ajuste de altura e inclinação, sendo adaptável ao seu tamanho. Elas também são pensadas na sua saúde e conforto, todas são ergonômicas para proteger a sua coluna." />
-            <FAQItem question="Posso ver seus produtos pessoalmente antes de comprá-los?" answer="Sim! Temos nossa loja física em Rua dos Pinheiros, n48 - São Paulo, SP. Precisa de atendimento personalizado? Ligue em +55 (11) 8265-3746 para agendar o melhor horário que encontrarmos para você." />
-          </Section>
-
-          <Section>
-            <SectionTitle>Retornos e Reembolsos</SectionTitle>
-            <FAQItem question="Qual é a política de retorno e reembolso?" answer="Você tem até 3 dias úteis após o recebimento do produto para solicitar a devolução dos mesmos. Este processo pode ser feito através do nosso canal de suporte ou em nossas principais vias: Whatsapp e telefone." />
-            <FAQItem question="Em quanto tempo receberei meu reembolso após a devolução?" answer="Após o recebimento e análise do produto devolvido, o reembolso é processado em até 7 dias úteis após a validação da solicitação. O valor será creditado conforme o meio de pagamento utilizado na compra — no caso de cartão de crédito, o estorno pode aparecer em até duas faturas subsequentes, conforme regras da administradora." />
-            <FAQItem question="Posso trocar um produto ou apenas solicitar reembolso?" answer="Você pode optar tanto pela troca quanto pelo reembolso, desde que a solicitação esteja dentro do prazo de 3 dias após o recebimento. Para trocas, oferecemos a possibilidade de escolher um novo item de igual valor ou gerar um crédito em loja. Basta entrar em contato com nosso suporte." />
-          </Section>
-
-          {/* Formulário de contato */}
-          <FormWrapper>
-          <FormTitle>Central de Apoio ao Cliente</FormTitle>
-            <form onSubmit={handleSubmit}>
-              <Input
-                type="text" /* Define que é campo de texto */
-                placeholder="Digite seu Nome e Sobrenome" /* O que aparece antes de começar a digitar */
-                value={nome} /* O que ta sendo guardado */
-                onChange={(e) => setNome(e.target.value)} /* Atualize o nome toda vez que alguem digita */
-              />
-              <Input
-                type="email" /* Muito importante: validação automática do navegador que não aceita quando nao tem @ ou .com */
-                placeholder="Digite seu Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <TextArea
-                placeholder="Nos conte seu problema aqui"
-                value={mensagem}
-                onChange={(e) => setMensagem(e.target.value)}
-              />
-              <Button type="submit">Enviar</Button>
-              {erro && <ErrorMessage>Por favor, preencha todos os campos antes de enviar.</ErrorMessage>} {/* Se erro for verdadeiro, mostre esse texto - aparece em vermelho*/}
-            </form>
-          </FormWrapper>
-
-        </Wrapper>
-
-        <ContactBox>
-          <TitleContact>Entre em contato conosco</TitleContact>
-          <Subtitle>
-            Obtenha todas as suas respostas aqui e aprenda mais sobre nossas coleções, serviços e equipe!
-          </Subtitle>
-          <ButtonGroup>
-            <ContatoItem>
-              <Label>Email para contato</Label>
-              <EmailButton>R.AmaralOffice@gmail.com</EmailButton>
-            </ContatoItem>
-            <ContatoItem>
-              <Label>Telefone para contato</Label>
-              <PhoneButton>+55 (11) 8265-3746</PhoneButton>
-            </ContatoItem>
-          </ButtonGroup>
-
-      </ContactBox>
-      </Container>
-      <Footer />
-    </>
-  );
-};
-
-export default AjudaB2B;

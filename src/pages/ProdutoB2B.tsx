@@ -6,6 +6,73 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Orcamento from '../pages/OrcamentoB2B'; 
 
+export default function Produto() {
+  const { nome } = useParams();
+  const produto = allProducts.find((p) => p.name === nome);
+
+  const [corSelecionada, setCorSelecionada] = useState(produto?.colors[0]);
+  const [mostrarOrcamento, setMostrarOrcamento] = useState(false);
+
+
+  if (!produto) return <p>Produto não encontrado.</p>;
+
+  const imagens = produto.images || {};
+  const imagemPrincipal = imagens[corSelecionada] || Object.values(imagens)[0];
+
+  const abrirModal = () => setMostrarOrcamento(true);
+  const fecharModal = () => setMostrarOrcamento(false);
+
+  return (
+    <PageContainer>
+      <Header />
+      <Content>
+        <Title>{produto.name}</Title>
+
+        <ProductSection>
+          {/* Coluna de thumbnails */}
+          <GalleryColumn>
+            {Object.values(imagens).map((img, idx) => (
+              <Thumbnail
+                key={idx}
+                src={img}
+                onClick={() => setCorSelecionada(Object.keys(imagens)[idx])}
+              />
+            ))}
+          </GalleryColumn>
+
+          {/* Imagem principal */}
+          <MainImage src={imagemPrincipal} alt={produto.name} />
+
+          {/* Informações do produto */}
+          <InfoBox>
+            <ProductName>{produto.name}</ProductName>
+            <ProductPrice>{produto.price}</ProductPrice>
+            <Divider />
+            <Description>{produto.description}</Description>
+
+            {produto.colors.length > 1 && (
+              <ColorOptions>
+                {produto.colors.map((cor) => (
+                  <ColorDot
+                    key={cor}
+                    color={cor}
+                    selected={corSelecionada === cor}
+                    onClick={() => setCorSelecionada(cor)}
+                  />
+                ))}
+              </ColorOptions>
+            )}
+
+            <BudgetButton onClick={abrirModal}>REALIZE SEU ORÇAMENTO</BudgetButton>
+          </InfoBox>
+        </ProductSection>
+      </Content>
+      {mostrarOrcamento && <Orcamento closeOrcamento={fecharModal} />}
+      <Footer />
+    </PageContainer>
+  );
+}
+
 
 const PageContainer = styled.div`
   background-color: #f5f8f5;
@@ -109,70 +176,3 @@ const BudgetButton = styled.button`
   cursor: pointer;
   width: fit-content;
 `;
-
-export default function Produto() {
-  const { nome } = useParams();
-  const produto = allProducts.find((p) => p.name === nome);
-
-  const [corSelecionada, setCorSelecionada] = useState(produto?.colors[0]);
-  const [mostrarOrcamento, setMostrarOrcamento] = useState(false);
-
-
-  if (!produto) return <p>Produto não encontrado.</p>;
-
-  const imagens = produto.images || {};
-  const imagemPrincipal = imagens[corSelecionada] || Object.values(imagens)[0];
-
-  const abrirModal = () => setMostrarOrcamento(true);
-  const fecharModal = () => setMostrarOrcamento(false);
-
-  return (
-    <PageContainer>
-      <Header />
-      <Content>
-        <Title>{produto.name}</Title>
-
-        <ProductSection>
-          {/* Coluna de thumbnails */}
-          <GalleryColumn>
-            {Object.values(imagens).map((img, idx) => (
-              <Thumbnail
-                key={idx}
-                src={img}
-                onClick={() => setCorSelecionada(Object.keys(imagens)[idx])}
-              />
-            ))}
-          </GalleryColumn>
-
-          {/* Imagem principal */}
-          <MainImage src={imagemPrincipal} alt={produto.name} />
-
-          {/* Informações do produto */}
-          <InfoBox>
-            <ProductName>{produto.name}</ProductName>
-            <ProductPrice>{produto.price}</ProductPrice>
-            <Divider />
-            <Description>{produto.description}</Description>
-
-            {produto.colors.length > 1 && (
-              <ColorOptions>
-                {produto.colors.map((cor) => (
-                  <ColorDot
-                    key={cor}
-                    color={cor}
-                    selected={corSelecionada === cor}
-                    onClick={() => setCorSelecionada(cor)}
-                  />
-                ))}
-              </ColorOptions>
-            )}
-
-            <BudgetButton onClick={abrirModal}>REALIZE SEU ORÇAMENTO</BudgetButton>
-          </InfoBox>
-        </ProductSection>
-      </Content>
-      {mostrarOrcamento && <Orcamento closeOrcamento={fecharModal} />}
-      <Footer />
-    </PageContainer>
-  );
-}

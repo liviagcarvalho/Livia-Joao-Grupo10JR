@@ -11,40 +11,44 @@ import {ProductCardB2B} from '../components/ProductCard';
 
 // Função principal do componente da página de produtos
 export default function ProductB2B() {
-  // Pega a categoria do Header - parametros (ex: "moveis", "materiais", etc.)
+  // Pega a categoria que definimos no Header - parametros (ex: "moveis", "materiais", etc.)
   const { categoria } = useParams();
 
   // Estados usados para filtros e ordenações
   const location = useLocation();
-  const filtroInicial = location.state?.filtroInicial || null;
   const [sortOption, setSortOption] = useState(''); // como ordenar os produtos
   const [isOpen, setIsOpen] = useState(false); // dropdown de ordenação 
   const [showCategoria, setShowCategoria] = useState(false); // dropdown de categoria 
   const [showCor, setShowCor] = useState(false); // dropdown de cor 
-  const [categoriaFiltro, setCategoriaFiltro] = useState<string | null>(null); // filtro por tag
-  const [corFiltro, setCorFiltro] = useState<string | null>(null); // filtro por cor
   const [quantidadeVisivel, setQuantidadeVisivel] = useState(8); // controla se deve mostrar tudo ou só os primeiros
-  const [busca, setBusca] = useState(''); // termo da barra de busca
+  
 
-  // quando pessoa clica no botao do carrossel da pagina B2b ela é direcionada ao mais vendidos 
-  React.useEffect(() => {
-    if (filtroInicial) {
-      setCategoriaFiltro(filtroInicial);
+  //se location.state existir, ela retorna state.filtroInicial; se não existir, o resultado é undefined em vez de um erro.
+  // O tipo string | null indica que, até você atribuir algo, categoriaFiltro pode ser null ou uma string.
+  //no inicio vale null
+  //set categoria filtro é a funcao que atualiza a actegoria
+  const filtroInicial = location.state?.filtroInicial || null; //Captura de maneira segura o filtroInicial que veio no state da rota (via location.state?.filtroInicial), e — se esse valor não existir ou for undefined — usa o || null para atribuir null em vez de deixar filtroInicial indefinido.
+  const [categoriaFiltro, setCategoriaFiltro] = useState<string | null>(null); // filtro por tag
+  React.useEffect(() => {  // useEffect = lidar com efeitos colaterais (“side effects”) em componentes funcionais
+    if (filtroInicial) { // verifica se exite valor em filtro incial
+      setCategoriaFiltro(filtroInicial); // atualiza para o filtro escolhido (setusestate)
       // Limpa o state da URL para não reaplicar em reloads ou navegação
       window.history.replaceState({}, document.title);
     }
   }, []);
   
-  
-  // Filtra produtos com base na categoria 
-  let produtosFiltrados = categoria
-  ? allProducts.filter((p) => p.categoria === categoria.toLowerCase())
-  : allProducts;
 
-  // Aplica busca textual (por nome)
-  if (busca.trim() !== '') {
-    const termo = busca.toLowerCase();
-    produtosFiltrados = produtosFiltrados.filter((p) =>
+  // Filtra produtos com base na categoria 
+  // se categoria nao for undefined usamos a primeira, se nao usamos a segunda linha
+  let produtosFiltrados = categoria 
+  ? allProducts.filter((p) => p.categoria === categoria.toLowerCase()) //aplica a categoria - percorre o array e devolve os produtos que tem aquela cat
+  : allProducts; // cat undefined = todos os prod
+
+  const [busca, setBusca] = useState(''); // termo da barra de busca
+  // Aplica busca textual (por nome) - lugar de buscar
+  if (busca.trim() !== '') { // remove espacos em branco - so entra se tiver algo digitado
+    const termo = busca.toLowerCase(); // converte para minusculas 
+    produtosFiltrados = produtosFiltrados.filter((p) => // array filtrado
       p.name.toLowerCase().includes(termo)
     );
   }
@@ -56,7 +60,9 @@ export default function ProductB2B() {
       p.tags.includes(categoriaFiltro)
     );
   }
-
+  
+  //estado de corFiltro (set cor filtro para mudar de cor) - cor filtro= cor atual; setcorfiltro= para colocar uma cor nova (atualiza a cor)
+  const [corFiltro, setCorFiltro] = useState<string | null>(null); // filtro por cor
   // Aplica filtro por cor
   if (corFiltro) {
     produtosFiltrados = produtosFiltrados.filter((p) =>
@@ -64,25 +70,27 @@ export default function ProductB2B() {
     );
   }
 
-  // Ordena os produtos conforme o filtro selecionado
-  const produtosOrdenados = [...produtosFiltrados].sort((a, b) => {
-    // Converte o preço de string (ex: "R$199,00") para número (199.00)
+  // Ordena os produtos conforme o filtro selecionado - clona o array - garantindo que o .sort() ali embaixo não altere o array original.
+  const produtosOrdenados = [...produtosFiltrados].sort((a, b) => { 
+    // Converte o preço de string (ex: "R$199,00") para número (199.00) 
+    // para comparar os valores numericamente
     const getPriceValue = (price: string) =>
       parseFloat(price.replace('R$', '').replace(',', '.'));
-
+    // Quando encontra o case certo, retorna o valor que faz o .sort() colocar a antes ou depois de b
     switch (sortOption) {
-      case 'menor':
+      case 'menor': // subtrai a - b - ordem crescente
         return getPriceValue(a.price) - getPriceValue(b.price); // menor preço primeiro
-      case 'maior':
+      case 'maior': // // ordena do mais caro ao mais barato
         return getPriceValue(b.price) - getPriceValue(a.price); // maior preço primeiro
       case 'az':
         return a.name.localeCompare(b.name); // ordem alfabética
-      default:
+      default: //Se sortOption não for nenhuma dessas três, cai no default e mantém a ordem original.
         return 0;
     }
   });
 
-  // Tradução dos nomes das categorias para exibição
+  // Tradução dos nomes das categorias para exibição (chave para valor para deixar os nomes gramaticamente corretos)
+  //constante categoria formatada
   const categoriaFormatada: Record<string, string> = {
     moveis: 'Móveis',
     eletronicos: 'Eletrônicos',
@@ -91,6 +99,7 @@ export default function ProductB2B() {
   };
 
   // Define o título que será exibido na página
+  //se nao tiver uma categoria vai para todos os produtos 
   const titulo = categoria
     ? categoriaFormatada[categoria.toLowerCase()] || categoria
     : 'Todos os Produtos';
@@ -101,7 +110,7 @@ export default function ProductB2B() {
     setCorFiltro(null);
   };
 
-  // Traduz as cores HEX para nomes amigáveis
+  // Traduz as cores HEX para nomes normais 
 const nomesCores: Record<string, string> = {
   "#ffffff": "Branco",
   "#000000": "Preto",
@@ -113,31 +122,12 @@ const nomesCores: Record<string, string> = {
   "#FFC0CB": "Rosa Claro",
 };
 
-// Traduz as tags de categoria
+// Traduz as tags de categoria - mesma coisa do nome das categorias
 const nomesCategorias: Record<string, string> = {
   "lancamentos": "Lançamentos",
   "mais-vendidos": "Mais Vendidos",
   "ver-tudo": "Ver Tudo"
 };
-
-// Botão que aparece após duas linhas de produtos para expandir e ver mais
-const VerMaisButton = styled.button`
-  background-color: #1D311F;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  font-size: 0.875rem;
-  cursor: pointer;
-  border: none;
-`;
-
-// Centralizaçao o botão "Ver Mais" - Wrapper - nome que se da quando é um componente que engloba outros elementos 
-const VerMaisWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-`;
-
 
   // JSX retornado pelo componente
   return (
@@ -148,10 +138,10 @@ const VerMaisWrapper = styled.div`
         <SearchBox>
           <SearchIcon>🔍</SearchIcon>
           <SearchInput 
-            type="text"
-            placeholder="Buscar produtos..."
+            type="text" /* campo de texto comum */
+            placeholder="Buscar produtos..." 
             value={busca}
-            onChange={(e) => setBusca(e.target.value)}
+            onChange={(e) => setBusca(e.target.value)} /* atualiza o campo a medida que o usuario digita */
           />
         </SearchBox>
       </SearchWrapper>
@@ -453,4 +443,22 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+`;
+
+// Botão que aparece após duas linhas de produtos para expandir e ver mais
+const VerMaisButton = styled.button`
+  background-color: #1D311F;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+`;
+
+// Centralizaçao o botão "Ver Mais" - Wrapper - nome que se da quando é um componente que engloba outros elementos 
+const VerMaisWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 `;
