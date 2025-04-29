@@ -302,8 +302,23 @@ const nomesCategorias: Record<string, string> = {
 
 const Container = styled.div`
   width: 100%;
-  margin-top: 25rem;
+  margin-top: 10rem;
+
+  @media (max-width: 950px) {
+    margin-top: 18rem;
+  }
+
+  /* Para tablets e telas intermediárias */
+  @media (max-width: 768px) {
+    margin-top: 20rem;
+  }
+
+  /* Para smartphones menores */
+  @media (max-width: 480px) {
+    margin-top: 25rem;
+  }
 `;
+
 
 // Wrapper para centralizar e posicionar a barra de busca
 const SearchWrapper = styled.div`
