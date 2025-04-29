@@ -132,7 +132,20 @@ const Wrapper = styled.div`
   background-color: #DCDACE;
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+
   margin-top: 10rem;
+
+    @media (max-width: 1280px) {
+    margin-top: 8rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 16rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 21rem;
+  }
+  @media (max-width: 640px) {
+    margin-top: 26rem;
 `;
 
 //cuidar da cor geral e padding externo
