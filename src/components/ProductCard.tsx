@@ -137,7 +137,7 @@ const ColorPicker = styled.div`
   margin-bottom: 1rem;
 `;
 
-//explicacao do botao no codigo 
+//explicacao do botao no codigo b2b
 const ColorDot = styled.button<{ color: string; selected: boolean }>` // cria botao chamado color dot que recebe essas duas props 
   width: 20px;
   height: 20px;

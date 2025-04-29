@@ -6,6 +6,73 @@ import imagemMissao from '../assets/sobrenós/2.png';
 import imagemExperiencia from '../assets/sobrenós/3.png';
 import Header from '../components/Header'
 
+const SobreB2B = () => {
+  return (
+    <>
+    <Header />
+      <HeroSection>
+        <HeroText>
+          <HeroTitle>Eficiência, Conforto e Estilo Para o Seu Ambiente de Trabalho</HeroTitle>
+          <HeroSubtitle>Seu espaço de trabalho elevado a outro nível</HeroSubtitle>
+        </HeroText>
+      </HeroSection>
+
+      <Container>
+        <Section>
+          <Title>R. Amaral Office</Title>
+          <Text>
+            A R. Amaral Office nasceu da visão empreendedora de Ricardo Amaral, um apaixonado por design funcional e soluções inteligentes para o ambiente de trabalho.
+            Após anos atuando no varejo físico, atendendo empresas de todos os tamanhos e profissionais autônomos em busca de conforto e produtividade, Ricardo decidiu dar um novo passo: levar a R. Amaral para o digital.
+          </Text>
+        </Section>
+
+        <MissionSection>
+          <TextWrapper>
+            <Subtitle>Nossa missão</Subtitle>
+            <Text>
+              Oferecer soluções completas, acessíveis e confiáveis para escritórios modernos, sejam eles em grandes corporações, coworkings ou dentro de casa.
+              Sabemos que um bom espaço de trabalho precisa ser prático, ergonômico e esteticamente agradável. Por isso, unimos móveis, tecnologia, materiais e itens de ambientação em um só lugar, para facilitar a sua jornada.
+              Acreditamos que produtividade e bem-estar caminham lado a lado. Por isso, desenvolvemos nossos produtos pensando não apenas na funcionalidade, mas também na experiência de quem os utiliza diariamente.
+              Cada peça é escolhida com cuidado, priorizando conforto, durabilidade e design atemporal.
+              Nossa missão vai além de oferecer mobiliário: queremos transformar a maneira como as pessoas vivenciam seus espaços de trabalho.
+              Seja em ambientes corporativos de grande escala ou em escritórios compactos dentro de casa, a R. Amaral Office entrega soluções que se adaptam ao seu ritmo, inspiram criatividade e promovem um dia a dia mais eficiente.
+            </Text>
+          </TextWrapper>
+          <Image src={imagemMissao} alt="Ambiente de trabalho moderno e confortável" />
+        </MissionSection>
+        <SectionWrapper>
+        <TextBlock>
+          <Title>Enfatizando a experiência do cliente</Title>
+          <Paragraph>
+            O lançamento do nosso e-commerce representa mais do que uma mudança de canal:
+            é a expansão de um propósito. Queremos estar mais próximos de você, oferecendo
+            uma experiência de compra fluida, moderna e personalizada. Através da tecnologia,
+            conseguimos entender melhor suas necessidades e evoluir com você — sempre com o
+            mesmo compromisso que nos trouxe até aqui.
+          </Paragraph>
+        </TextBlock>
+      </SectionWrapper>
+
+      <NewsletterSection>
+        <NewsletterTitle>Vamos transformar seu espaço juntos?</NewsletterTitle>
+        <NewsletterSubtitle>
+          Receba dicas, lançamentos e ofertas pensadas para o seu ambiente de trabalho.
+        </NewsletterSubtitle>
+        <Form>
+          <Input type="text" placeholder="Nome" />
+          <Input type="email" placeholder="Email" />
+          <Button type="submit">INSCREVA-SE</Button>
+        </Form>
+      </NewsletterSection>
+      </Container>
+      <Footer />
+    </>
+  );
+};
+
+export default SobreB2B;
+
+
 //Hero Section - Imagem grande com título em cima
 const HeroSection = styled.section`
   position: relative;
@@ -175,69 +242,3 @@ const Button = styled.button`
     opacity: 0.9;
   }
 `;
-
-const SobreB2B = () => {
-  return (
-    <>
-    <Header />
-      <HeroSection>
-        <HeroText>
-          <HeroTitle>Eficiência, Conforto e Estilo Para o Seu Ambiente de Trabalho</HeroTitle>
-          <HeroSubtitle>Seu espaço de trabalho elevado a outro nível</HeroSubtitle>
-        </HeroText>
-      </HeroSection>
-
-      <Container>
-        <Section>
-          <Title>R. Amaral Office</Title>
-          <Text>
-            A R. Amaral Office nasceu da visão empreendedora de Ricardo Amaral, um apaixonado por design funcional e soluções inteligentes para o ambiente de trabalho.
-            Após anos atuando no varejo físico, atendendo empresas de todos os tamanhos e profissionais autônomos em busca de conforto e produtividade, Ricardo decidiu dar um novo passo: levar a R. Amaral para o digital.
-          </Text>
-        </Section>
-
-        <MissionSection>
-          <TextWrapper>
-            <Subtitle>Nossa missão</Subtitle>
-            <Text>
-              Oferecer soluções completas, acessíveis e confiáveis para escritórios modernos, sejam eles em grandes corporações, coworkings ou dentro de casa.
-              Sabemos que um bom espaço de trabalho precisa ser prático, ergonômico e esteticamente agradável. Por isso, unimos móveis, tecnologia, materiais e itens de ambientação em um só lugar, para facilitar a sua jornada.
-              Acreditamos que produtividade e bem-estar caminham lado a lado. Por isso, desenvolvemos nossos produtos pensando não apenas na funcionalidade, mas também na experiência de quem os utiliza diariamente.
-              Cada peça é escolhida com cuidado, priorizando conforto, durabilidade e design atemporal.
-              Nossa missão vai além de oferecer mobiliário: queremos transformar a maneira como as pessoas vivenciam seus espaços de trabalho.
-              Seja em ambientes corporativos de grande escala ou em escritórios compactos dentro de casa, a R. Amaral Office entrega soluções que se adaptam ao seu ritmo, inspiram criatividade e promovem um dia a dia mais eficiente.
-            </Text>
-          </TextWrapper>
-          <Image src={imagemMissao} alt="Ambiente de trabalho moderno e confortável" />
-        </MissionSection>
-        <SectionWrapper>
-        <TextBlock>
-          <Title>Enfatizando a experiência do cliente</Title>
-          <Paragraph>
-            O lançamento do nosso e-commerce representa mais do que uma mudança de canal:
-            é a expansão de um propósito. Queremos estar mais próximos de você, oferecendo
-            uma experiência de compra fluida, moderna e personalizada. Através da tecnologia,
-            conseguimos entender melhor suas necessidades e evoluir com você — sempre com o
-            mesmo compromisso que nos trouxe até aqui.
-          </Paragraph>
-        </TextBlock>
-      </SectionWrapper>
-
-      <NewsletterSection>
-        <NewsletterTitle>Vamos transformar seu espaço juntos?</NewsletterTitle>
-        <NewsletterSubtitle>
-          Receba dicas, lançamentos e ofertas pensadas para o seu ambiente de trabalho.
-        </NewsletterSubtitle>
-        <Form>
-          <Input type="text" placeholder="Nome" />
-          <Input type="email" placeholder="Email" />
-          <Button type="submit">INSCREVA-SE</Button>
-        </Form>
-      </NewsletterSection>
-      </Container>
-      <Footer />
-    </>
-  );
-};
-
-export default SobreB2B;

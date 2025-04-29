@@ -16,6 +16,7 @@ import ProdutoB2C from './pages/ProdutoB2C';
 import PaginadosFuncionarios from './pages/PaginaFuncionario';
 import Perfil from './pages/Perfil';
 
+
 function App() {
   return (
     <CartProvider> 

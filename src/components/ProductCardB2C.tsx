@@ -12,7 +12,7 @@ export interface ProductCardProps {
   price: string;
   images?: Record<string, string>;
   colors: string[];
-  abrirCarrinho?: () => void;
+  abrirCarrinho?: () => void; // se passada como prop, deve disparar a abertura da interface do carrinho
 }
 
 export const ProductCard = ({
@@ -28,16 +28,21 @@ export const ProductCard = ({
   const displayImage =
     images[selectedColor] ?? Object.values(images)[0] ?? '';
 
-  const handleButtonClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    addItem({
+  // handler de clique que une tudo
+  const handleButtonClick = (e: React.MouseEvent) => { // (e: React.MouseEvent) simplesmente diz ao TypeScript “este e é um evento de clique de mouse do React”, trazendo todas as garantias de tipagem e autocompletar para trabalhar com ele.
+    e.stopPropagation(); // impede que ao clicar no botao de acionar dispare eventos de click no card pai - ou seja, evita que o evento suba para elememntos pais
+    addItem({ // construcao do objeto do produto (o que vai para o carrinho), em que a quantidade inicial é sempre 1 
       name,
       price,
       image: displayImage,
       quantity: 1,
     });
-    abrirCarrinho?.();
+    abrirCarrinho?.(); // se a funcao de adicionar o produto no carrinho acontecer, o carrinho abre
   };
+
+  //mais sobre o React.Mouseevent e stoppropagation - m “elemento pai” é simplesmente aquele que envolve ou contém outro elemento dentro dele na estrutura de árvore do DOM. Por exemplo, se você tem um <div> que envolve um <button>, esse <div> é o pai do <button>;
+  //quando um clique no botão “borbulha” (bubbling), ele subiria até esse <div> pai e outros ancestrais, acionando event handlers neles, a menos que você use e.stopPropagation() para interromper essa subida.
+  //Imagine que, quando você clica num botão, o navegador cria um “pacote de evento” que quer percorrer a árvore de elementos daquele botão para cima — primeiro dentro dele mesmo, depois no contêiner que o envolve, depois no contêiner ainda maior, e assim por diante, até chegar na raiz da página. Esse movimento de “subida” dos eventos pela hierarquia é o que chamamos de bubbling (ou borbulhamento)
 
   // monta o link (coloque aqui a sua rota de detalhe)
   const detalheLink = `/produto-b2c/${encodeURIComponent(name)}`;
